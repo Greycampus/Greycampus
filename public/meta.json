@@ -1,0 +1,35 @@
+{
+  "name": "greyCampus_fe",
+  "plugins": [
+    {
+      "name": "CSS / styled-jsx",
+      "description": "Next.js comes with built-in support for CSS and styled-jsx. Styled-jsx is full, scoped and component-friendly CSS support for JSX (rendered on the server or the client).",
+      "url": "https://github.com/vercel/styled-jsx"
+    },
+    {
+      "name": "Fetch",
+      "description": "Next.js has a built-in polyfill for the fetch API. You don't need to worry about using it on either server or client side.",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API"
+    },
+    {
+      "name": "Axios",
+      "description": "Promise based HTTP client for the browser and node.js.",
+      "url": "https://github.com/axios/axios"
+    },
+    {
+      "name": "Apollo GraphQL",
+      "description": "Apollo Client is a comprehensive state management library for JavaScript that enables you to manage both local and remote data with GraphQL. Use it to fetch, cache, and modify application data, all while automatically updating your UI.",
+      "url": "https://www.apollographql.com/docs/react/"
+    },
+    {
+      "name": "React Query",
+      "description": "Hooks for fetching, caching and updating asynchronous data in React.",
+      "url": "https://react-query.tanstack.com/overview"
+    },
+    {
+      "name": "Prettier",
+      "description": "An opinionated code formatter; Supports many languages; Integrates with most editors.",
+      "url": "https://prettier.io/docs/en/index.html"
+    }
+  ]
+}
