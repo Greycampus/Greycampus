@@ -13,8 +13,8 @@ const styles = {
         backgroundPosition: "center center",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
-        height: "400px", // Adjust as needed
         width: "100%",   // Adjust as needed
+        alignItems: 'center'
     }
 }
 
@@ -26,7 +26,8 @@ const VideoSection = () => {
             autoPlay={false}
             muted={false}
             loop={false}
-            style={{ width: "100%", height: 'auto', maxWidth: '480px', objectFit: "cover", marginRight: '40px' }}
+            poster="https://www.odinschool.com/hubfs/GC(B2B)/GC%20-%20Enterprise%20Intro.webp"
+            style={{ width: "100%", height: 'auto', objectFit: "cover", borderRadius: '16px' }}
         >
             Your browser does not support the video tag.
         </video>
@@ -38,12 +39,20 @@ const TopSection = () => {
     return (
         <Box sx={styles.lgContainer}>
             <Box sx={{
-                py: '80px',
-                display: 'flex',
-                justifyContent: 'space-between',}} 
-            >
-                <VideoSection />
-                <ContactForm />
+                    py: '80px',
+                    display: { md: 'flex'},
+                    justifyContent: 'space-between',
+                    px: '20px',
+                    maxWidth: '1280px',
+                    flex: 1
+                }} 
+            >   
+                <Box sx={{ flex: 1, mr: { sm: '0px', md: '40px'}, mb: '16px' }}>
+                    <VideoSection />
+                </Box>
+                <Box sx={{ flex: 1, }}>
+                    <ContactForm />
+                </Box>
             </Box>
         </Box>
     )

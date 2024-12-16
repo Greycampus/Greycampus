@@ -8,6 +8,7 @@ import {
     Button,
     Grid,
     Box,
+    Typography,
 } from '@mui/material';
 
 const validationSchema = Yup.object().shape({
@@ -20,9 +21,10 @@ const validationSchema = Yup.object().shape({
     message: Yup.string().required('Message is required'),
 });
 
-const ContactForm = () => {
+const ContactForm = ({text}: {text?: string}) => {
     return (
         <Box sx={{ p: '20px', borderRadius: '16px', bgcolor: '#fff'}}>
+            {text && <Typography sx={{ fontFamily: 'Poppins, sans-serif', fontSize: '24px', mb: '20px'}}>{text}</Typography>}
             <Formik
                 initialValues={{
                     firstName: '',
