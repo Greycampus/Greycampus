@@ -30,7 +30,7 @@ const styles = {
         padding: "16px",
         textAlign: "center",
         height: "100%",
-        maxHeight: '200px',
+        maxHeight: '260px',
         mb: '8px'
     },
     image: {

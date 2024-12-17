@@ -1,0 +1,1 @@
+export const LOGO_URl = "https://www.greycampus.com/hubfs/GreyCampus/icons/gc-logo.svg";

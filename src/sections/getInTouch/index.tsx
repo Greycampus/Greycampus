@@ -18,7 +18,7 @@ const styles = {
         boxSizing: "border-box", // Include padding in width calculation
     },
     formContainer: {
-        maxWidth: "600px", // Restrict the form width
+        maxWidth: "480px", // Restrict the form width
         width: "100%",
         backgroundColor: "#fff",
         borderRadius: "8px",
