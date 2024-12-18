@@ -37,11 +37,11 @@ const Footer = () => {
         color: "white",
       }}
     > 
-      <Box sx={{ py: '24px', px: 4}}>
+      <Box sx={{ py: '16px', px: 4}}>
         <Image src={LOGO_URl} alt="GreyCampus Logo" width={150} height={40} priority />
       </Box>
       <Divider sx={{ bgcolor: '#0C868D' }}/>
-      <Box sx={{ p: 4}}>
+      <Box sx={{ p: 4, mt: '16px'}}>
         <Grid container spacing={4}>
           {/* Company Section */}
           <Grid item xs={12} sm={4}>
