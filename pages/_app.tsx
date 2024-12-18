@@ -4,6 +4,7 @@ import "@styles/global.css";
 import { AppProps } from "next/app";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { Hydrate } from "react-query/hydration";
+import Layout from "./layout";
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   const apolloClient = initializeApollo();
@@ -12,7 +13,9 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
     <ApolloProvider client={apolloClient}>
       <QueryClientProvider client={queryClient}>
         <Hydrate state={pageProps.dehydratedState}>
-          <Component {...pageProps} />
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
         </Hydrate>
       </QueryClientProvider>
     </ApolloProvider>

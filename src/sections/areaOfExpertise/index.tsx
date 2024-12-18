@@ -7,6 +7,7 @@ const styles = {
         backgroundColor: "#000",
         color: "#fff",
         padding: "4rem 2rem",
+        fontFamily: 'Poppins'
     },
     title: {
         fontSize: "3rem",

@@ -1,8 +1,5 @@
 import React from "react";
 
-import Footer from "@components/css/footer";
-import ResponsiveHeader from "@components/css/header";
-import ContactForm from "@components/contact";
 import TopSection from "src/sections/topSection";
 import HowWeWork from "src/sections/howWeWork";
 import ImpactSection from "src/sections/impactSection";
@@ -21,7 +18,6 @@ const Home: React.FC = () => {
         minHeight: "100vh",
       }}
     >
-      <ResponsiveHeader />
       <TopSection />
       <ImpactSection />
       <TrainingProgramsSection />
@@ -30,7 +26,6 @@ const Home: React.FC = () => {
       <AreasOfExpertise />
       <EnterpriseClients />
       <GetInTouch />
-      <Footer />
     </div>
   );
 };

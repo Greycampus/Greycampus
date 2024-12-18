@@ -45,7 +45,7 @@ const Header = () => {
           </Box>
 
           {/* Desktop Navigation */}
-          <Box sx={{ display: { xs: "none", sm: "flex" }, }}>
+          <Box sx={{ display: { xs: "none", sm: "flex" }, gap: '24px' }}>
             {!drawerOpen && navItems.map((item) => (
               <Link key={item.name} href={item.link} passHref>
                 <Typography

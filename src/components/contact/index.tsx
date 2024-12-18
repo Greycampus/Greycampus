@@ -1,15 +1,13 @@
 import React from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import {
-    TextField,
-    Select,
-    MenuItem,
     Button,
     Grid,
     Box,
     Typography,
 } from '@mui/material';
+import CustomTextField from './customTextField';
 
 const validationSchema = Yup.object().shape({
     firstName: Yup.string().required('First name is required'),
@@ -21,10 +19,20 @@ const validationSchema = Yup.object().shape({
     message: Yup.string().required('Message is required'),
 });
 
-const ContactForm = ({text}: {text?: string}) => {
+const ContactForm = ({ text }: { text?: string }) => {
     return (
-        <Box sx={{ p: '20px', borderRadius: '16px', bgcolor: '#fff'}}>
-            {text && <Typography sx={{ fontFamily: 'Poppins, sans-serif', fontSize: '24px', mb: '20px'}}>{text}</Typography>}
+        <Box sx={{ p: '20px', borderRadius: '16px', bgcolor: '#fff' }}>
+            {text && (
+                <Typography
+                    sx={{
+                        fontFamily: 'Poppins, sans-serif',
+                        fontSize: '24px',
+                        mb: '20px',
+                    }}
+                >
+                    {text}
+                </Typography>
+            )}
             <Formik
                 initialValues={{
                     firstName: '',
@@ -46,78 +54,31 @@ const ContactForm = ({text}: {text?: string}) => {
                 {({ isSubmitting }) => (
                     <Form>
                         <Grid container spacing={2}>
-                            <Grid item xs={6} sm={6}>
-                                <Field
-                                    component={TextField}
-                                    fullWidth
-                                    label="First Name"
-                                    name="firstName"
-                                    variant="outlined"
-                                />
-                                <ErrorMessage name="firstName" component="div" />
+                            <Grid item xs={6}>
+                                <CustomTextField name="firstName" label="First Name" />
                             </Grid>
-                            <Grid item xs={6} sm={6}>
-                                <Field
-                                    component={TextField}
-                                    fullWidth
-                                    label="Last Name"
-                                    name="lastName"
-                                    variant="outlined"
-                                />
-                                <ErrorMessage name="lastName" component="div" />
+                            <Grid item xs={6}>
+                                <CustomTextField name="lastName" label="Last Name" />
                             </Grid>
-                            <Grid item xs={6} sm={6}>
-                                <Field
-                                    component={TextField}
-                                    fullWidth
-                                    label="Email"
-                                    name="email"
-                                    type="email"
-                                    variant="outlined"
-                                />
-                                <ErrorMessage name="email" component="div" />
+                            <Grid item xs={6}>
+                                <CustomTextField name="email" label="Email" type="email" />
                             </Grid>
-                            <Grid item xs={6} sm={6}>
-                                <Field
-                                    component={TextField}
-                                    fullWidth
-                                    label="Phone Number"
-                                    name="phoneNumber"
-                                    variant="outlined"
-                                />
-                                <ErrorMessage name="phoneNumber" component="div" />
+                            <Grid item xs={6}>
+                                <CustomTextField name="phoneNumber" label="Phone Number" />
                             </Grid>
-                            <Grid item xs={6} sm={6}>
-                                <Field
-                                    component={TextField}
-                                    fullWidth
-                                    label="Company"
-                                    name="company"
-                                    variant="outlined"
-                                />
-                                <ErrorMessage name="company" component="div" />
+                            <Grid item xs={6}>
+                                <CustomTextField name="company" label="Company" />
                             </Grid>
-                            <Grid item xs={6} sm={6}>
-                                <Field
-                                    component={TextField}
-                                    fullWidth
-                                    label="Designation"
-                                    name="designation"
-                                    variant="outlined"
-                                />
-                                <ErrorMessage name="designation" component="div" />
+                            <Grid item xs={6}>
+                                <CustomTextField name="designation" label="Designation" />
                             </Grid>
                             <Grid item xs={12}>
-                                <Field
-                                    component={TextField}
-                                    fullWidth
-                                    label="Message"
+                                <CustomTextField
                                     name="message"
+                                    label="Message"
                                     multiline
                                     rows={4}
-                                    variant="outlined"
                                 />
-                                <ErrorMessage name="message" component="div" />
                             </Grid>
                             <Grid item xs={12}>
                                 <Button

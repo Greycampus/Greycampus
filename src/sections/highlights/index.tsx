@@ -13,6 +13,7 @@ const styles = {
         textAlign: "center",
         position: "relative",
         zIndex: 1,
+        fontFamily: 'Poppins'
     },
     overlay: {
         position: "absolute",

@@ -6,12 +6,14 @@ const styles = {
     container: {
         backgroundColor: "#000",
         color: "#fff",
-        padding: "3rem 2rem",
+        py: '80px',
+        px: "20px",
         textAlign: "left",
         flex: 1,
         display: {
             md: 'flex'
-        }
+        },
+        fontFamily: 'Poppins'
     },
     title: {
         fontSize: "2.5rem",
