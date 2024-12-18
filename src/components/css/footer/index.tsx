@@ -14,7 +14,7 @@ const Footer = () => {
     ],
     resources: [
       { name: "Blog", link: "/blog" },
-      { name: "OpenCampus", link: "/open-campus" },
+      { name: "OpenCampus", link: "/openCampus" },
     ],
     bootcamps: [
       { name: "Data Science Course", link: "/bootcamps/data-science" },
