@@ -7,7 +7,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { LOGO_URl } from "src/utilities/resources";
 
-const MenuLink = ({ href, text }) => {
+type MenuLinkProps = {
+  href: string; // Ensure href is a string
+  text: string; // Ensure text is a string
+};
+
+const MenuLink: React.FC<MenuLinkProps> = ({ href, text }) => {
   return (
     <Link href={href} passHref>
       <MenuItem component="a">
@@ -22,7 +27,7 @@ const Header = () => {
   // State to manage drawer open/close
   const [drawerOpen, setDrawerOpen] = useState(false);
 
-  const toggleDrawer = (open) => () => {
+  const toggleDrawer = (open: boolean) => () => {
     setDrawerOpen(open);
   };
 

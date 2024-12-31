@@ -16,7 +16,7 @@ const styles = {
         color: "#fff",
         padding: "2rem",
         textAlign: "center",
-        fontFamily: 'Poppins'
+        fontFamily: 'Poppins, sans-serif',
     },
     accordion: {
         backgroundColor: "#1c1c1c",

@@ -13,7 +13,7 @@ const styles = {
         display: {
             md: 'flex'
         },
-        fontFamily: 'Poppins'
+        fontFamily: 'Poppins, sans-serif',
     },
     title: {
         fontSize: "2.5rem",

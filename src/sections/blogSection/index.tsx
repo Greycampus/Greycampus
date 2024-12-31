@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Box, Typography } from "@mui/material";
+import CustomCard from "@components/customCard";
 
 // Styles Object
 const styles = {
@@ -45,20 +46,32 @@ const styles = {
     },
 };
 
-const GreyCampusBlogSection: React.FC = () => {
+const GreyCampusBlogSection: React.FC = ({posts} : any) => {
+    console.log("check blogs here---", posts)
+
+
     return (
-        <Box sx={styles.container}>
-            {/* Content */}
-            <Box sx={styles.contentBox}>
-                <Typography variant="h3" component="h1" sx={styles.title}>
-                    The GreyCampus Blog
-                </Typography>
-                <Typography sx={styles.description}>
-                    A dedicated blog for professional certifications across the world. GreyCampus
-                    provides abundant resources on professional certification like PMP, Six Sigma,
-                    ITIL and more.
-                </Typography>
-                <Box sx={styles.divider}></Box>
+        <Box sx={{ flex: 1,}}>
+            <Box sx={styles.container}>
+                {/* Content */}
+                <Box sx={styles.contentBox}>
+                    <Typography variant="h3" component="h1" sx={styles.title}>
+                        The GreyCampus Blog
+                    </Typography>
+                    <Typography sx={styles.description}>
+                        A dedicated blog for professional certifications across the world. GreyCampus
+                        provides abundant resources on professional certification like PMP, Six Sigma,
+                        ITIL and more.
+                    </Typography>
+                    <Box sx={styles.divider}></Box>
+                </Box>
+            </Box>
+            <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', bgcolor: '#000', py: '48px' }}>
+                {posts.map((item) =>
+                    <Box key={item.id} sx={{ maxWidth: '900px', width: '100%'}}>
+                        <CustomCard {...item}/>
+                    </Box>  
+                )}
             </Box>
         </Box>
     );

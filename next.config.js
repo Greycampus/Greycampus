@@ -7,7 +7,7 @@ const nextConfig = {
                 protocol: "https",
                 hostname: "www.greycampus.com",
                 port: "",
-                pathname: "/hubfs/GreyCampus/icons/**",
+                pathname: "/hubfs/GreyCampus/**",
             },
         ],
     },

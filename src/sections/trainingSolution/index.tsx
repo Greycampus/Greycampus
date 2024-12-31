@@ -8,14 +8,14 @@ const styles = {
         color: "#fff",
         padding: "3rem 2rem",
         textAlign: "center",
-        fontFamily: 'Poppins'
+        fontFamily: 'Poppins, sans-serif',
     },
     title: {
         fontSize: "2.5rem",
         fontWeight: "bold",
         marginBottom: "2rem",
         lineHeight: "1.2",
-        fontFamily: 'Poppins'
+        fontFamily: 'Poppins, sans-serif',
     },
     card: {
         backgroundColor: "#1c1c1c",
@@ -96,10 +96,10 @@ const TrainingProgramsSection = () => {
                                 sx={styles.media}
                             />
                             <CardContent sx={styles.cardContent}>
-                                <Typography variant="h6" gutterBottom sx={{ fontFamily: 'Poppins' }}>
+                                <Typography variant="h6" gutterBottom sx={{ fontFamily: 'Poppins, sans-serif', }}>
                                     {program.title}
                                 </Typography>
-                                <Typography variant="body2" sx={{ fontFamily: 'Poppins' }}>{program.description}</Typography>
+                                <Typography variant="body2" sx={{ fontFamily: 'Poppins, sans-serif', }}>{program.description}</Typography>
                             </CardContent>
                         </Card>
                     </Grid>

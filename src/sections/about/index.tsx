@@ -130,7 +130,7 @@ const MeetTheTeam = () => {
 
 const About = () => {
     return (
-        <Box sx={{ bgcolor: '#000', fontFamily: 'Poppins'}}>
+        <Box sx={{ bgcolor: '#000', fontFamily: 'Poppins, sans-serif', }}>
             <TopAbout />
             <Body />
             <MeetTheTeam />

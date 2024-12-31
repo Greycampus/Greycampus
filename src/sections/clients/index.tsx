@@ -8,7 +8,7 @@ const styles = {
         color: "#000",
         padding: "80px 2rem", // 80px padding on top and bottom, 2rem on left and right
         textAlign: "center",
-        fontFamily: 'Poppins'
+        fontFamily: 'Poppins, sans-serif',
     },
     title: {
         fontSize: "2.5rem",

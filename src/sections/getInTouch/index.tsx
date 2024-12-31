@@ -16,7 +16,7 @@ const styles = {
         alignItems: "center",
         justifyContent: "center",
         boxSizing: "border-box", // Include padding in width calculation
-        fontFamily: 'Poppins'
+        fontFamily: 'Poppins, sans-serif',
     },
     formContainer: {
         maxWidth: "480px", // Restrict the form width

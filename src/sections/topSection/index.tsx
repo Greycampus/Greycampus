@@ -7,7 +7,7 @@ const styles = {
     mobContainer: {
         px: '20px',
         py: '80px',
-        fontFamily: 'Poppins'
+        fontFamily: 'Poppins, sans-serif',
     },
     lgContainer: {
         backgroundImage: `url("https://www.greycampus.com/hubfs/GC%28B2B%29/gc-bg.webp")`,
@@ -16,7 +16,7 @@ const styles = {
         backgroundRepeat: "no-repeat",
         width: "100%",   // Adjust as needed
         alignItems: 'center',
-        fontFamily: 'Poppins'
+        fontFamily: 'Poppins, sans-serif',
     }
 }
 
