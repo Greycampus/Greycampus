@@ -8,7 +8,7 @@ let apolloClient: ApolloClient<NormalizedCacheObject> | null = null;
 
 const createApolloClient = new ApolloClient({
   ssrMode: typeof window === "undefined",
-  uri: "https://api.spacex.land/graphql/",
+  uri: "http://localhost:1337/graphql/",
   cache: new InMemoryCache(),
 });
 

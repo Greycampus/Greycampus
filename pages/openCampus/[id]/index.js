@@ -1,13 +1,14 @@
-import BlogDetails from "../../../src/components/blogDetails";
+import CustomComponent from "../../../src/components/openCampusBlogDetails"
 
-const EachBlog = ({blog}) => {
-    return (
-        <BlogDetails blog={blog}/>
-    )
-}
+const EachBlog = ({ blog }) => {
+    
+    return <CustomComponent blog={blog} />;
+};
 
 export async function getStaticPaths() {
-    const API_URL = process.env.NEXT_PUBLIC_API_SERVER_ENDPOINT + '/api/blogs';
+    const API_URL =
+        process.env.NEXT_PUBLIC_API_SERVER_ENDPOINT +
+        "/api/open-campus-blogs?populate=*";
 
     // Fetch all blog IDs from the API
     const res = await fetch(API_URL);
@@ -15,7 +16,7 @@ export async function getStaticPaths() {
 
     // Create paths for each blog
     const paths = blogs.data.map((blog) => ({
-        params: { id: blog.documentId }, 
+        params: { id: blog.documentId },
     }));
 
     return {
@@ -28,8 +29,11 @@ export async function getStaticProps({ params }) {
     const API_URL = process.env.NEXT_PUBLIC_API_SERVER_ENDPOINT;
 
     // Fetch data for the specific blog using the id from params
-    const res = await fetch(`${API_URL}/api/blogs/${params.id}`);
+    const res = await fetch(
+        `${API_URL}/api/open-campus-blogs/${params.id}?populate[content][populate]=*`,
+    );
     const data = await res.json();
+    console.log("check single data ", data)
 
     return {
         props: {

@@ -60,10 +60,9 @@ const listItems = [
 ];
 
 const OpenCampusSection: React.FC = ({posts}: any) => {
-    console.log("check all ---", posts)
 
     const getStringPath = (id: string) => {
-        const dynaminPath = id ? `/blog/${id}` : '/blog'
+        const dynaminPath = id ? `/openCampus/${id}` : '/openCampus'
         return dynaminPath
     }
 

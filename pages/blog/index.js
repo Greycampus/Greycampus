@@ -13,7 +13,7 @@ const Blogs = ({blogs}) => {
 export default Blogs;
 
 export async function getStaticProps() {
- const BlogEndpoint = process.env.NEXT_PUBLIC_API_SERVER_ENDPOINT + 'api/blogs';
+ const BlogEndpoint = process.env.NEXT_PUBLIC_API_SERVER_ENDPOINT + '/api/blogs';
  const res = await fetch(BlogEndpoint);
  const posts = await res.json()
 

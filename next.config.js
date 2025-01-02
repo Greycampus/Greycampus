@@ -9,6 +9,12 @@ const nextConfig = {
                 port: "",
                 pathname: "/hubfs/GreyCampus/**",
             },
+            {
+                protocol: "http", // For localhost during development
+                hostname: "localhost",
+                port: "1337",
+                pathname: "/uploads/**",
+            },
         ],
     },
 };
