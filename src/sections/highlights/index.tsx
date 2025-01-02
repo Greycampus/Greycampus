@@ -28,6 +28,7 @@ const styles = {
         fontSize: "2.5rem",
         fontWeight: "bold",
         marginBottom: "2rem",
+        fontFamily: "Poppins, sans-serif",
     },
     card: {
         backgroundColor: "#1c1c1c",
@@ -43,6 +44,7 @@ const styles = {
     cardText: {
         fontSize: "1rem",
         lineHeight: "1.5",
+        fontFamily: "Poppins, sans-serif",
     },
 };
 

@@ -12,7 +12,7 @@ const styles = {
     },
     title: {
         fontSize: "2.5rem",
-        fontWeight: "bold",
+        //fontWeight: "bold",
         marginBottom: "2rem",
         lineHeight: "1.2",
         fontFamily: 'Poppins, sans-serif',
@@ -41,6 +41,8 @@ const styles = {
         "&:hover": {
             backgroundColor: "#1FA0A6",
         },
+        textTransform: 'none',
+        fontFamily: 'Poppins, sans-serif',
     },
 };
 
@@ -96,10 +98,10 @@ const TrainingProgramsSection = () => {
                                 sx={styles.media}
                             />
                             <CardContent sx={styles.cardContent}>
-                                <Typography variant="h6" gutterBottom sx={{ fontFamily: 'Poppins, sans-serif', }}>
+                                <Typography variant="h6" gutterBottom sx={{ fontFamily: 'Poppins, sans-serif', fontSize: '24px' }}>
                                     {program.title}
                                 </Typography>
-                                <Typography variant="body2" sx={{ fontFamily: 'Poppins, sans-serif', }}>{program.description}</Typography>
+                                <Typography variant="body2" sx={{ fontFamily: 'Poppins, sans-serif', fontSize: '16px' }}>{program.description}</Typography>
                             </CardContent>
                         </Card>
                     </Grid>
@@ -108,7 +110,9 @@ const TrainingProgramsSection = () => {
 
             {/* Download Brochure Button */}
             <Button variant="contained" sx={styles.button}>
-                Download Brochure
+                <Typography sx={{ fontSize: '1rem', fontFamily: 'Poppins, sans-serif', }}>
+                    Download Brochure
+                </Typography>
             </Button>
         </Box>
     );

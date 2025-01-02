@@ -47,7 +47,7 @@ const Footer = () => {
         <Grid container spacing={4}>
           {/* Company Section */}
           <Grid item xs={12} sm={4}>
-            <Typography variant="h6" fontWeight="bold" gutterBottom>
+            <Typography variant="h6" fontWeight="bold" gutterBottom sx={{ fontFamily: "Poppins, sans-serif", }}>
               Company
             </Typography>
             {footerLinks.company.map((item) => (
@@ -57,7 +57,7 @@ const Footer = () => {
                 underline="none"
                 color="inherit"
                 display="block"
-                sx={{ mb: 1, "&:hover": { textDecoration: "underline" } }}
+                sx={{ mb: 1, "&:hover": { textDecoration: "underline", fontFamily: "Poppins, sans-serif", } }}
               >
                 {item.name}
               </Link>
@@ -66,7 +66,7 @@ const Footer = () => {
 
           {/* Resources Section */}
           <Grid item xs={12} sm={4}>
-            <Typography variant="h6" fontWeight="bold" gutterBottom>
+            <Typography variant="h6" fontWeight="bold" gutterBottom sx={{ fontFamily: "Poppins, sans-serif", }}>
               Resources
             </Typography>
             {footerLinks.resources.map((item) => (
@@ -76,7 +76,7 @@ const Footer = () => {
                 underline="none"
                 color="inherit"
                 display="block"
-                sx={{ mb: 1, "&:hover": { textDecoration: "underline" } }}
+                sx={{ mb: 1, "&:hover": { textDecoration: "underline", fontFamily: "Poppins, sans-serif", } }}
               >
                 {item.name}
               </Link>
@@ -95,7 +95,7 @@ const Footer = () => {
                 underline="none"
                 color="inherit"
                 display="block"
-                sx={{ mb: 1, "&:hover": { textDecoration: "underline" } }}
+                sx={{ mb: 1, "&:hover": { textDecoration: "underline", fontFamily: "Poppins, sans-serif", } }}
               >
                 {item.name}
               </Link>

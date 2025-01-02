@@ -87,7 +87,9 @@ const ContactForm = ({ text }: { text?: string }) => {
                                     color="primary"
                                     disabled={isSubmitting}
                                 >
-                                    Contact Us
+                                    <Typography sx={{ fontFamily: "Poppins, sans-serif", textTransform: 'none' }}>
+                                        Contact Us
+                                    </Typography>
                                 </Button>
                             </Grid>
                         </Grid>

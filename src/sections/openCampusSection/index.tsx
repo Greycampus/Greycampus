@@ -5,6 +5,7 @@ import SchoolIcon from "@mui/icons-material/School";
 import PeopleIcon from "@mui/icons-material/People";
 import BuildIcon from "@mui/icons-material/Build";
 import DescriptionIcon from "@mui/icons-material/Description";
+import CustomCard from "@components/customCard";
 
 // Styles Object
 const styles = {
@@ -58,42 +59,57 @@ const listItems = [
     { text: "Be aware of the latest exam trends and patterns", icon: <DescriptionIcon sx={{ color: "#0C868D" }} /> },
 ];
 
-const OpenCampusSection: React.FC = () => {
-    return (
-        <Box sx={styles.container}>
-            {/* Left Content */}
-            <Box sx={styles.contentBox}>
-                <Typography
-                    variant="h3"
-                    sx={{ fontFamily: "Poppins, sans-serif", fontWeight: "bold" }}
-                >
-                    Open Campus
-                </Typography>
-                <Typography
-                    variant="h6"
-                    sx={{
-                        fontFamily: "Poppins, sans-serif",
-                        fontWeight: "light",
-                        maxWidth: "80%",
-                    }}
-                >
-                    The largest resource library on professional certifications
-                </Typography>
-                <Box sx={styles.divider}></Box>
-                <List>
-                    {listItems.map((item, index) => (
-                        <ListItem key={index}>
-                            <ListItemIcon>{item.icon}</ListItemIcon>
-                            <ListItemText
-                                primary={item.text}
-                                primaryTypographyProps={{ sx: styles.listItemText }}
-                            />
-                        </ListItem>
-                    ))}
-                </List>
-            </Box>
+const OpenCampusSection: React.FC = ({posts}: any) => {
+    console.log("check all ---", posts)
 
-           
+    const getStringPath = (id: string) => {
+        const dynaminPath = id ? `/blog/${id}` : '/blog'
+        return dynaminPath
+    }
+
+    return (
+        <Box>
+            <Box sx={styles.container}>
+                {/* Left Content */}
+                <Box sx={styles.contentBox}>
+                    <Typography
+                        variant="h3"
+                        sx={{ fontFamily: "Poppins, sans-serif", fontWeight: "bold" }}
+                    >
+                        Open Campus
+                    </Typography>
+                    <Typography
+                        variant="h6"
+                        sx={{
+                            fontFamily: "Poppins, sans-serif",
+                            fontWeight: "light",
+                            maxWidth: "80%",
+                        }}
+                    >
+                        The largest resource library on professional certifications
+                    </Typography>
+                    <Box sx={styles.divider}></Box>
+                    <List>
+                        {listItems.map((item, index) => (
+                            <ListItem key={index}>
+                                <ListItemIcon>{item.icon}</ListItemIcon>
+                                <ListItemText
+                                    primary={item.text}
+                                    primaryTypographyProps={{ sx: styles.listItemText }}
+                                />
+                            </ListItem>
+                        ))}
+                    </List>
+                </Box>
+            
+            </Box>
+            <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', bgcolor: '#000', py: '48px', px: '16px' }}>
+                {posts.map((item) =>
+                    <Box key={item.id} sx={{ maxWidth: '900px', width: '100%' }}>
+                        <CustomCard {...item} onReadMorePath={getStringPath(item.documentId)} isOpenCampusBlog={true}/>
+                    </Box>
+                )}
+            </Box>
         </Box>
     );
 };

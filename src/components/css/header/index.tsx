@@ -16,7 +16,7 @@ const MenuLink: React.FC<MenuLinkProps> = ({ href, text }) => {
   return (
     <Link href={href} passHref>
       <MenuItem component="a">
-        <ListItemText primary={text} sx={{ color: '#fff'}}/>
+        <ListItemText primary={text} sx={{ color: '#fff', fontSize: '18px', fontFamily: "Poppins, sans-serif", }}/>
       </MenuItem>
     </Link>
   );
@@ -55,8 +55,7 @@ const Header = () => {
               {!drawerOpen && navItems.map((item) => (
                 <Link key={item.name} href={item.link} passHref>
                   <Typography
-                    variant="body1"
-                    sx={{ marginRight: 3, color: "white", textDecoration: "none", cursor: "pointer" }}
+                    sx={{ marginRight: 3, color: "white", textDecoration: "none", cursor: "pointer", fontFamily: "Poppins, sans-serif", fontSize: '18px' }}
                   >
                     {item.name}
                   </Typography>

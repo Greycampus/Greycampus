@@ -47,7 +47,10 @@ const styles = {
 };
 
 const GreyCampusBlogSection: React.FC = ({posts} : any) => {
-    console.log("check blogs here---", posts)
+    const getStringPath = (id: string) => {
+        const dynaminPath = id ? `/blog/${id}` : '/blog'
+        return dynaminPath
+    }
 
 
     return (
@@ -66,11 +69,11 @@ const GreyCampusBlogSection: React.FC = ({posts} : any) => {
                     <Box sx={styles.divider}></Box>
                 </Box>
             </Box>
-            <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', bgcolor: '#000', py: '48px' }}>
-                {posts.map((item) =>
-                    <Box key={item.id} sx={{ maxWidth: '900px', width: '100%'}}>
-                        <CustomCard {...item}/>
-                    </Box>  
+            <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', bgcolor: '#000', py: '48px', px: '16px' }}>
+                {posts.map((item) =>              
+                   <Box key={item.id} sx={{ maxWidth: '900px', width: '100%'}}>
+                        <CustomCard {...item} onReadMorePath={getStringPath(item.documentId)}/>
+                    </Box>
                 )}
             </Box>
         </Box>

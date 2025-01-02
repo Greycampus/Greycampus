@@ -16,15 +16,17 @@ const styles = {
         fontFamily: 'Poppins, sans-serif',
     },
     title: {
-        fontSize: "2.5rem",
+        fontSize: "40px",
         fontWeight: "bold",
         marginBottom: "1.5rem",
         lineHeight: "1.2",
+        fontFamily: "Poppins, sans-serif",
     },
     description: {
-        fontSize: "1rem",
+        fontSize: "16px",
         marginBottom: "2rem",
-        color: "#aaa",
+        color: "#fff",
+        fontFamily: "Poppins, sans-serif",
     },
     statBox: {
         border: "2px solid #fff",
@@ -43,6 +45,7 @@ const styles = {
     statTitle: {
         fontSize: "1.2rem",
         fontWeight: "500",
+        fontFamily: "Poppins, sans-serif",
     },
 };
 

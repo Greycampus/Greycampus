@@ -14,10 +14,12 @@ const styles = {
         fontWeight: "bold",
         marginBottom: "2rem",
         textAlign: "left",
+        fontFamily: "Poppins, sans-serif",
     },
     expertiseItem: {
         fontSize: "1.2rem",
         marginBottom: "0.5rem",
+        fontFamily: "Poppins, sans-serif",
     },
 };
 

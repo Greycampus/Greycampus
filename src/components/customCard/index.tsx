@@ -9,9 +9,20 @@ import Link from 'next/link';
 interface CustomCardProps {
   title: string;
   category: string;
+  author?: string;
+  published_date?: string;
+  onReadMorePath: string; // Optional callback,
+  isOpenCampusBlog?: boolean;
+  opencampus_category?: any;
+  opencampus_sub_category?: any;
+  publishedAt?: string
+}
+
+type detailObj = {
+  title: string;
+  category: string;
   author: string;
   published_date: string;
-  onReadMore?: () => void; // Optional callback
 }
 
 const styles = {
@@ -70,14 +81,18 @@ const getIconStringBox = (arr: any []) => {
   )
 }
 
-// Correct way to define the functional component
-const CustomCard: React.FC<CustomCardProps> = ({ title, category, author, published_date, onReadMore }) => {
+const getIconTextArr = (details: detailObj ) => {
+    return ([
+      { icon: 'tag', txt:   details.category, key: details.title },
+      { icon: 'grad', txt:  details.author, key: details.title },
+      { icon: 'event', txt: details.published_date, key: details.title }
+    ])
+}
 
-  const iconTxtArr = [
-    {icon: 'tag', txt: category, key: title},
-    { icon: 'grad', txt: author, key: title } ,
-    { icon: 'event', txt: published_date, key: title } 
-  ]
+// Correct way to define the functional component
+const CustomCard: React.FC<CustomCardProps> = ({ title, category, author, published_date, onReadMorePath, isOpenCampusBlog = false, opencampus_category, opencampus_sub_category, publishedAt }) => {
+
+  const iconTxtArr = getIconTextArr({ title, category: isOpenCampusBlog ? opencampus_category.name : category, author: isOpenCampusBlog ? 'Admin' : author || '',  published_date: isOpenCampusBlog ? publishedAt || '' : published_date || ''})
 
   return (
     <Box
@@ -125,7 +140,7 @@ const CustomCard: React.FC<CustomCardProps> = ({ title, category, author, publis
             <Typography sx={styles.title}>
               {title}
             </Typography>
-            <Link href="/" passHref>
+            <Link href={onReadMorePath} passHref >
               <Typography
                 component="a"
                 sx={{
