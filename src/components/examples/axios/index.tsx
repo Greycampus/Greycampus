@@ -19,7 +19,7 @@ const jokesApi = axios.create({
 export const AxiosExample = () => {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<any []>([]);
 
   // Note: the empty deps array [] means
   // this useEffect will run once
@@ -46,7 +46,7 @@ export const AxiosExample = () => {
   }, []);
 
   if (error) {
-    return <div>Error: {error.message}</div>;
+    return <div>Error: {error}</div>;
   }
 
   if (!isLoaded) {

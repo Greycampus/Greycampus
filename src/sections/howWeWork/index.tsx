@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { SyntheticEvent, useState } from "react";
 import {
     Accordion,
     AccordionSummary,
@@ -45,7 +45,7 @@ const styles = {
 };
 
 const HowWeWork = () => {
-    const [expanded, setExpanded] = useState(null);
+    const [expanded, setExpanded] = useState<number | null>(null);
 
     const steps = [
         {
@@ -70,7 +70,7 @@ const HowWeWork = () => {
         },
     ];
 
-    const handleChange = (index) => (event, isExpanded) => {
+    const handleChange = (index: number) => (event: SyntheticEvent, isExpanded: boolean) => {
         setExpanded(isExpanded ? index : null);
     };
 

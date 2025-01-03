@@ -7,7 +7,7 @@ const nextConfig = {
                 protocol: "https",
                 hostname: "www.greycampus.com",
                 port: "",
-                pathname: "/hubfs/GreyCampus/**",
+                pathname: "/hubfs/**",
             },
             {
                 protocol: "http", // For localhost during development
@@ -16,6 +16,10 @@ const nextConfig = {
                 pathname: "/uploads/**",
             },
         ],
+    },
+    swcMinify: true, // ✅ Minify JS & CSS
+    experimental: {
+        optimizeCss: true, // ✅ Ensures CSS is optimized
     },
 };
 

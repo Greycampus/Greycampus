@@ -7,6 +7,8 @@ import Document, {
   DocumentInitialProps,
 } from "next/document";
 
+const API_URL = process.env.NEXT_PUBLIC_API_SERVER_ENDPOINT;
+
 class CustomDocument extends Document {
   static async getInitialProps(
     ctx: DocumentContext
@@ -18,11 +20,17 @@ class CustomDocument extends Document {
   render() {
     return (
       <Html lang="en">
-        <Head>
+        <Head >
           {/* Link to Poppins font from Google Fonts */}
           <link
+            rel="preload"
             href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-            rel="stylesheet"
+          />
+          <link
+            rel="preload"
+            as="image"
+            href={`${API_URL}/uploads/gc_bg_6fa78c7ac0.webp`}
+            type="image/webp"
           />
         </Head>
         <body>

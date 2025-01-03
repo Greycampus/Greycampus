@@ -90,7 +90,7 @@ const Body = () => {
     )
 }
 
-const TeamMember = ({ name, role, imgUrl }) => {
+const TeamMember = ({ name, role, imgUrl }: {name: string, role: string, imgUrl: string}) => {
     return (
         <Grid item xs={12} sm={4} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <Avatar

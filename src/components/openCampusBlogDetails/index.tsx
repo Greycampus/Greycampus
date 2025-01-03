@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { SyntheticEvent, useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import { Box, Typography, Accordion, AccordionSummary, AccordionDetails, useMediaQuery } from "@mui/material";
 import AddIcon from '@mui/icons-material/Add';
@@ -114,19 +114,19 @@ const ResourceBox:React.FC<ResourceBoxProps> = ({text, link}) => {
 
 const ARR_LINKS = [{ text: "Open Campus", link: '/openCampus' }, { text: "Blog", link: '/blog' }, { text: "Mock Exams", link: '/notFound' }, { text: "Downloadables", link: '/notFound' }]
 
-const CustomComponent = ({ blog }) => {
+const CustomComponent = ({ blog }: {blog: any}) => {
     const isSmallScreen = useMediaQuery("(max-width:900px)");
     const [expanded, setExpanded] = useState(null);
     const { loading, error, data: allCategoryBlogs } = useQuery(GET_RELATED_BLOGS, { variables: { documentId: blog.documentId } })
     console.log("check data here---", allCategoryBlogs)
-    const subCategories =  !loading  && allCategoryBlogs ? allCategoryBlogs.data.opencampus_category.open_campus_blogs.map((blog) => blog.opencampus_sub_category.name) : [];
+    const subCategories =  !loading  && allCategoryBlogs ? allCategoryBlogs.data.opencampus_category.open_campus_blogs.map((blog: any) => blog.opencampus_sub_category.name) : [];
     const getBlogForSubCategory = (category: string) => {
-        return allCategoryBlogs.data.opencampus_category.open_campus_blogs.filter((blog) => blog.opencampus_sub_category.name == category) ?? []
+        return allCategoryBlogs.data.opencampus_category.open_campus_blogs.filter((blog: any) => blog.opencampus_sub_category.name == category) ?? []
     }
 
     
     
-    const renderContent = (block) => {
+    const renderContent = (block: any) => {
         if (block.__component === "rich-text.text-block") {
             return (
                 <ReactMarkdown key={block.id}>
@@ -136,7 +136,7 @@ const CustomComponent = ({ blog }) => {
         }
 
         if (block.__component === "image.image-block") {
-            return block.imge.map((image) => {
+            return block.imge.map((image: any) => {
                 const src = image.formats?.medium?.url || image.formats?.small?.url || image.url;
                 const API_URL = process.env.NEXT_PUBLIC_API_SERVER_ENDPOINT
                 console.log("check img url ---", src)
@@ -158,7 +158,7 @@ const CustomComponent = ({ blog }) => {
     };
 
 
-    const handleChange = (panel) => (event, isExpanded) => {
+    const handleChange = (panel: any) => (event: SyntheticEvent, isExpanded: boolean) => {
         setExpanded(isExpanded ? panel : null);
     };
 
@@ -180,12 +180,12 @@ const CustomComponent = ({ blog }) => {
                 <Typography variant="h4" gutterBottom>
                     {blog.title || "Blog Title"}
                 </Typography>
-                {blog.content.map((block) => renderContent(block))}
+                {blog.content.map((block: any) => renderContent(block))}
             </Box>
 
             {/* Right Section */}
             <Box sx={styles.right}>
-                {subCategories.map((section, index) => (
+                {subCategories.map((section: string, index: number) => (
                     <Accordion
                         key={index}
                         sx={styles.accordion}
@@ -205,7 +205,7 @@ const CustomComponent = ({ blog }) => {
                             <Typography>{section}</Typography>
                         </AccordionSummary>
                         <AccordionDetails>
-                            {getBlogForSubCategory(section).map((item) => 
+                            {getBlogForSubCategory(section).map((item: any) => 
                             <Link href={`/openCampus/${item.documentId}`}>
                                 <Typography>{item.title}</Typography>
                             </Link>

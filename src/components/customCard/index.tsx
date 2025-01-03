@@ -100,7 +100,8 @@ const CustomCard: React.FC<CustomCardProps> = ({ title, category, author, publis
         display: "flex",
         alignItems: "center",
         borderRadius: '12px',
-        height: '136px',
+        minHeight: '136px',
+        height: { xs: 'auto',  sm:'136px'},
         borderWidth: '1px',
         borderColor: '#34AEB5',
         borderStyle: "solid"

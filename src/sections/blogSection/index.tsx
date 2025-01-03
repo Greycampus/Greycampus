@@ -70,7 +70,7 @@ const GreyCampusBlogSection: React.FC = ({posts} : any) => {
                 </Box>
             </Box>
             <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', bgcolor: '#000', py: '48px', px: '16px' }}>
-                {posts.map((item) =>              
+                {posts.map((item: any) =>              
                    <Box key={item.id} sx={{ maxWidth: '900px', width: '100%'}}>
                         <CustomCard {...item} onReadMorePath={getStringPath(item.documentId)}/>
                     </Box>

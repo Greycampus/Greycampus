@@ -10,7 +10,7 @@ const API_URL =
 export const FetchExample = () => {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<any []>([]);
 
   console.log("data: ", data);
   // Note: the empty deps array [] means
@@ -39,7 +39,7 @@ export const FetchExample = () => {
   }, []);
 
   if (error) {
-    return <div>Error: {error.message}</div>;
+    return <div>Error: {error}</div>;
   } else if (!isLoaded) {
     return <div>Loading...</div>;
   } else {

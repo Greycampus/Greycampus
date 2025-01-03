@@ -20,19 +20,19 @@ export const GraphQLExample: React.FC = () => {
     <div>
       <div>Last 2 Space-X Launches</div>
       <div>
-        {data.launchesPast.map((val) => (
+        {(data?.launchesPast || []).map((val) => (
           <div>
-            <img src={val.links.mission_patch_small} />
+            <img src={val?.links?.mission_patch_small || ''} />
             <div>
-              <h3>{val.mission_name}</h3>
+              <h3>{val?.mission_name}</h3>
               <div>
                 <div>
                   <h4>Rocket:</h4>
-                  <span>{val.rocket.rocket_name}</span>
+                  <span>{val?.rocket?.rocket_name}</span>
                 </div>
                 <div>
                   <h4>Launch year:</h4>
-                  <span>{val.launch_year}</span>
+                  <span>{val?.launch_year}</span>
                 </div>
               </div>
             </div>
