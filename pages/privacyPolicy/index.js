@@ -1,4 +1,6 @@
-import { Box, Typography, Divider } from "@mui/material";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Divider from "@mui/material/Divider";
 
 const PrivacyPolicy = ({ terms }) => {
     const { title, content } = terms;
@@ -129,7 +131,6 @@ export async function getStaticProps() {
         process.env.NEXT_PUBLIC_API_SERVER_ENDPOINT + "/api/privacy-policy";
     const res = await fetch(TermsEndPoint);
     const data = await res.json();
-    console.log("check data ---", data);
 
     return {
         props: {

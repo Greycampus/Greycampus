@@ -1,22 +1,22 @@
 import React from 'react';
 import { Formik, Form } from 'formik';
-import * as Yup from 'yup';
-import {
-    Button,
-    Grid,
-    Box,
-    Typography,
-} from '@mui/material';
+import { string, object } from 'yup';
+import Button from "@mui/material/Button";
+import Typography from '@mui/material/Typography';
+import Grid from '@mui/material/Grid';
 import CustomTextField from './customTextField';
+import Box from '@mui/material/Box';
 
-const validationSchema = Yup.object().shape({
-    firstName: Yup.string().required('First name is required'),
-    lastName: Yup.string().required('Last name is required'),
-    email: Yup.string().email('Invalid email').required('Email is required'),
-    phoneNumber: Yup.string().required('Phone number is required'),
-    company: Yup.string().required('Company is required'),
-    designation: Yup.string().required('Designation is required'),
-    message: Yup.string().required('Message is required'),
+//const CustomTextField = React.lazy(() => import('./customTextField'));
+
+const validationSchema = object().shape({
+    firstName: string().required('First name is required'),
+    lastName: string().required('Last name is required'),
+    email: string().email('Invalid email').required('Email is required'),
+    phoneNumber: string().required('Phone number is required'),
+    company: string().required('Company is required'),
+    designation: string().required('Designation is required'),
+    message: string().required('Message is required'),
 });
 
 const ContactForm = ({ text }: { text?: string }) => {

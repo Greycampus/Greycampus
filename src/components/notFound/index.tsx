@@ -1,9 +1,9 @@
 import React from 'react';
-import { Box, Typography, Button } from '@mui/material';
-import { useTheme } from '@mui/material/styles';
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Button from '@mui/material/Button';
 
 const NotFoundPage = () => {
-    const theme = useTheme();
 
     return (
         <Box
@@ -16,7 +16,7 @@ const NotFoundPage = () => {
                 flexDirection: 'column',
                 alignItems: 'center',
                 justifyContent: 'center',
-                color: theme.palette.common.white
+                color: '#fff'
             }}
         >
             <Typography variant="h3" component="h1" gutterBottom>

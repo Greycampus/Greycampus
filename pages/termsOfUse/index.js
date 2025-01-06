@@ -1,4 +1,6 @@
-import { Box, Typography, Divider } from "@mui/material";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Divider from "@mui/material/Divider";
 
 const TermsOfUse = ({ terms }) => {
     const { title, content } = terms;
@@ -74,7 +76,6 @@ const TermsOfUse = ({ terms }) => {
         });
     };
 
-
     return (
         <Box
             sx={{
@@ -103,7 +104,7 @@ const TermsOfUse = ({ terms }) => {
                     width: "72px", // Adjust the width of the divider
                     margin: "0 auto",
                     height: "6px", // Divider thickness
-                    borderRadius: '4px',
+                    borderRadius: "4px",
                     backgroundColor: "#34AEB5", // Teal color
                     marginBottom: "24px",
                 }}

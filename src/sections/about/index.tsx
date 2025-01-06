@@ -1,4 +1,8 @@
-import { Avatar, Box, Divider, Grid, Typography, useMediaQuery } from "@mui/material";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Avatar from "@mui/material/Avatar";
+import Grid from "@mui/material/Grid";
+import Divider from "@mui/material/Divider";
 import React from "react";
 
 const TopAbout = () => {

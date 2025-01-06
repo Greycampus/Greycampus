@@ -1,10 +1,17 @@
-import { ApolloProvider } from "@apollo/client";
-import { initializeApollo } from "@services/graphql";
-import "@styles/global.css";
+import dynamic from "next/dynamic";
 import { AppProps } from "next/app";
-import { QueryClient, QueryClientProvider } from "react-query";
 import { Hydrate } from "react-query/hydration";
+import "@styles/global.css";
+//import { initializeApollo } from "@services/graphql";
+import { QueryClient } from "react-query";
 import Layout from "./layout";
+
+
+const QueryClientProvider = dynamic(() => import("react-query").then(mod => mod.QueryClientProvider), { ssr: false });
+
+// ✅ Move Clients Outside MyApp
+//const apolloClient = initializeApollo();
+const queryClient = new QueryClient();
 
 interface CustomAppProps extends AppProps {
   pageProps: AppProps["pageProps"] & {
@@ -13,10 +20,7 @@ interface CustomAppProps extends AppProps {
 }
 
 function MyApp({ Component, pageProps }: CustomAppProps): JSX.Element {
-  const apolloClient = initializeApollo();
-  const queryClient = new QueryClient();
   return (
-    <ApolloProvider client={apolloClient}>
       <QueryClientProvider client={queryClient}>
         <Hydrate state={pageProps?.dehydratedState}>
           <Layout>
@@ -24,7 +28,6 @@ function MyApp({ Component, pageProps }: CustomAppProps): JSX.Element {
           </Layout>
         </Hydrate>
       </QueryClientProvider>
-    </ApolloProvider>
   );
 }
 

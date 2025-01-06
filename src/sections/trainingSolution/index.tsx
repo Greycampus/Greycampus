@@ -1,5 +1,11 @@
 import React from "react";
-import { Box, Typography, Grid, Card, CardContent, CardMedia, Button } from "@mui/material";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import Typography from "@mui/material/Typography";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Button from "@mui/material/Button";
 
 // Styles Object
 const styles = {
@@ -53,7 +59,7 @@ const trainingPrograms = [
         title: "New Hire Training",
         description:
             "Align the skills of your new hires to the business requirements at the earliest; reduce the time to project deployment.",
-        imageUrl: "https://www.greycampus.com/hs-fs/hubfs/GC(B2B)/image_asset.jpeg?width=500&height=334&name=image_asset.jpeg",
+        imageUrl: "https://www.greycampus.com/hs-fs/hubfs/GC(B2B)/image_asset.jpeg?width=500&height=334&name=image_asset.webp",
     },
     {
         id: 2,
@@ -74,7 +80,7 @@ const trainingPrograms = [
         title: "Leadership Training",
         description:
             "Build leaders and take your organisation to new heights with custom-built leadership training programs.",
-        imageUrl: "https://www.greycampus.com/hs-fs/hubfs/GC(B2B)/image-asset-3.webp?width=500&height=333&name=image-asset-3.webpg",
+        imageUrl: "https://www.greycampus.com/hs-fs/hubfs/GC(B2B)/image-asset-3.webp?width=500&height=333&name=image-asset-3.webp",
     },
 ];
 

@@ -1,5 +1,7 @@
 import React from "react";
-import { Box, Paper, Typography } from "@mui/material";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Paper from "@mui/material/Paper";
 import ContactForm from "@components/contact";
 import FmdGoodOutlinedIcon from '@mui/icons-material/FmdGoodOutlined';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';

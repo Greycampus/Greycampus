@@ -16,7 +16,7 @@ export async function getStaticPaths() {
 
     // Create paths for each blog
     const paths = blogs.data.map((blog) => ({
-        params: { id: blog.documentId },
+        params: { id: blog?.documentId },
     }));
 
     return {
@@ -33,7 +33,6 @@ export async function getStaticProps({ params }) {
         `${API_URL}/api/open-campus-blogs/${params.id}?populate[content][populate]=*`,
     );
     const data = await res.json();
-    console.log("check single data ", data)
 
     return {
         props: {

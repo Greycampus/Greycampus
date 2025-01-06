@@ -1,7 +1,5 @@
 import OpenCampusSection from "src/sections/openCampusSection";
-import { Box } from "@mui/material";
-import GreyCampusBlogSection from "src/sections/blogSection";
-import { GetStaticProps } from "next";
+import Box from "@mui/material/Box";
 
 
 const Blogs = ({ blogs }) => {

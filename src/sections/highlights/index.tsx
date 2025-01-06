@@ -1,5 +1,9 @@
 import React from "react";
-import { Box, Typography, Grid, Card, CardContent } from "@mui/material";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Grid from "@mui/material/Grid";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
 
 // Styles Object
 const styles = {

@@ -1,4 +1,5 @@
-import { Box, Typography, Divider, Grid } from "@mui/material";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 import ReactMarkdown from "react-markdown"; // Markdown parser
 import { useRouter } from "next/router";
 

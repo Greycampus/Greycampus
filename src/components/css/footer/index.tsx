@@ -1,5 +1,9 @@
 import React from "react";
-import { Box, Typography, Grid, Link, Divider } from "@mui/material";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Divider from "@mui/material/Divider";
+import Grid from "@mui/material/Grid";
+import Link from "@mui/material/Link";
 import Image from "next/image";
 import { LOGO_URl } from "src/utilities/resources";
 

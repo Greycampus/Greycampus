@@ -1,5 +1,6 @@
 import React from 'react';
-import { Box, Typography } from '@mui/material';
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 import LocalOfferOutlinedIcon from '@mui/icons-material/LocalOfferOutlined';
 import SchoolOutlinedIcon from '@mui/icons-material/SchoolOutlined';
 import CalendarTodayOutlinedIcon from '@mui/icons-material/CalendarTodayOutlined';

@@ -1,4 +1,7 @@
 const withPlugins = require("next-compose-plugins");
+const withBundleAnalyzer = require("@next/bundle-analyzer")({
+    enabled: process.env.ANALYZE === "true", // ✅ Enables only when ANALYZE=true
+});
 
 const nextConfig = {
     images: {
@@ -18,9 +21,6 @@ const nextConfig = {
         ],
     },
     swcMinify: true, // ✅ Minify JS & CSS
-    experimental: {
-        optimizeCss: true, // ✅ Ensures CSS is optimized
-    },
 };
 
-module.exports = withPlugins([], nextConfig);
+module.exports = withPlugins([withBundleAnalyzer], nextConfig);
