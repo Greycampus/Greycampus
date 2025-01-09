@@ -1,8 +1,24 @@
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import ReactMarkdown from "react-markdown"; // Markdown parser
 import { useRouter } from "next/router";
 
+// ✅ Function to Convert Markdown to HTML (No `react-markdown`)
+const parseMarkdown = (markdown: string) => {
+    if (!markdown) return "";
+
+    return markdown
+        .replace(/^### (.*$)/gm, "<h3>$1</h3>") // H3
+        .replace(/^## (.*$)/gm, "<h2>$1</h2>") // H2
+        .replace(/^# (.*$)/gm, "<h1>$1</h1>") // H1
+        .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>") // Bold
+        .replace(/\*(.*?)\*/g, "<em>$1</em>") // Italic
+        .replace(/~~(.*?)~~/g, "<del>$1</del>") // Strikethrough
+        .replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank">$1</a>') // Links
+        .replace(/^- (.*)$/gm, "<li>$1</li>") // List Items
+        .replace(/\n/g, "<br/>"); // Line breaks
+};
+
+// ✅ Styles (Same as before)
 const styles = {
     metadataBox: {
         border: "1px solid #fff",
@@ -18,7 +34,7 @@ const styles = {
     },
 };
 
-const BlogDetails = ({ blog }) => {
+const BlogDetails = ({ blog }: { blog: any }) => {
     const router = useRouter();
 
     // Fallback loading state
@@ -34,18 +50,16 @@ const BlogDetails = ({ blog }) => {
                 backgroundColor: "#000",
                 color: "#fff",
                 padding: { xs: "16px", md: "32px" },
-                //minHeight: "100vh",
                 fontFamily: "Poppins, sans-serif",
                 display: "flex",
-                flexDirection: { xs: "column", md: "row" }, // Column for mobile, row for desktop
+                flexDirection: { xs: "column", md: "row" },
                 gap: "24px",
             }}
-        >   
-            
+        >
             {/* Left Section - Content */}
             <Box
                 sx={{
-                    flex: 2, // Take 2/3 of the width
+                    flex: 2,
                     fontSize: "16px",
                     lineHeight: "1.8",
                 }}
@@ -62,66 +76,25 @@ const BlogDetails = ({ blog }) => {
                     {title}
                 </Typography>
 
-                {/* Content Section */}
+                {/* ✅ Content Section (Uses `dangerouslySetInnerHTML`) */}
                 <Box sx={{ maxWidth: "800px" }}>
-                    <ReactMarkdown
-                        components={{
-                            p: ({ node, ...props }) => (
-                                <Typography
-                                    variant="body1"
-                                    sx={{
-                                        fontFamily: "Poppins, sans-serif",
-                                        fontSize: "16px",
-                                    }}
-                                    {...props}
-                                />
-                            ),
-                            h1: ({ node, ...props }) => (
-                                <Typography
-                                    variant="h4"
-                                    sx={{
-                                        fontFamily: "Poppins, sans-serif",
-                                        fontSize: "32px",
-                                        mt: "40px",
-                                        mb: "20px",
-                                    }}
-                                    {...props}
-                                />
-                            ),
-                            h2: ({ node, ...props }) => (
-                                <Typography
-                                    variant="h5"
-                                    sx={{
-                                        fontFamily: "Poppins, sans-serif",
-                                        fontSize: "24px",
-                                        mt: "40px",
-                                        mb: "20px",
-                                    }}
-                                    {...props}
-                                />
-                            ),
-                            li: ({ node, ...props }) => (
-                                <Typography
-                                    component="li"
-                                    sx={{
-                                        fontFamily: "Poppins, sans-serif",
-                                        fontSize: "16px",
-                                        marginLeft: "16px",
-                                    }}
-                                    {...props}
-                                />
-                            ),
+                    <Box
+                        sx={{
+                            fontFamily: "Poppins, sans-serif",
+                            fontSize: "16px",
+                            lineHeight: "1.8",
                         }}
-                    >
-                        {content}
-                    </ReactMarkdown>
+                        dangerouslySetInnerHTML={{
+                            __html: parseMarkdown(content),
+                        }}
+                    />
                 </Box>
             </Box>
 
             {/* Right Section - Metadata */}
             <Box
                 sx={{
-                    flex: 1, // Take 1/3 of the width
+                    flex: 1,
                     display: "flex",
                     flexDirection: "column",
                     gap: "16px",

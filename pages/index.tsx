@@ -1,17 +1,19 @@
 import React from "react";
+import dynamic from "next/dynamic";
 
-// 🚀 Load all components normally (No lazy loading)
+// 🚀 Load the first two components eagerly for improved LCP
 import TopSection from "src/sections/topSection";
 import ImpactSection from "src/sections/impactSection";
-import TrainingProgramsSection from "src/sections/trainingSolution";
-import HowWeWork from "src/sections/howWeWork";
-import ProgramHighlights from "src/sections/highlights";
-import AreasOfExpertise from "src/sections/areaOfExpertise";
-import EnterpriseClients from "src/sections/clients";
-import GetInTouch from "src/sections/getInTouch";
+
+// 📦 Dynamically import the rest of the sections
+const TrainingProgramsSection = dynamic(() => import("src/sections/trainingSolution"));
+const HowWeWork = dynamic(() => import("src/sections/howWeWork"));
+const ProgramHighlights = dynamic(() => import("src/sections/highlights"));
+const AreasOfExpertise = dynamic(() => import("src/sections/areaOfExpertise"));
+const EnterpriseClients = dynamic(() => import("src/sections/clients"));
+const GetInTouch = dynamic(() => import("src/sections/getInTouch"));
 
 export const getStaticProps = async () => {
-  // Pre-render the page during build time
   return {
     props: {}, // No dynamic data needed
   };
@@ -20,9 +22,11 @@ export const getStaticProps = async () => {
 const Home: React.FC = () => {
   return (
     <>
-      {/* 🚀 Eagerly Load All Sections for Improved LCP */}
+      {/* 🚀 Eagerly Load First Two Sections for Improved LCP */}
       <TopSection />
       <ImpactSection />
+
+      {/* 📦 Lazy Load Remaining Sections to Improve Performance */}
       <TrainingProgramsSection />
       <HowWeWork />
       <ProgramHighlights />

@@ -3,10 +3,11 @@ import { InMemoryCache } from "@apollo/client/cache";
 import type { NormalizedCacheObject } from "@apollo/client/core";
 
 let apolloClient: ApolloClient<NormalizedCacheObject> | null = null;
+const API_URL = process.env.NEXT_PUBLIC_API_SERVER_ENDPOINT;
 
 const createApolloClient = new ApolloClient({
   ssrMode: typeof window === "undefined",
-  uri: "http://localhost:1337/graphql/",
+  uri: `${API_URL}/graphql/`,
   cache: new InMemoryCache(),
 });
 

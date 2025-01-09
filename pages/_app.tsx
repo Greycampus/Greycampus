@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic";
 import { AppProps } from "next/app";
 import { Hydrate } from "react-query/hydration";
-import "@styles/global.css";
+//import "@styles/global.css";
 //import { initializeApollo } from "@services/graphql";
 import { QueryClient } from "react-query";
 import Layout from "./layout";

@@ -1,5 +1,4 @@
-import React from 'react';
-import { Formik, Form } from 'formik';
+import React, { useState } from 'react';
 import { string, object } from 'yup';
 import Button from "@mui/material/Button";
 import Typography from '@mui/material/Typography';
@@ -7,95 +6,158 @@ import Grid from '@mui/material/Grid';
 import CustomTextField from './customTextField';
 import Box from '@mui/material/Box';
 
-//const CustomTextField = React.lazy(() => import('./customTextField'));
-
 const validationSchema = object().shape({
     firstName: string().required('First name is required'),
     lastName: string().required('Last name is required'),
     email: string().email('Invalid email').required('Email is required'),
-    phoneNumber: string().required('Phone number is required'),
+    phoneNumber: string()
+        .matches(
+            /^[0-9]{10}$/,
+            'Phone number must be exactly 10 digits'
+        )
+        .required('Phone number is required'),
     company: string().required('Company is required'),
     designation: string().required('Designation is required'),
     message: string().required('Message is required'),
 });
 
 const ContactForm = ({ text }: { text?: string }) => {
+    const [formData, setFormData] = useState({
+        firstName: '',
+        lastName: '',
+        email: '',
+        phoneNumber: '',
+        company: '',
+        designation: '',
+        message: '',
+    });
+
+    const [errors, setErrors] = useState<Record<string, string>>({});
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
+    // Handle input change
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target;
+        setFormData((prev) => ({ ...prev, [name]: value }));
+
+        // Validate field immediately
+        validationSchema
+            .validateAt(name, { ...formData, [name]: value })
+            .then(() => setErrors((prev) => ({ ...prev, [name]: '' })))
+            .catch((err) => setErrors((prev) => ({ ...prev, [name]: err.message })));
+    };
+
+    // Handle form submission
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+
+        try {
+            await validationSchema.validate(formData, { abortEarly: false });
+            alert(JSON.stringify(formData, null, 2));
+            setErrors({});
+        } catch (validationErrors) {
+            const formattedErrors: Record<string, string> = {};
+            (validationErrors as any).inner.forEach((error: any) => {
+                formattedErrors[error.path] = error.message;
+            });
+            setErrors(formattedErrors);
+        }
+
+        setIsSubmitting(false);
+    };
+
     return (
-        <Box sx={{ p: '20px', borderRadius: '16px', bgcolor: '#fff' }}>
+        <Box sx={{ p: '20px', borderRadius: '16px', bgcolor: '#fff', mb: '20px' }}>
             {text && (
-                <Typography
-                    sx={{
-                        fontFamily: 'Poppins, sans-serif',
-                        fontSize: '24px',
-                        mb: '20px',
-                    }}
-                >
+                <Typography sx={{ fontFamily: 'Poppins, sans-serif', fontSize: '24px', mb: '20px' }}>
                     {text}
                 </Typography>
             )}
-            <Formik
-                initialValues={{
-                    firstName: '',
-                    lastName: '',
-                    email: '',
-                    phoneNumber: '',
-                    company: '',
-                    designation: '',
-                    message: '',
-                }}
-                validationSchema={validationSchema}
-                onSubmit={(values, { setSubmitting }) => {
-                    setTimeout(() => {
-                        alert(JSON.stringify(values, null, 2));
-                        setSubmitting(false);
-                    }, 400);
-                }}
-            >
-                {({ isSubmitting }) => (
-                    <Form>
-                        <Grid container spacing={2}>
-                            <Grid item xs={6}>
-                                <CustomTextField name="firstName" label="First Name" />
-                            </Grid>
-                            <Grid item xs={6}>
-                                <CustomTextField name="lastName" label="Last Name" />
-                            </Grid>
-                            <Grid item xs={6}>
-                                <CustomTextField name="email" label="Email" type="email" />
-                            </Grid>
-                            <Grid item xs={6}>
-                                <CustomTextField name="phoneNumber" label="Phone Number" />
-                            </Grid>
-                            <Grid item xs={6}>
-                                <CustomTextField name="company" label="Company" />
-                            </Grid>
-                            <Grid item xs={6}>
-                                <CustomTextField name="designation" label="Designation" />
-                            </Grid>
-                            <Grid item xs={12}>
-                                <CustomTextField
-                                    name="message"
-                                    label="Message"
-                                    multiline
-                                    rows={4}
-                                />
-                            </Grid>
-                            <Grid item xs={12}>
-                                <Button
-                                    type="submit"
-                                    variant="contained"
-                                    color="primary"
-                                    disabled={isSubmitting}
-                                >
-                                    <Typography sx={{ fontFamily: "Poppins, sans-serif", textTransform: 'none' }}>
-                                        Contact Us
-                                    </Typography>
-                                </Button>
-                            </Grid>
-                        </Grid>
-                    </Form>
-                )}
-            </Formik>
+            <form onSubmit={handleSubmit}>
+                <Grid container spacing={2}>
+                    <Grid item xs={6}>
+                        <CustomTextField
+                            name="firstName"
+                            label="First Name"
+                            value={formData.firstName}
+                            onChange={handleChange}
+                            error={!!errors.firstName}
+                            helperText={errors.firstName}
+                        />
+                    </Grid>
+                    <Grid item xs={6}>
+                        <CustomTextField
+                            name="lastName"
+                            label="Last Name"
+                            value={formData.lastName}
+                            onChange={handleChange}
+                            error={!!errors.lastName}
+                            helperText={errors.lastName}
+                        />
+                    </Grid>
+                    <Grid item xs={6}>
+                        <CustomTextField
+                            name="email"
+                            label="Email"
+                            type="email"
+                            value={formData.email}
+                            onChange={handleChange}
+                            error={!!errors.email}
+                            helperText={errors.email}
+                        />
+                    </Grid>
+                    <Grid item xs={6}>
+                        <CustomTextField
+                            name="phoneNumber"
+                            label="Phone Number"
+                            value={formData.phoneNumber}
+                            onChange={handleChange}
+                            error={!!errors.phoneNumber}
+                            helperText={errors.phoneNumber}
+                        />
+                    </Grid>
+                    <Grid item xs={6}>
+                        <CustomTextField
+                            name="company"
+                            label="Company"
+                            value={formData.company}
+                            onChange={handleChange}
+                            error={!!errors.company}
+                            helperText={errors.company}
+                        />
+                    </Grid>
+                    <Grid item xs={6}>
+                        <CustomTextField
+                            name="designation"
+                            label="Designation"
+                            value={formData.designation}
+                            onChange={handleChange}
+                            error={!!errors.designation}
+                            helperText={errors.designation}
+                        />
+                    </Grid>
+                    <Grid item xs={12}>
+                        <CustomTextField
+                            name="message"
+                            label="Message"
+                            multiline
+                            rows={4}
+                            value={formData.message}
+                            onChange={handleChange}
+                            error={!!errors.message}
+                            helperText={errors.message}
+                        />
+                    </Grid>
+                    <Grid item xs={12}>
+                        <Button type="submit" variant="contained" color="primary" disabled={isSubmitting}>
+                            <Typography sx={{ fontFamily: "Poppins, sans-serif", textTransform: 'none' }}>
+                                Contact Us
+                            </Typography>
+                        </Button>
+                    </Grid>
+                </Grid>
+            </form>
         </Box>
     );
 };

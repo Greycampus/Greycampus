@@ -33,12 +33,20 @@ class CustomDocument extends Document {
           <link rel="dns-prefetch" href="https://www.odinschool.com" />
           <link rel="dns-prefetch" href="https://www.greycampus.com" />
 
-          <link
+          {/* ✅ Move global styles here */}
+          <style>{`
+            html, body {
+              margin: 0;
+              padding: 0;
+            }
+          `}</style>
+
+          {/* <link
             rel="preload"
             as="image"
             href={`https://www.greycampus.com/hubfs/GC%28B2B%29/gc-bg.webp`}
             type="image/webp"
-          />
+          /> */}
         </Head>
         <body>
           <Main />

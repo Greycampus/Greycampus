@@ -1,6 +1,9 @@
 import React from "react";
+import dynamic from "next/dynamic";
 import Header from "@components/css/header";
-import Footer from "@components/css/footer";
+
+// ✅ Lazy load Footer (loaded only when needed)
+const Footer = dynamic(() => import("@components/css/footer"), { ssr: false });
 
 interface LayoutProps {
     children: React.ReactNode;
@@ -8,7 +11,7 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
     return (
-        <div >
+        <div>
             <Header />
             <main>{children}</main>
             <Footer />
