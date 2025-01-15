@@ -1,11 +1,12 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import ContactForm from "@components/contact";
+import { API_URL } from "src/utilities/resources";
 
 const styles = {
     container: {
         padding: "80px 16px", // Adjust padding for responsiveness
-        backgroundImage: `url("https://www.greycampus.com/hubfs/GreyCampus/Backgrounds/blog-post-bg.jpg")`,
+        backgroundImage: `url(${ API_URL }/uploads/get_In_Touch_3dbf5cc2dd.jpg)`,
         backgroundPosition: "center center",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",

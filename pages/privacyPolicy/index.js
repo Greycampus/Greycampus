@@ -2,79 +2,29 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 
+const parseMarkdown = (markdown) => {
+    if (!markdown) return "";
+
+    return markdown
+        .replace(
+            /^### (.*$)/gm,
+            `<div style="display: flex; justify-content: flex-start; align-items: center; gap: 20px; margin-bottom: 12px;">
+                <div style="width: 72px; height: 4px; background-color: #34AEB5; border-radius: 2px;"></div>
+                <h3 style="margin: 0;">$1</h3>
+            </div>`,
+        ) // H3 with Divider
+        .replace(/^## (.*$)/gm, "<h2>$1</h2>") // H2
+        .replace(/^# (.*$)/gm, "<h1>$1</h1>") // H1
+        .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>") // Bold
+        .replace(/\*(.*?)\*/g, "<em>$1</em>") // Italic
+        .replace(/~~(.*?)~~/g, "<del>$1</del>") // Strikethrough
+        .replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank">$1</a>') // Links
+        .replace(/^- (.*)$/gm, "<li>$1</li>") // List Items
+        .replace(/\n/g, "<br/>"); // Line breaks
+};
+
 const PrivacyPolicy = ({ terms }) => {
     const { title, content } = terms;
-
-    const renderContent = (content) => {
-        return content.map((block, index) => {
-            switch (block.type) {
-                case "paragraph":
-                    return (
-                        <Typography
-                            key={index}
-                            paragraph
-                            sx={{
-                                marginBottom: "16px",
-                                lineHeight: "1.8",
-                                fontSize: "16px",
-                                fontFamily: "Poppins, sans-serif",
-                            }}
-                        >
-                            {block.children
-                                .map((child, i) => child.text)
-                                .join("")}
-                        </Typography>
-                    );
-
-                case "heading":
-                    // Check if the heading text is empty
-                    const headingText = block.children
-                        .map((child) => child.text)
-                        .join("")
-                        .trim();
-                    if (!headingText) return null; // Return null if the text is empty
-
-                    return (
-                        <Box
-                            key={index} // Added key to the outer Box
-                            sx={{
-                                display: "flex",
-                                justifyContent: "flex-start",
-                                alignItems: "center", // Align items in the center vertically
-                                my: "60px", // Margin for top and bottom spacing
-                            }}
-                        >
-                            {/* Divider */}
-                            <Box
-                                sx={{
-                                    width: "72px", // Adjust width of the divider
-                                    height: "4px", // Adjust thickness
-                                    backgroundColor: "#34AEB5", // Teal color
-                                    borderRadius: "2px", // Rounded edges
-                                    marginRight: "20px", // Space between divider and text
-                                    alignSelf: "flex-end", // Align divider at the bottom
-                                }}
-                            />
-
-                            {/* Text */}
-                            <Typography
-                                sx={{
-                                    fontWeight: "600",
-                                    fontSize: "24px",
-                                    fontFamily: "Poppins, sans-serif",
-                                    lineHeight: "1", // Ensure no extra space above or below the text
-                                }}
-                            >
-                                {headingText}
-                            </Typography>
-                        </Box>
-                    );
-
-                default:
-                    return null;
-            }
-        });
-    };
 
     return (
         <Box
@@ -82,17 +32,16 @@ const PrivacyPolicy = ({ terms }) => {
                 padding: "32px",
                 backgroundColor: "#000", // Black background
                 color: "#fff", // White text color
-                //maxWidth: "800px", // Centered layout
                 margin: "0 auto", // Center horizontally
             }}
         >
             {/* Header Section */}
             <Typography
-                variant="h2"
                 sx={{
                     textAlign: "center",
-                    marginBottom: "16px",
-                    fontWeight: "bold",
+                    //marginBottom: "16px",
+                    fontFamily: "Poppins, sans-serif",
+                    fontSize: "48px",
                 }}
             >
                 {title}
@@ -101,7 +50,7 @@ const PrivacyPolicy = ({ terms }) => {
             {/* Divider */}
             <Divider
                 sx={{
-                    width: "72px", // Adjust the width of the divider
+                    width: "72px", // Adjust width of the divider
                     margin: "0 auto",
                     height: "4px", // Divider thickness
                     borderRadius: "4px",
@@ -117,10 +66,20 @@ const PrivacyPolicy = ({ terms }) => {
                     maxWidth: { xs: "90%", sm: "75%", md: "70%" }, // Adjust width based on breakpoints
                     textAlign: { xs: "center", sm: "justify" }, // Center-align for small screens, justify for larger
                     margin: "0 auto", // Center horizontally
+                    fontFamily: "Poppins, sans-serif", // Apply globally to all text
+                    "& p": {
+                        fontSize: "16px", // Set paragraph font size
+                        marginBottom: "8px", // Optional: Add spacing between paragraphs
+                    },
+                    "& h3": {
+                        fontSize: "24px", // Set H3 font size
+                        fontWeight: "bold", // Optional: Make H3 bold
+                    },
                 }}
-            >
-                {renderContent(content)}
-            </Box>
+                dangerouslySetInnerHTML={{
+                    __html: parseMarkdown(content),
+                }}
+            />
         </Box>
     );
 };

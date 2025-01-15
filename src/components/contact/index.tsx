@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo, useCallback, useRef } from 'react';
 import { string, object } from 'yup';
 import Button from "@mui/material/Button";
 import Typography from '@mui/material/Typography';
@@ -35,17 +35,35 @@ const ContactForm = ({ text }: { text?: string }) => {
     const [errors, setErrors] = useState<Record<string, string>>({});
     const [isSubmitting, setIsSubmitting] = useState(false);
 
-    // Handle input change
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const debounceTimeout = useRef<NodeJS.Timeout | null>(null); // Store the debounce timeout reference
+
+    // Memoize the validation schema to prevent re-creating it on each render
+    const memoizedValidationSchema = useMemo(() => validationSchema, []);
+
+    // Custom debounce function to delay validation calls
+    const debounce = (func: Function, delay: number) => {
+        if (debounceTimeout.current) {
+            clearTimeout(debounceTimeout.current); // Clear previous timeout
+        }
+        debounceTimeout.current = setTimeout(() => func(), delay);
+    };
+
+    // Debounced validation handler
+    const handleValidation = useCallback((name: string, value: string) => {
+        debounce(() => {
+            memoizedValidationSchema
+                .validateAt(name, { ...formData, [name]: value })
+                .then(() => setErrors((prev) => ({ ...prev, [name]: '' })))
+                .catch((err) => setErrors((prev) => ({ ...prev, [name]: err.message })));
+        }, 300); // 300ms debounce delay
+    }, [formData, memoizedValidationSchema]);
+
+    // Handle input changes and perform validation
+    const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setFormData((prev) => ({ ...prev, [name]: value }));
-
-        // Validate field immediately
-        validationSchema
-            .validateAt(name, { ...formData, [name]: value })
-            .then(() => setErrors((prev) => ({ ...prev, [name]: '' })))
-            .catch((err) => setErrors((prev) => ({ ...prev, [name]: err.message })));
-    };
+        handleValidation(name, value); // Trigger debounced validation
+    }, [handleValidation]);
 
     // Handle form submission
     const handleSubmit = async (e: React.FormEvent) => {
@@ -53,7 +71,7 @@ const ContactForm = ({ text }: { text?: string }) => {
         setIsSubmitting(true);
 
         try {
-            await validationSchema.validate(formData, { abortEarly: false });
+            await memoizedValidationSchema.validate(formData, { abortEarly: false });
             alert(JSON.stringify(formData, null, 2));
             setErrors({});
         } catch (validationErrors) {

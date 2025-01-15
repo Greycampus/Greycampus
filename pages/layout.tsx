@@ -1,9 +1,9 @@
 import React from "react";
-import dynamic from "next/dynamic";
+import lazyLoadHydrate from "next-lazy-hydrate";
 import Header from "@components/css/header";
 
 // ✅ Lazy load Footer (loaded only when needed)
-const Footer = dynamic(() => import("@components/css/footer"), { ssr: false });
+const Footer = lazyLoadHydrate(() => import("@components/css/footer"));
 
 interface LayoutProps {
     children: React.ReactNode;

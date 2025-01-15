@@ -2,6 +2,7 @@ import React from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
+import { API_URL } from "src/utilities/resources";
 
 // Styles Object
 const styles = {
@@ -28,27 +29,27 @@ const styles = {
 // Array of Client Logos
 const clientLogos = [
     {
-        id: 1, src: "https://www.greycampus.com/hs-fs/hubfs/GC(B2B)/Deloitte-logo.webp?width=300&name=Deloitte-logo.webp", alt: "Deloitte" },
+        id: 1, src: `${API_URL}/uploads/Deloitte_logo_78ee31a5c0.webp`, alt: "Deloitte" },
     {
-        id: 2, src: "https://www.greycampus.com/hs-fs/hubfs/GC(B2B)/Ola_Cabs_logo.svg.webp?width=150&name=Ola_Cabs_logo.svg.webp", alt: "OLA" },
-    { id: 3, src: "https://www.greycampus.com/hs-fs/hubfs/GC(B2B)/wipro-logo.webp?width=300&name=wipro-logo.webp", alt: "Wipro" },
-    { id: 4, src: "https://www.greycampus.com/hs-fs/hubfs/GC(B2B)/ADP-logo.webp?width=300&name=ADP-logo.webp", alt: "ADP" },
-    { id: 5, src: "https://www.greycampus.com/hs-fs/hubfs/GC(B2B)/oxfam-logo.webp?width=300&name=oxfam-logo.webp", alt: "Oxfam" },
-    { id: 6, src: "https://www.greycampus.com/hs-fs/hubfs/GC(B2B)/DFS_Group_logo.webp?width=150&name=DFS_Group_logo.webp", alt: "DFS" },
-    { id: 7, src: "https://www.greycampus.com/hs-fs/hubfs/GC(B2B)/Neuland-Master-Logo-Tagline-RGB.webp?width=150&name=Neuland-Master-Logo-Tagline-RGB.webp", alt: "Neuland" },
-    { id: 8, src: "https://www.greycampus.com/hs-fs/hubfs/GC(B2B)/indian%2Bnavy.webp?width=300&name=indian%2Bnavy.webp", alt: "Indian Navy" },
-    { id: 9, src: "https://www.greycampus.com/hs-fs/hubfs/GC(B2B)/trantor-OG-TAG-LOGO.webp?width=150&name=trantor-OG-TAG-LOGO.webp", alt: "Trantor" },
-    { id: 10, src: "https://www.greycampus.com/hs-fs/hubfs/GC(B2B)/Johnson-Johnson-Logo.webp?width=150&name=Johnson-Johnson-Logo.webp", alt: "Johnson & Johnson" },
+        id: 2, src: `${API_URL}/uploads/Ola_Cabs_logo_svg_7d33b2fbe5.webp`, alt: "OLA" },
+    { id: 3, src: `${API_URL}/uploads/wipro_logo_f4fd8c0899.webp`, alt: "Wipro" },
+    { id: 4, src: `${API_URL}/uploads/ADP_logo_0f1376fb57.webp`, alt: "ADP" },
+    { id: 5, src: `${API_URL}/uploads/oxfam_logo_9bc7930b29.webp`, alt: "Oxfam" },
+    { id: 6, src: `${API_URL}/uploads/DFS_Group_logo_3791796fe2.webp`, alt: "DFS" },
+    { id: 7, src: `${API_URL}/uploads/Neuland_Master_Logo_Tagline_RGB_efb01e1f05.webp`, alt: "Neuland" },
+    { id: 8, src: `${API_URL}/uploads/indian_navy_e1d90a772c.webp`, alt: "Indian Navy" },
+    { id: 9, src: `${API_URL}/uploads/trantor_OG_TAG_LOGO_6cab9386c5.webp`, alt: "Trantor" },
+    { id: 10, src: `${API_URL}/uploads/Johnson_Johnson_Logo_bd29b7bf35.webp`, alt: "Johnson & Johnson" },
     {
-        id: 11, src: "https://www.greycampus.com/hs-fs/hubfs/GC(B2B)/ABBOTT-LOGO.webp?width=300&name=ABBOTT-LOGO.webp", alt: "Abbott" },
-    { id: 12, src: "https://www.greycampus.com/hs-fs/hubfs/GC(B2B)/Saudi-Aramco-Logo.webp?width=150&name=Saudi-Aramco-Logo.webp", alt: "Aramco" },
-    { id: 13, src: "https://www.greycampus.com/hs-fs/hubfs/GC(B2B)/Mahindra-Finance-logo-Vector.webp?width=150&name=Mahindra-Finance-logo-Vector.webp", alt: "Mahindra Finance" },
-    { id: 14, src: "https://www.greycampus.com/hs-fs/hubfs/GC(B2B)/Pfizer-Logo-PNG.webp?width=150&name=Pfizer-Logo-PNG.webp", alt: "Pfizer" },
-    { id: 15, src: "https://www.greycampus.com/hs-fs/hubfs/GC(B2B)/Coca-Cola-Logo-1934.webp?width=150&name=Coca-Cola-Logo-1934.webp", alt: "Coca Cola" },
-    { id: 16, src: "https://www.greycampus.com/hs-fs/hubfs/GC(B2B)/hewlett-packard-logo-png-transparent.webp?width=150&name=hewlett-packard-logo-png-transparent.webp", alt: "HP" },
-    { id: 17, src: "https://www.greycampus.com/hs-fs/hubfs/GC(B2B)/Otis-Logo.webp?width=300&name=Otis-Logo.webp", alt: "OTIS" },
+        id: 11, src: `${API_URL}/uploads/ABBOTT_LOGO_708fdd5034.webp`, alt: "Abbott" },
+    { id: 12, src: `${API_URL}/uploads/Saudi_Aramco_Logo_e95d26ab45.webp`, alt: "Aramco" },
+    { id: 13, src: `${API_URL}/uploads/Mahindra_Finance_logo_Vector_64ab3c0b19.webp`, alt: "Mahindra Finance" },
+    { id: 14, src: `${API_URL}/uploads/Pfizer_Logo_PNG_4a4c7e8bfd.webp`, alt: "Pfizer" },
+    { id: 15, src: `${API_URL}/uploads/Coca_Cola_Logo_1934_afb94d2995.webp`, alt: "Coca Cola" },
+    { id: 16, src: `${API_URL}/uploads/hewlett_packard_logo_png_transparent_f7c2a0f5f6.webp`, alt: "HP" },
+    { id: 17, src: `${API_URL}/uploads/Otis_Logo_9e796d2318.webp`, alt: "OTIS" },
     {
-        id: 18, src: "https://www.greycampus.com/hs-fs/hubfs/GC(B2B)/Sabre_web_logo.webp?width=150&name=Sabre_web_logo.webp", alt: "Sabre Industries" },
+        id: 18, src: `${API_URL}/uploads/Sabre_web_logo_6725bf1d38.webp`, alt: "Sabre Industries" },
 ];
 
 const EnterpriseClients = () => {

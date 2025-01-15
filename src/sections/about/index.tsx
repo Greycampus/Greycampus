@@ -4,6 +4,7 @@ import Avatar from "@mui/material/Avatar";
 import Grid from "@mui/material/Grid";
 import Divider from "@mui/material/Divider";
 import React from "react";
+import { API_URL } from "src/utilities/resources";
 
 const TopAbout = () => {
     return (
@@ -13,7 +14,7 @@ const TopAbout = () => {
                 alignItems: 'center',
                 justifyContent: 'center',
                 minHeight: '400px',  // Adjust the height as needed
-                backgroundImage: 'url("https://www.greycampus.com/hubfs/GreyCampus/Backgrounds/about%20us%20bg.jpg")',
+                backgroundImage: `url(${API_URL}/uploads/about_us_bg_127149fc2b.jpg)`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 color: '#fff',
@@ -42,7 +43,7 @@ const Body = () => {
         <Box sx={{ display: 'flex', width: '100%', overflow: 'hidden', bgcolor: '#000', py: '16px'  }}>
                 <Box
                     component="img"
-                    src="https://www.greycampus.com/hubfs/GreyCampus/Backgrounds/about%20us%20bg.jpg"
+                    src={`${API_URL}/uploads/about_us_bg_127149fc2b.jpg`}
                     alt="Learning Environment"
                     sx={{
                         maxWidth: '50%',
@@ -115,9 +116,9 @@ const TeamMember = ({ name, role, imgUrl }: {name: string, role: string, imgUrl:
 const MeetTheTeam = () => {
     // Replace these URLs with the actual image URLs provided by you
     const teamMembers = [
-        { name: 'Deb', role: 'CEO', imgUrl: 'https://www.greycampus.com/hs-fs/hubfs/deb.webp?width=280&height=280&name=deb.webp' },
-        { name: 'Srinivas', role: 'Product', imgUrl: 'https://www.greycampus.com/hs-fs/hubfs/srini.webp?width=280&height=280&name=srini.webp' },
-        { name: 'Shruti', role: 'Enterprise Business', imgUrl: 'https://www.greycampus.com/hs-fs/hubfs/OdinSchool_V3/Team/Shruti.webp?width=140&height=140&name=Shruti.webp' }
+        { name: 'Deb', role: 'CEO', imgUrl: `${API_URL}/uploads/deb_538686fe03.webp` },
+        { name: 'Srinivas', role: 'Product', imgUrl: `${API_URL}/uploads/srini_a92a6e8e4f.webp` },
+        { name: 'Shruti', role: 'Enterprise Business', imgUrl: `${API_URL}/uploads/Shruti_5103c4b691.webp` }
     ];
 
     return (

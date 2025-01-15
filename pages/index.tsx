@@ -1,17 +1,17 @@
 import React from "react";
-import dynamic from "next/dynamic";
 
 // 🚀 Load the first two components eagerly for improved LCP
 import TopSection from "src/sections/topSection";
 import ImpactSection from "src/sections/impactSection";
+import lazyLoadHydrate from "next-lazy-hydrate";
 
 // 📦 Dynamically import the rest of the sections
-const TrainingProgramsSection = dynamic(() => import("src/sections/trainingSolution"));
-const HowWeWork = dynamic(() => import("src/sections/howWeWork"));
-const ProgramHighlights = dynamic(() => import("src/sections/highlights"));
-const AreasOfExpertise = dynamic(() => import("src/sections/areaOfExpertise"));
-const EnterpriseClients = dynamic(() => import("src/sections/clients"));
-const GetInTouch = dynamic(() => import("src/sections/getInTouch"));
+const TrainingProgramsSection = lazyLoadHydrate(() => import("src/sections/trainingSolution"));
+const HowWeWork = lazyLoadHydrate(() => import("src/sections/howWeWork"));
+const ProgramHighlights = lazyLoadHydrate(() => import("src/sections/highlights"));
+const AreasOfExpertise = lazyLoadHydrate(() => import("src/sections/areaOfExpertise"));
+const EnterpriseClients = lazyLoadHydrate(() => import("src/sections/clients"));
+const GetInTouch = lazyLoadHydrate(() => import("src/sections/getInTouch"));
 
 export const getStaticProps = async () => {
   return {

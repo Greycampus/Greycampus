@@ -6,9 +6,10 @@ import Grid from "@mui/material/Grid";
 import Link from "@mui/material/Link";
 import Image from "next/image";
 import { LOGO_URl } from "src/utilities/resources";
+import { API_URL } from "src/utilities/resources";
 
 const Footer = () => {
-  const backgroundImageURL = "https://www.greycampus.com/hubfs/footer%20bg.webp"; // Replace this URL
+  const backgroundImageURL = `${API_URL}/uploads/footer_bg_c2518bb467.webp`; // Replace this URL
 
   // Define links for each section
   const footerLinks = {
@@ -23,14 +24,10 @@ const Footer = () => {
       { name: "OpenCampus", link: "/openCampus" },
     ],
     bootcamps: [
-      { name: "Data Science Course", link: "/bootcamps/data-science" },
-      { name: "React Web Development", link: "/bootcamps/react-web" },
-      { name: "Power BI Course", link: "/bootcamps/power-bi" },
-      { name: "Digital Marketing Course", link: "/bootcamps/digital-marketing" },
-      { name: "Certified Business Accountant", link: "/bootcamps/accounting" },
-      { name: "Online MBA - Manipal University Jaipur", link: "/bootcamps/online-mba-jaipur" },
-      { name: "Online MCA - Manipal University Jaipur", link: "/bootcamps/online-mca-jaipur" },
-      { name: "Online MCA - Sikkim Manipal University", link: "/bootcamps/online-mca-sikkim" },
+      { name: "Data Science Course", link: "https://www.odinschool.com/data-science-course" },
+      { name: "Power BI Course", link: "https://www.odinschool.com/power-bi-certification-course" },
+      { name: "Applied Generative AI Course", link: "https://www.odinschool.com/generative-ai-course-iitg" },
+      { name: "Certificate Program in Data Science and Machine Learning", link: "https://www.odinschool.com/certificate-program-in-data-science-and-machine-learning" },
     ],
   };
 

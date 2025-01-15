@@ -6,6 +6,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
+import { API_URL } from "src/utilities/resources";
 
 // Styles Object
 const styles = {
@@ -59,28 +60,28 @@ const trainingPrograms = [
         title: "New Hire Training",
         description:
             "Align the skills of your new hires to the business requirements at the earliest; reduce the time to project deployment.",
-        imageUrl: "https://www.greycampus.com/hs-fs/hubfs/GC(B2B)/image_asset.jpeg?width=500&height=334&name=image_asset.webp",
+        imageUrl: `${API_URL}/uploads/image_asset_fd5a81d110.webp`,
     },
     {
         id: 2,
         title: "Pre-Hire Training",
         description:
             "Hiring freshers from colleges? Get them trained even before their first day at your company and get them to be productive from Day 1.",
-        imageUrl: "https://www.greycampus.com/hs-fs/hubfs/GC(B2B)/image-asset-4.webp?width=1000&height=667&name=image-asset-4.webp",
+        imageUrl: `${API_URL}/uploads/image_asset_4_2a64bb2a51.webp`,
     },
     {
         id: 3,
         title: "Executive upskilling",
         description:
             "Upskill your team in the latest tools and technologies using dynamic experiential methodologies to boost their efficiency and performance.",
-        imageUrl: "https://www.greycampus.com/hs-fs/hubfs/GC(B2B)/image-asset-2.webp?width=500&height=333&name=image-asset-2.webp",
+        imageUrl: `${API_URL}/uploads/image_asset_2_a72eef223b.webp`,
     },
     {
         id: 4,
         title: "Leadership Training",
         description:
             "Build leaders and take your organisation to new heights with custom-built leadership training programs.",
-        imageUrl: "https://www.greycampus.com/hs-fs/hubfs/GC(B2B)/image-asset-3.webp?width=500&height=333&name=image-asset-3.webp",
+        imageUrl: `${API_URL}/uploads/image_asset_3_b38d3cfbe5.webp`,
     },
 ];
 

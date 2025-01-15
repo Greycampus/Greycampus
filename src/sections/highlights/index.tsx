@@ -4,11 +4,12 @@ import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
+import { API_URL } from "src/utilities/resources";
 
 // Styles Object
 const styles = {
     container: {
-        backgroundImage: "url('https://www.greycampus.com/hubfs/GreyCampus/Backgrounds/alumni.png')",
+        backgroundImage: `url(${API_URL}/uploads/alumni_1374d4e05c.jpg)`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
