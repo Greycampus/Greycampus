@@ -23,12 +23,9 @@ const styles = {
     divider: { width: "80px", height: "8px", backgroundColor: "#0C868D", borderRadius: "4px", marginTop: "1rem" },
 };
 
-const GreyCampusBlogSection = ({ posts, currentPage, setCurrentPage, totalPages }) => {
-    const handlePageChange = (event, value) => {
-        setCurrentPage(value);
-    };
+const GreyCampusBlogSection = ({ posts }: {posts: any}) => {
 
-    const getStringPath = (id) => `/blog/${id || ""}`;
+    const getStringPath = (id: string) => `/blog/${id || ""}`;
 
     return (
         <Box sx={{ flex: 1 }}>
@@ -46,7 +43,7 @@ const GreyCampusBlogSection = ({ posts, currentPage, setCurrentPage, totalPages 
                 </Box>
             </Box>
             <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', bgcolor: '#000', py: '48px', px: '16px', gap: 3 }}>
-                {posts?.map((item) => (
+                {posts?.map((item: any) => (
                     <Box key={item.id} sx={{ maxWidth: '900px', width: '100%' }}>
                         <CustomCard {...item} onReadMorePath={getStringPath(item.documentId)} />
                     </Box>

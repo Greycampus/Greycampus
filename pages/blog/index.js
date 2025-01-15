@@ -62,9 +62,9 @@ const Blogs = ({ initialBlogs, totalPages }) => {
             ) : (
                 <GreyCampusBlogSection
                     posts={blogs}
-                    currentPage={currentPage}
-                    setCurrentPage={setCurrentPage}
-                    totalPages={totalPages}
+                    // currentPage={currentPage}
+                    // setCurrentPage={setCurrentPage}
+                    // totalPages={totalPages}
                 />
             )}
             <Box
