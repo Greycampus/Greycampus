@@ -40,10 +40,12 @@ class CustomDocument extends Document {
           />
           <link rel="preconnect" href="https://www.odinschool.com" crossOrigin="anonymous" />
           <link rel="preconnect" href="https://www.greycampus.com" crossOrigin="anonymous" />
+          <link rel="preconnect" href={`${API_URL}`} crossOrigin="anonymous" />
 
           {/* DNS Prefetch as Fallback */}
           <link rel="dns-prefetch" href="https://www.odinschool.com" />
           <link rel="dns-prefetch" href="https://www.greycampus.com" />
+          <link rel="dns-prefetch" href={`${API_URL}`} />
 
           {/* ✅ Move global styles here */}
           <style>{`
