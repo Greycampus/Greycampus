@@ -19,6 +19,18 @@ const nextConfig = {
                 port: "1337",
                 pathname: "/uploads/**",
             },
+            {
+                protocol: "http", // For localhost during development
+                hostname: "localhost",
+                port: "1337",
+                pathname: "/uploads/**",
+            },
+            {
+                protocol: "https", // For Strapi hosted on Greycampus
+                hostname: "strapi.greycampus.com",
+                port: "",
+                pathname: "/uploads/**",
+            },
         ],
     },
     swcMinify: true, // ✅ Minify JS & CSS

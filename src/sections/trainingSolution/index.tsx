@@ -60,28 +60,28 @@ const trainingPrograms = [
         title: "New Hire Training",
         description:
             "Align the skills of your new hires to the business requirements at the earliest; reduce the time to project deployment.",
-        imageUrl: `${API_URL}/uploads/image_asset_fd5a81d110.webp`,
+        imageUrl: `${API_URL}/uploads/image_asset_aa885af99b.jpeg`,
     },
     {
         id: 2,
         title: "Pre-Hire Training",
         description:
             "Hiring freshers from colleges? Get them trained even before their first day at your company and get them to be productive from Day 1.",
-        imageUrl: `${API_URL}/uploads/image_asset_4_2a64bb2a51.webp`,
+        imageUrl: `${API_URL}/uploads/image_asset_4_5726ef9458.webp`,
     },
     {
         id: 3,
         title: "Executive upskilling",
         description:
             "Upskill your team in the latest tools and technologies using dynamic experiential methodologies to boost their efficiency and performance.",
-        imageUrl: `${API_URL}/uploads/image_asset_2_a72eef223b.webp`,
+        imageUrl: `${API_URL}/uploads/image_asset_2_de9cdb598d.webp`,
     },
     {
         id: 4,
         title: "Leadership Training",
         description:
             "Build leaders and take your organisation to new heights with custom-built leadership training programs.",
-        imageUrl: `${API_URL}/uploads/image_asset_3_b38d3cfbe5.webp`,
+        imageUrl: `${API_URL}/uploads/image_asset_3_acb0543820.webp`,
     },
 ];
 

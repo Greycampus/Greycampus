@@ -15,4 +15,4 @@ export const parseMarkdown = (markdown: string) => {
 };
 
 export const API_URL = process.env.NEXT_PUBLIC_API_SERVER_ENDPOINT;
-export const LOGO_URl = `${API_URL}/uploads/gc_logo_1fa23eb55b.svg`;
+export const LOGO_URl = `${API_URL}/uploads/gc_logo_7328d04d59.svg`;

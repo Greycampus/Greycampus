@@ -9,7 +9,7 @@ import { API_URL } from "src/utilities/resources";
 // Styles Object
 const styles = {
     container: {
-        backgroundImage: `url(${API_URL}/uploads/alumni_1374d4e05c.jpg)`,
+        backgroundImage: `url(${API_URL}/uploads/alumni_410d9d29d8.png)`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",

@@ -9,7 +9,7 @@ import { LOGO_URl } from "src/utilities/resources";
 import { API_URL } from "src/utilities/resources";
 
 const Footer = () => {
-  const backgroundImageURL = `${API_URL}/uploads/footer_bg_c2518bb467.webp`; // Replace this URL
+  const backgroundImageURL = `${API_URL}/uploads/footer_20bg_c98c163ba1.webp`; // Replace this URL
 
   // Define links for each section
   const footerLinks = {
@@ -36,6 +36,7 @@ const Footer = () => {
       sx={{
         backgroundImage: `url(${backgroundImageURL})`,
         backgroundSize: "cover",
+        backgroundRepeat:"no-repeat",
         backgroundPosition: "center",
         color: "white",
       }}
