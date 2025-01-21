@@ -29,27 +29,27 @@ const styles = {
 // Array of Client Logos
 const clientLogos = [
     {
-        id: 1, src: `${API_URL}/uploads/Deloitte_logo_78ee31a5c0.webp`, alt: "Deloitte" },
+        id: 1, src: `${API_URL}/uploads/Deloitte_logo_e2409d806c.webp`, alt: "Deloitte" },
     {
-        id: 2, src: `${API_URL}/uploads/Ola_Cabs_logo_svg_7d33b2fbe5.webp`, alt: "OLA" },
-    { id: 3, src: `${API_URL}/uploads/wipro_logo_f4fd8c0899.webp`, alt: "Wipro" },
-    { id: 4, src: `${API_URL}/uploads/ADP_logo_0f1376fb57.webp`, alt: "ADP" },
-    { id: 5, src: `${API_URL}/uploads/oxfam_logo_9bc7930b29.webp`, alt: "Oxfam" },
-    { id: 6, src: `${API_URL}/uploads/DFS_Group_logo_3791796fe2.webp`, alt: "DFS" },
-    { id: 7, src: `${API_URL}/uploads/Neuland_Master_Logo_Tagline_RGB_efb01e1f05.webp`, alt: "Neuland" },
-    { id: 8, src: `${API_URL}/uploads/indian_navy_e1d90a772c.webp`, alt: "Indian Navy" },
-    { id: 9, src: `${API_URL}/uploads/trantor_OG_TAG_LOGO_6cab9386c5.webp`, alt: "Trantor" },
-    { id: 10, src: `${API_URL}/uploads/Johnson_Johnson_Logo_bd29b7bf35.webp`, alt: "Johnson & Johnson" },
+        id: 2, src: `${API_URL}/uploads/Ola_Cabs_logo_svg_aa02f2a83f.webp`, alt: "OLA" },
+    { id: 3, src: `${API_URL}/uploads/wipro_logo_ea6b7b53ad.webp`, alt: "Wipro" },
+    { id: 4, src: `${API_URL}/uploads/ADP_logo_0646b41923.webp`, alt: "ADP" },
+    { id: 5, src: `${API_URL}/uploads/oxfam_logo_cc5d2bfaea.webp`, alt: "Oxfam" },
+    { id: 6, src: `${API_URL}/uploads/DFS_Group_logo_b92b48f364.webp`, alt: "DFS" },
+    { id: 7, src: `${API_URL}/uploads/Neuland_Master_Logo_Tagline_RGB_ec62ab7a10.webp`, alt: "Neuland" },
+    { id: 8, src: `${API_URL}/uploads/indian_navy_976a76f2a2.webp`, alt: "Indian Navy" },
+    { id: 9, src: `${API_URL}/uploads/trantor_OG_TAG_LOGO_688b6490c8.webp`, alt: "Trantor" },
+    { id: 10, src: `${API_URL}/uploads/Johnson_Johnson_Logo_3b008f861c.webp`, alt: "Johnson & Johnson" },
     {
-        id: 11, src: `${API_URL}/uploads/ABBOTT_LOGO_708fdd5034.webp`, alt: "Abbott" },
-    { id: 12, src: `${API_URL}/uploads/Saudi_Aramco_Logo_e95d26ab45.webp`, alt: "Aramco" },
-    { id: 13, src: `${API_URL}/uploads/Mahindra_Finance_logo_Vector_64ab3c0b19.webp`, alt: "Mahindra Finance" },
-    { id: 14, src: `${API_URL}/uploads/Pfizer_Logo_PNG_4a4c7e8bfd.webp`, alt: "Pfizer" },
-    { id: 15, src: `${API_URL}/uploads/Coca_Cola_Logo_1934_afb94d2995.webp`, alt: "Coca Cola" },
-    { id: 16, src: `${API_URL}/uploads/hewlett_packard_logo_png_transparent_f7c2a0f5f6.webp`, alt: "HP" },
-    { id: 17, src: `${API_URL}/uploads/Otis_Logo_9e796d2318.webp`, alt: "OTIS" },
+        id: 11, src: `${API_URL}/uploads/ABBOTT_LOGO_9962c9da42.webp`, alt: "Abbott" },
+    { id: 12, src: `${API_URL}/uploads/Saudi_Aramco_Logo_c6fffda38f.webp`, alt: "Aramco" },
+    { id: 13, src: `${API_URL}/uploads/Mahindra_Finance_logo_Vector_f3f4e65400.webp`, alt: "Mahindra Finance" },
+    { id: 14, src: `${API_URL}/uploads/Pfizer_Logo_PNG_45de4f0469.webp`, alt: "Pfizer" },
+    { id: 15, src: `${API_URL}/uploads/Coca_Cola_Logo_1934_99c7d82293.webp`, alt: "Coca Cola" },
+    { id: 16, src: `${API_URL}/uploads/hewlett_packard_logo_png_transparent_f81f754775.webp`, alt: "HP" },
+    { id: 17, src: `${API_URL}/uploads/Otis_Logo_1fce5aec28.webp`, alt: "OTIS" },
     {
-        id: 18, src: `${API_URL}/uploads/Sabre_web_logo_6725bf1d38.webp`, alt: "Sabre Industries" },
+        id: 18, src: `${API_URL}/uploads/Sabre_web_logo_1c88f786bd.webp`, alt: "Sabre Industries" },
 ];
 
 const EnterpriseClients = () => {

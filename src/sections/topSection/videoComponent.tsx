@@ -6,12 +6,12 @@ const VideoSection = () => {
     return (
         <Box sx={{ position: "relative", width: "100%", borderRadius: "16px" }}>
             <video
-                src={`${API_URL}/uploads/Shruti_Corporate_video_GC_Enterprise_1_99b8e31f94.mp4`}
+                src={`${API_URL}/uploads/Shruti_Corporate_video_GC_Enterprise_8a697545f0.mp4`}
                 preload="metadata"
                 controls
                 muted
                 playsInline
-                poster={`${API_URL}/uploads/GC_Enterprise_Intro_6b272a55b9.webp`} // ✅ Show Image Before Video Loads
+                poster={`${API_URL}/uploads/GC_20_20_Enterprise_20_Intro_65f395cc1d.webp`} // ✅ Show Image Before Video Loads
                 style={{
                     width: "100%",
                     height: "auto",

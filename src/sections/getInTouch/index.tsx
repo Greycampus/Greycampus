@@ -6,7 +6,7 @@ import { API_URL } from "src/utilities/resources";
 const styles = {
     container: {
         padding: "80px 16px", // Adjust padding for responsiveness
-        backgroundImage: `url(${ API_URL }/uploads/get_In_Touch_3dbf5cc2dd.jpg)`,
+        backgroundImage: `url(${ API_URL }/uploads/blog_post_bg_3725fb4e57.jpg)`,
         backgroundPosition: "center center",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",

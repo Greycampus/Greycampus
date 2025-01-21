@@ -14,7 +14,7 @@ const TopAbout = () => {
                 alignItems: 'center',
                 justifyContent: 'center',
                 minHeight: '400px',  // Adjust the height as needed
-                backgroundImage: `url(${API_URL}/uploads/about_us_bg_127149fc2b.jpg)`,
+                backgroundImage: `url(${API_URL}/uploads/about_us_bg_1ffec84c94.jpg)`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 color: '#fff',
@@ -28,7 +28,7 @@ const TopAbout = () => {
                         About us
                     </Typography>
                     <Divider sx={{ bgcolor: '#0C868D', height: '6px', borderRadius: '4px', width: '160px', mb: '20px' }} />
-                    <Typography >
+                    <Typography variant="h3" sx={{ fontWeight: 800 }}>
                         Skilling Up Professionals to Enable Growth, Productivity and Efficiency
                     </Typography>
                 </Box>
@@ -43,7 +43,7 @@ const Body = () => {
         <Box sx={{ display: 'flex', width: '100%', overflow: 'hidden', bgcolor: '#000', py: '16px'  }}>
                 <Box
                     component="img"
-                    src={`${API_URL}/uploads/about_us_bg_127149fc2b.jpg`}
+                    src={`${API_URL}/uploads/Group_3330_03055eabdb.jpg`}
                     alt="Learning Environment"
                     sx={{
                         maxWidth: '50%',
@@ -116,9 +116,9 @@ const TeamMember = ({ name, role, imgUrl }: {name: string, role: string, imgUrl:
 const MeetTheTeam = () => {
     // Replace these URLs with the actual image URLs provided by you
     const teamMembers = [
-        { name: 'Deb', role: 'CEO', imgUrl: `${API_URL}/uploads/deb_538686fe03.webp` },
-        { name: 'Srinivas', role: 'Product', imgUrl: `${API_URL}/uploads/srini_a92a6e8e4f.webp` },
-        { name: 'Shruti', role: 'Enterprise Business', imgUrl: `${API_URL}/uploads/Shruti_5103c4b691.webp` }
+        { name: 'Deb', role: 'CEO', imgUrl: `${API_URL}/uploads/deb_e706170793.webp` },
+        { name: 'Srinivas', role: 'Product', imgUrl: `${API_URL}/uploads/srini_96609b7be7.webp` },
+        { name: 'Shruti', role: 'Enterprise Business', imgUrl: `${API_URL}/uploads/Shruti_b56ec49d78.webp` }
     ];
 
     return (
