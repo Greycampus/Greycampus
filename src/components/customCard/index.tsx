@@ -8,10 +8,10 @@ import Link from 'next/link';
 
 // Define the prop types for the component
 interface CustomCardProps {
-  title: string;
+  post_title: string;
   category: string;
   author?: string;
-  published_date?: string;
+  publish_date?: string;
   onReadMorePath: string; // Optional callback,
   isOpenCampusBlog?: boolean;
   opencampus_category?: any;
@@ -20,10 +20,10 @@ interface CustomCardProps {
 }
 
 type detailObj = {
-  title: string;
+  post_title: string;
   category: string;
   author: string;
-  published_date: string;
+  publish_date: string;
 }
 
 const styles = {
@@ -43,7 +43,7 @@ const styles = {
     height: '18px',
     mr: '8px'
   },
-  title: {
+  post_title: {
     fontFamily: 'Poppins, sans-serif',
     fontSize: '24px',
     color: '#fff',
@@ -84,16 +84,16 @@ const getIconStringBox = (arr: any []) => {
 
 const getIconTextArr = (details: detailObj ) => {
     return ([
-      { icon: 'tag', txt:   details.category, key: details.title },
-      { icon: 'grad', txt:  details.author, key: details.title },
-      { icon: 'event', txt: details.published_date, key: details.title }
+      { icon: 'tag', txt:   details.category, key: details.post_title },
+      { icon: 'grad', txt:  details.author, key: details.post_title },
+      { icon: 'event', txt: details.publish_date, key: details.post_title }
     ])
 }
 
 // Correct way to define the functional component
-const CustomCard: React.FC<CustomCardProps> = ({ title, category, author, published_date, onReadMorePath, isOpenCampusBlog = false, opencampus_category, opencampus_sub_category, publishedAt }) => {
+const CustomCard: React.FC<CustomCardProps> = ({ post_title, category, author, publish_date, onReadMorePath, isOpenCampusBlog = false, opencampus_category, opencampus_sub_category, publishedAt }) => {
 
-  const iconTxtArr = getIconTextArr({ title, category: isOpenCampusBlog ? opencampus_category.name : category, author: isOpenCampusBlog ? 'Admin' : author || '',  published_date: isOpenCampusBlog ? publishedAt || '' : published_date || ''})
+  const iconTxtArr = getIconTextArr({ post_title, category: isOpenCampusBlog ? opencampus_category.name : category, author: isOpenCampusBlog ? 'Admin' : author || '',  publish_date: isOpenCampusBlog ? publishedAt || '' : publish_date || ''})
 
   return (
     <Box
@@ -139,8 +139,8 @@ const CustomCard: React.FC<CustomCardProps> = ({ title, category, author, publis
       > 
         <Box sx={{ display: { xs: 'block', sm: 'flex' }, justifyContent: 'space-between', alignItems: 'flex-start', color: '#fff', height: "calc(100% - 32px)", }}>
           <Box sx={{ height: "calc(100% - 32px)", display: 'flex', flexDirection: 'column', justifyContent: 'space-between', mt: 0}}>
-            <Typography sx={styles.title}>
-              {title}
+            <Typography sx={styles.post_title}>
+              {post_title}
             </Typography>
             <Link href={onReadMorePath} passHref >
               <Typography

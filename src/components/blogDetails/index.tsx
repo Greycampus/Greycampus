@@ -1,7 +1,8 @@
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { useRouter } from "next/router";
-
+import { useEffect } from "react";
+import {removeParagraph} from  '../../utilities/removeParagraph'
 // ✅ Function to Convert Markdown to HTML (No `react-markdown`)
 const parseMarkdown = (markdown: string) => {
     if (!markdown) return "";
@@ -42,8 +43,11 @@ const BlogDetails = ({ blog }: { blog: any }) => {
         return <Typography>Loading...</Typography>;
     }
 
-    const { title, content, published_date, author, category } = blog;
+    const { post_title, post_body, publish_date, author, category } = blog;
 
+    useEffect(()=>{
+        removeParagraph()        
+    })
     return (
         <Box
             sx={{
@@ -73,7 +77,7 @@ const BlogDetails = ({ blog }: { blog: any }) => {
                         fontSize: "48px",
                     }}
                 >
-                    {title}
+                    {post_title}
                 </Typography>
 
                 {/* ✅ Content Section (Uses `dangerouslySetInnerHTML`) */}
@@ -85,7 +89,7 @@ const BlogDetails = ({ blog }: { blog: any }) => {
                             lineHeight: "1.8",
                         }}
                         dangerouslySetInnerHTML={{
-                            __html: parseMarkdown(content),
+                            __html: parseMarkdown(post_body),
                         }}
                     />
                 </Box>
@@ -106,7 +110,7 @@ const BlogDetails = ({ blog }: { blog: any }) => {
                         Date
                     </Typography>
                     <Typography sx={styles.metadataTxt}>
-                        {new Date(published_date).toLocaleString()}
+                        {new Date(publish_date).toLocaleString()}
                     </Typography>
                 </Box>
 
