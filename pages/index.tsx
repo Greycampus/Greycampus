@@ -4,6 +4,7 @@ import React from "react";
 import TopSection from "src/sections/topSection";
 import ImpactSection from "src/sections/impactSection";
 import lazyLoadHydrate from "next-lazy-hydrate";
+import Head from "next/head";
 
 // 📦 Dynamically import the rest of the sections
 const TrainingProgramsSection = lazyLoadHydrate(() => import("src/sections/trainingSolution"));
@@ -22,6 +23,11 @@ export const getStaticProps = async () => {
 const Home: React.FC = () => {
   return (
     <>
+    <Head>
+    <link rel="shortcut icon" href="https://www.greycampus.com/hubfs/GreyCampus/icons/GC_favicon.jpg" />
+    <title>Upskilling Professionals with Outcome-Driven Training Solutions | Boost Efficiency and Performance | BrandName</title>
+    <meta name="description" content="Upskill professionals with outcome-driven training solutions. Customized programs in new hire training, executive upskilling, leadership training, and more. Winner of Deloitte Fastest 50 Awards." />
+    </Head>
       {/* 🚀 Eagerly Load First Two Sections for Improved LCP */}
       <TopSection />
       <ImpactSection />
