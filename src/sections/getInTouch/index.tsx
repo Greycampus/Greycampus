@@ -1,7 +1,7 @@
 import React from "react";
 import Box from "@mui/material/Box";
-import ContactForm from "@components/contact";
 import { API_URL } from "src/utilities/resources";
+import HubspotForm from "../../components/hubspot-form/index";
 
 const styles = {
     container: {
@@ -33,7 +33,7 @@ const GetInTouch = () => {
     return (
         <Box sx={styles.container}>
             <Box sx={styles.formContainer}>
-                <ContactForm text="Get in touch"/>
+      <HubspotForm />
             </Box>
         </Box>
     );

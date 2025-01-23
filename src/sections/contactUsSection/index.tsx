@@ -2,11 +2,12 @@ import React from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
-import ContactForm from "@components/contact";
 import FmdGoodOutlinedIcon from '@mui/icons-material/FmdGoodOutlined';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
 import Head from "next/head";
+
+import HubspotForm from "../../components/hubspot-form/index";
 
 const styles = {
     iconStyle: {
@@ -27,6 +28,7 @@ const ContactUsSection: React.FC = () => {
     <meta name="twitter:title" content="Contact Us | GreyCampus" />
 
         </Head>
+       
         <Box
             sx={{
                 bgcolor: "#000", // Black background
@@ -62,7 +64,19 @@ const ContactUsSection: React.FC = () => {
                 >
                     Contact Us
                 </Typography>
-                <ContactForm />
+                <Box
+      sx={{
+        backgroundColor: "white", // Set background to white
+        padding: "20px", // Add padding
+        borderRadius: "8px", // Optional: Add rounded corners
+        boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)", // Optional: Add shadow
+        maxWidth: "600px", // Limit the width
+        margin: "20px auto", // Center the box
+      }}
+    >
+      <HubspotForm />
+    </Box>
+              
             </Box>
 
             {/* Vertical Divider */}
