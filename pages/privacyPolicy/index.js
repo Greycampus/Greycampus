@@ -1,6 +1,7 @@
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
+import Head from "next/head";
 
 const parseMarkdown = (markdown) => {
     if (!markdown) return "";
@@ -27,6 +28,15 @@ const PrivacyPolicy = ({ terms }) => {
     const { title, content } = terms;
 
     return (
+        <>
+        <Head>
+        <title>Privacy Policy | GreyCampus</title>
+    <meta name="description" content="We at GreyCampus respect your right to privacy. Find all the information related to our privacy policy here." />
+    <meta property="og:description" content="We at GreyCampus respect your right to privacy. Find all the information related to our privacy policy here." />
+    <meta property="og:title" content="Privacy Policy | GreyCampus" />
+    <meta name="twitter:description" content="We at GreyCampus respect your right to privacy. Find all the information related to our privacy policy here." />
+    <meta name="twitter:title" content="Privacy Policy | GreyCampus" />
+        </Head>
         <Box
             sx={{
                 padding: "32px",
@@ -81,6 +91,7 @@ const PrivacyPolicy = ({ terms }) => {
                 }}
             />
         </Box>
+        </>
     );
 };
 

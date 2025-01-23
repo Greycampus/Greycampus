@@ -6,6 +6,7 @@ import ContactForm from "@components/contact";
 import FmdGoodOutlinedIcon from '@mui/icons-material/FmdGoodOutlined';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
+import Head from "next/head";
 
 const styles = {
     iconStyle: {
@@ -16,6 +17,16 @@ const styles = {
 
 const ContactUsSection: React.FC = () => {
     return (
+        <>
+        <Head>
+        <title>Contact Us | GreyCampus</title>
+    <meta name="description" content="Got a Query!! Worry not. You can drop an e-mail or call us anytime. Our 24*7 support service will get query answered and solved." />
+    <meta property="og:description" content="Got a Query!! Worry not. You can drop an e-mail or call us anytime. Our 24*7 support service will get query answered and solved." />
+    <meta property="og:title" content="Contact Us | GreyCampus" />
+    <meta name="twitter:description" content="Got a Query!! Worry not. You can drop an e-mail or call us anytime. Our 24*7 support service will get query answered and solved." />
+    <meta name="twitter:title" content="Contact Us | GreyCampus" />
+
+        </Head>
         <Box
             sx={{
                 bgcolor: "#000", // Black background
@@ -152,6 +163,7 @@ const ContactUsSection: React.FC = () => {
                 </Box>
             </Box>
         </Box>
+        </>
     );
 };
 

@@ -1,6 +1,7 @@
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
+import Head from "next/head";
 
 
 const parseMarkdown = (markdown) => {
@@ -28,6 +29,16 @@ const TermsOfUse = ({ terms }) => {
     const { title, content } = terms;
 
     return (
+        <>
+        <Head>
+        <title>Terms of Use | GreyCampus</title>
+    <meta name="description" content="Find all the information related to our terms of use here, including the website usage, content, links, cancellation policy, and more." />
+    <meta property="og:description" content="Find all the information related to our terms of use here, including the website usage, content, links, cancellation policy, and more." />
+    <meta property="og:title" content="Terms of Use | GreyCampus" />
+    <meta name="twitter:description" content="Find all the information related to our terms of use here, including the website usage, content, links, cancellation policy, and more." />
+    <meta name="twitter:title" content="Terms of Use | GreyCampus" />
+
+        </Head>
         <Box
             sx={{
                 padding: "32px",
@@ -82,6 +93,7 @@ const TermsOfUse = ({ terms }) => {
                 }}
             />
         </Box>
+        </>
     );
 };
 
