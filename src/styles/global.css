@@ -6,3 +6,18 @@ body {
     "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; */
 }
+
+
+p+br, h2+br, h1+br, h3+br,h4+br, li+br, ul+br, ul>br{
+  display: none !important;
+}
+
+p:empty {
+  display: none  !important;
+}
+
+
+
+p:matches(:empty, :not(:empty):not(:only-child)) {
+  display: none;
+}

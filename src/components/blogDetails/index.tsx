@@ -1,6 +1,9 @@
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
+import { removeParagraph } from '../../utilities/removeParagraph'
+import Head from "next/head";
 
 // ✅ Function to Convert Markdown to HTML (No `react-markdown`)
 const parseMarkdown = (markdown: string) => {
@@ -36,96 +39,123 @@ const styles = {
 
 const BlogDetails = ({ blog }: { blog: any }) => {
     const router = useRouter();
+    const currentUrl = `https://www.greycampus.com${router.asPath}`;
 
     // Fallback loading state
     if (router.isFallback) {
         return <Typography>Loading...</Typography>;
     }
 
-    const { title, content, published_date, author, category } = blog;
+    const { post_title, post_body, publish_date, author, category, post_seo_title, post_url, meta_description, featured_image_url } = blog;
 
+    useEffect(() => {
+        removeParagraph()
+    })
     return (
-        <Box
-            sx={{
-                backgroundColor: "#000",
-                color: "#fff",
-                padding: { xs: "16px", md: "32px" },
-                fontFamily: "Poppins, sans-serif",
-                display: "flex",
-                flexDirection: { xs: "column", md: "row" },
-                gap: "24px",
-            }}
-        >
-            {/* Left Section - Content */}
-            <Box
-                sx={{
-                    flex: 2,
-                    fontSize: "16px",
-                    lineHeight: "1.8",
-                }}
-            >
-                <Typography
-                    variant="h3"
-                    sx={{
-                        fontWeight: "bold",
-                        marginBottom: "24px",
-                        textAlign: "left",
-                        fontSize: "48px",
-                    }}
-                >
-                    {title}
-                </Typography>
+        <>
+            <Head>
+                <title>{post_seo_title && post_seo_title}</title>
+                <meta name="description" content={meta_description && meta_description} />
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
+                <meta property="og:description" content={meta_description && meta_description} />
+                <meta property="og:title" content={post_seo_title && post_seo_title} />
+                <meta name="twitter:description" content={meta_description && meta_description} />
+                <meta name="twitter:title" content={post_seo_title && post_seo_title}></meta>
+                <meta property="og:image" content={featured_image_url && featured_image_url}/>
+                <meta property="og:image:width" content="998"/>
+                <meta property="og:image:height" content="523"/>
+                <meta name="twitter:image" content={featured_image_url && featured_image_url}/>
+                <meta property="og:url" content={currentUrl && currentUrl}/>
+                <meta name="twitter:card" content="summary_large_image"/>
+                <link rel="canonical" href={currentUrl && currentUrl}/>
+                <meta property="og:type" content="article"/>
+                <meta http-equiv="content-language" content="en-us"/>
 
-                {/* ✅ Content Section (Uses `dangerouslySetInnerHTML`) */}
-                <Box sx={{ maxWidth: "800px" }}>
-                    <Box
-                        sx={{
-                            fontFamily: "Poppins, sans-serif",
-                            fontSize: "16px",
-                            lineHeight: "1.8",
-                        }}
-                        dangerouslySetInnerHTML={{
-                            __html: parseMarkdown(content),
-                        }}
-                    />
-                </Box>
-            </Box>
 
-            {/* Right Section - Metadata */}
-            <Box
-                sx={{
-                    flex: 1,
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "16px",
-                    textAlign: "center",
-                }}
-            >
-                <Box sx={styles.metadataBox}>
-                    <Typography variant="body1" sx={styles.metadataTxt}>
-                        Date
-                    </Typography>
-                    <Typography sx={styles.metadataTxt}>
-                        {new Date(published_date).toLocaleString()}
-                    </Typography>
-                </Box>
+                </Head>
 
-                <Box sx={styles.metadataBox}>
-                    <Typography variant="body1" sx={styles.metadataTxt}>
-                        About Author
-                    </Typography>
-                    <Typography sx={styles.metadataTxt}>{author}</Typography>
-                </Box>
+                                            <Box
+                                                sx={{
+                                                    backgroundColor: "#000",
+                                                    color: "#fff",
+                                                    padding: { xs: "16px", md: "32px" },
+                                                    fontFamily: "Poppins, sans-serif",
+                                                    display: "flex",
+                                                    flexDirection: { xs: "column", md: "row" },
+                                                    gap: "24px",
+                                                }}
+                                            >
+                                                {/* Left Section - Content */}
+                                                <Box
+                                                    sx={{
+                                                        flex: 2,
+                                                        fontSize: "16px",
+                                                        lineHeight: "1.8",
+                                                    }}
+                                                >
+                                                    <Typography
+                                                        variant="h3"
+                                                        sx={{
+                                                            fontWeight: "bold",
+                                                            marginBottom: "24px",
+                                                            textAlign: "left",
+                                                            fontSize: "48px",
+                                                        }}
+                                                    >
+                                                        {post_title}
+                                                    </Typography>
 
-                <Box sx={styles.metadataBox}>
-                    <Typography variant="body1" sx={styles.metadataTxt}>
-                        Category
-                    </Typography>
-                    <Typography sx={styles.metadataTxt}>{category}</Typography>
-                </Box>
-            </Box>
-        </Box>
-    );
+                                                    {/* ✅ Content Section (Uses `dangerouslySetInnerHTML`) */}
+                                                    <Box sx={{ maxWidth: "800px" }}>
+                                                        <Box
+                                                            sx={{
+                                                                fontFamily: "Poppins, sans-serif",
+                                                                fontSize: "16px",
+                                                                lineHeight: "1.8",
+                                                            }}
+                                                            dangerouslySetInnerHTML={{
+                                                                __html: parseMarkdown(post_body),
+                                                            }}
+                                                        />
+                                                    </Box>
+                                                </Box>
+
+                                                {/* Right Section - Metadata */}
+                                                <Box
+                                                    sx={{
+                                                        flex: 1,
+                                                        display: "flex",
+                                                        flexDirection: "column",
+                                                        gap: "16px",
+                                                        textAlign: "center",
+                                                    }}
+                                                >
+                                                    <Box sx={styles.metadataBox}>
+                                                        <Typography variant="body1" sx={styles.metadataTxt}>
+                                                            Date
+                                                        </Typography>
+                                                        <Typography sx={styles.metadataTxt}>
+                                                            {new Date(publish_date).toLocaleString()}
+                                                        </Typography>
+                                                    </Box>
+
+                                                    <Box sx={styles.metadataBox}>
+                                                        <Typography variant="body1" sx={styles.metadataTxt}>
+                                                            About Author
+                                                        </Typography>
+                                                        <Typography sx={styles.metadataTxt}>{author}</Typography>
+                                                    </Box>
+
+                                                    <Box sx={styles.metadataBox}>
+                                                        <Typography variant="body1" sx={styles.metadataTxt}>
+                                                            Category
+                                                        </Typography>
+                                                        <Typography sx={styles.metadataTxt}>{category}</Typography>
+                                                    </Box>
+                                                </Box>
+                                            </Box>
+                                        </>
+                                        );
 };
 
-export default BlogDetails;
+                                        export default BlogDetails;
