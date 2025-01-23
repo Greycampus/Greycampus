@@ -92,9 +92,19 @@ const getIconTextArr = (details: detailObj ) => {
 
 // Correct way to define the functional component
 const CustomCard: React.FC<CustomCardProps> = ({ post_title, category, author, publish_date, onReadMorePath, isOpenCampusBlog = false, opencampus_category, opencampus_sub_category, publishedAt }) => {
-
-  const iconTxtArr = getIconTextArr({ post_title, category: isOpenCampusBlog ? opencampus_category.name : category, author: isOpenCampusBlog ? 'Admin' : author || '',  publish_date: isOpenCampusBlog ? publishedAt || '' : publish_date || ''})
-
+ 
+  
+  const iconTxtArr = getIconTextArr({
+    post_title,
+    category: isOpenCampusBlog ? opencampus_category?.name || '' : category,
+    author: isOpenCampusBlog ? 'Admin' : author || '',
+    publish_date: isOpenCampusBlog 
+      ? publishedAt || '' 
+      : publish_date 
+      ? new Date(publish_date).toLocaleString() 
+      : ''
+  });
+  
   return (
     <Box
       sx={{
@@ -127,8 +137,6 @@ const CustomCard: React.FC<CustomCardProps> = ({ post_title, category, author, p
         sx={{
           flexGrow: 1, // Take up remaining space
           display: "flex",
-          px: '24px',
-          py: '16px',
           width:'100%',
           alignItems: "center",
           justifyContent: "center",
@@ -137,7 +145,7 @@ const CustomCard: React.FC<CustomCardProps> = ({ post_title, category, author, p
           color: '#fff'
         }}
       > 
-        <Box sx={{ display: { xs: 'block', sm: 'flex' }, justifyContent: 'space-between', alignItems: 'flex-start', color: '#fff', height: "calc(100% - 32px)", }}>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', color: '#fff', height: "calc(100% - 32px)", width:"100%", padding:"1rem" }}>
           <Box sx={{ height: "calc(100% - 32px)", display: 'flex', flexDirection: 'column', justifyContent: 'space-between', mt: 0}}>
             <Typography sx={styles.post_title}>
               {post_title}
