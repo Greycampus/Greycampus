@@ -58,7 +58,7 @@ const TopSection = () => {
         maxWidth: "600px", // Limit the width
       }}
     >
-      <HubspotForm />
+      <HubspotForm formId="hubspotForm2" />
     </Box>
                 </Box>
             </Box>

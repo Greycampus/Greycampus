@@ -74,7 +74,7 @@ const ContactUsSection: React.FC = () => {
         margin: "20px auto", // Center the box
       }}
     >
-      <HubspotForm />
+      <HubspotForm formId="hubspotForm1" />
     </Box>
               
             </Box>

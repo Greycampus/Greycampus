@@ -1,13 +1,13 @@
 import { useEffect } from "react";
 
-const HubspotForm = () => {
+const HubspotForm = ({ formId }) => {
   useEffect(() => {
     const loadHubspotForm = () => {
       if (window.hbspt) {
         window.hbspt.forms.create({
           portalId: "20029733",
           formId: "c887108b-6f59-4c6f-a1e2-9d2acd3561a4",
-          target: "#hubspotForm", // Div ID where the form will be embedded
+          target: `#${formId}`, // Use the unique ID passed as a prop
         });
       }
     };
@@ -20,11 +20,11 @@ const HubspotForm = () => {
 
     return () => {
       // Cleanup if the component unmounts
-      script.remove();
+      document.body.removeChild(script);
     };
-  }, []);
+  }, [formId]); // Re-run effect if formId changes
 
-  return <div id="hubspotForm"></div>;
+  return <div id={formId}></div>; // Set unique ID for each instance
 };
 
 export default HubspotForm;

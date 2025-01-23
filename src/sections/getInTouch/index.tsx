@@ -33,7 +33,7 @@ const GetInTouch = () => {
     return (
         <Box sx={styles.container}>
             <Box sx={styles.formContainer}>
-      <HubspotForm />
+      <HubspotForm formId="hubspotForm3" />
             </Box>
         </Box>
     );
