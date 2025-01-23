@@ -98,7 +98,7 @@ const PrivacyPolicy = ({ terms }) => {
 export async function getStaticProps() {
     // Replace `API_URL` with your Strapi endpoint
     const TermsEndPoint =
-        process.env.NEXT_PUBLIC_API_SERVER_ENDPOINT + "/api/privacy-policy/";
+        process.env.NEXT_PUBLIC_API_SERVER_ENDPOINT + "/api/privacy-policy/?populate=*";
     const res = await fetch(TermsEndPoint);
     const data = await res.json();
 

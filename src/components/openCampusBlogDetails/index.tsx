@@ -34,6 +34,7 @@ const parseMarkdown = (markdown: string) => {
     if (!markdown) return "";
 
     return markdown
+        .replace(/^#### (.*$)/gm, "<h4>$1</h4>") // H4
         .replace(/^### (.*$)/gm, "<h3>$1</h3>") // H3
         .replace(/^## (.*$)/gm, "<h2>$1</h2>") // H2
         .replace(/^# (.*$)/gm, "<h1>$1</h1>") // H1

@@ -7,7 +7,7 @@ const EachBlog = ({blog}) => {
 }
 
 export async function getStaticPaths() {
-    const API_URL = process.env.NEXT_PUBLIC_API_SERVER_ENDPOINT + '/api/blogs';
+    const API_URL = `${process.env.NEXT_PUBLIC_API_SERVER_ENDPOINT}/api/blogs?populate=*`;
 
     // Fetch all blog IDs from the API
     const res = await fetch(API_URL);
@@ -28,7 +28,7 @@ export async function getStaticProps({ params }) {
     const API_URL = process.env.NEXT_PUBLIC_API_SERVER_ENDPOINT;
 
     // Fetch data for the specific blog using the id from params
-    const res = await fetch(`${API_URL}/api/blogs/${params.id}`);
+    const res = await fetch(`${API_URL}/api/blogs/${params.id}?populate=*`);
     const data = await res.json();
 
     return {

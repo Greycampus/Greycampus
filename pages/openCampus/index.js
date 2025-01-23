@@ -36,7 +36,7 @@ const Blogs = ({ initialBlogs, totalPages }) => {
         setLoading(true);
         try {
             const res = await fetch(
-                `${process.env.NEXT_PUBLIC_API_SERVER_ENDPOINT}/api/open-campus-blogs?pagination[page]=${page}&pagination[pageSize]=${pageSize}&populate=*`,
+                `${process.env.NEXT_PUBLIC_API_SERVER_ENDPOINT}/api/open-campus-blogs?pagination[page]=${page}&pagination[pageSize]=${pageSize}&populate=*&nocache=true`,
             );
             const data = await res.json();
             setBlogs(data.data || []);
@@ -92,7 +92,7 @@ export default Blogs;
 
 export async function getStaticProps() {
     const pageSize = 10; // Fetch the first 10 blogs at build time
-    const BlogEndpoint = `${process.env.NEXT_PUBLIC_API_SERVER_ENDPOINT}/api/open-campus-blogs?pagination[page]=1&pagination[pageSize]=${pageSize}&populate=*`;
+    const BlogEndpoint = `${process.env.NEXT_PUBLIC_API_SERVER_ENDPOINT}/api/open-campus-blogs?pagination[page]=1&pagination[pageSize]=${pageSize}&populate=*&nocache=true`;
 
     const res = await fetch(BlogEndpoint);
     const data = await res.json();
