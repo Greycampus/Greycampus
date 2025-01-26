@@ -8,7 +8,7 @@ body {
 }
 
 
-p+br, h2+br, h1+br, h3+br,h4+br, li+br, ul+br, ul>br{
+p+br, h2+br, h1+br, h3+br,h4+br, li+br, ul+br, ul>br, li>br, div>br, section>br{
   display: none !important;
 }
 

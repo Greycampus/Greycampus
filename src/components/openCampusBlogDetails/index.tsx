@@ -6,11 +6,11 @@ import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import Button from "@mui/material/Button";
-import useMediaQuery from "@mui/material/useMediaQuery";
 import AddIcon from "@mui/icons-material/Add";
 import CloseIcon from "@mui/icons-material/Close";
 import Image from "next/image";
 import Link from "next/link";
+import { removeParagraph } from "src/utilities/removeParagraph";
 
 // ✅ GraphQL Query
 const GET_RELATED_BLOGS = gql`
@@ -18,7 +18,7 @@ const GET_RELATED_BLOGS = gql`
         data: openCampusBlog(documentId: $documentId) {
             opencampus_category {
                 open_campus_blogs {
-                    title
+                    post_title
                     documentId
                     opencampus_sub_category {
                         name
@@ -146,7 +146,7 @@ const renderAccordion = (
             <AccordionDetails>
                 {getBlogForSubCategory(section).map((item: any) => (
                     <Link key={item.documentId} href={`/openCampus/${item.documentId}`} passHref>
-                        <Typography>{item.title}</Typography>
+                        <Typography>{item.post_title}</Typography>
                     </Link>
                 ))}
             </AccordionDetails>
@@ -161,6 +161,7 @@ const CustomComponent = ({ blog }: { blog: any }) => {
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
+        removeParagraph()
         const fetchRelatedBlogs = async () => {
             setLoading(true);
             setError(null);
@@ -190,19 +191,38 @@ const CustomComponent = ({ blog }: { blog: any }) => {
     }, [blog?.documentId]);
 
     const subCategories =
-        allCategoryBlogs?.data.opencampus_category.open_campus_blogs.map((blog: any) => blog.opencampus_sub_category.name) ?? [];
+        allCategoryBlogs?.data.opencampus_category.open_campus_blogs
+            .map((blog: any) => blog.opencampus_sub_category?.name)
+            .filter((name: string | undefined) => name) ?? [];
 
     return (
         <Box sx={{ display: "flex", flexDirection: { xs: "column", sm: "row" }, justifyContent: "space-between", gap: 2, background: "#000", px: "16px", pt: "48px" }}>
             <LeftSidebar />
             <Box sx={{ flex: 2, padding: "16px", color: "#fff" }}>
-                <Typography variant="h4" gutterBottom>{blog?.title || "Blog Title"}</Typography>
+                <Typography variant="h4" gutterBottom>{blog?.post_title || "Blog Title"}</Typography>
+                <Box
+                    sx={{
+                        fontFamily: "Poppins, sans-serif",
+                        fontSize: "16px",
+                        lineHeight: "1.8",
+                    }}
+                    dangerouslySetInnerHTML={{
+                        __html: parseMarkdown(blog?.post_body),
+                    }}
+                />
                 {blog?.content.map(renderContent)}
             </Box>
             <Box sx={{ flex: 1, display: "flex", flexDirection: "column", gap: 2 }}>
                 {loading && <Typography>Loading...</Typography>}
                 {error && <Typography color="error">{error}</Typography>}
-                {!loading && !error && renderAccordion(subCategories, (category) => allCategoryBlogs?.data.opencampus_category.open_campus_blogs.filter((blog: any) => blog.opencampus_sub_category.name === category), expanded, setExpanded)}
+                {!loading && !error && renderAccordion(
+                    subCategories,
+                    (category) => allCategoryBlogs?.data.opencampus_category.open_campus_blogs.filter(
+                        (blog: any) => blog.opencampus_sub_category?.name === category
+                    ),
+                    expanded,
+                    setExpanded
+                )}
             </Box>
         </Box>
     );
