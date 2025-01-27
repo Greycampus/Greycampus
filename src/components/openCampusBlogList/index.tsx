@@ -4,7 +4,7 @@ import { Box, Typography, CircularProgress, Link } from "@mui/material";
 // Define the type for a blog
 type Blog = {
     documentId: string; // Replace this with the actual type of your documentId
-    title: string;
+    post_title: string;
 };
 
 const API_URL =
