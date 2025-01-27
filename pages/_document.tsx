@@ -55,12 +55,12 @@ class CustomDocument extends Document {
             }
           `}</style>
 
-          <link
+          {/* <link
             rel="preload"
             as="image"
             href={`https://www.greycampus.com/hubfs/GC%28B2B%29/gc-bg.webp`}
             type="image/webp"
-          />
+          /> */}
         </Head>
         <body>
           <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W9W9X4QJ"

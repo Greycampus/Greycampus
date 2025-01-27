@@ -92,7 +92,9 @@ export default Blogs;
 
 export async function getStaticProps() {
     const pageSize = 10; // Fetch the first 10 blogs at build time
-    const BlogEndpoint = `${process.env.NEXT_PUBLIC_API_SERVER_ENDPOINT}/api/open-campus-blogs?pagination[page]=1&pagination[pageSize]=${pageSize}&populate=*`;
+    const BlogEndpoint = `${
+        process.env.NEXT_PUBLIC_API_SERVER_ENDPOINT
+    }/api/open-campus-blogs?pagination[page]=1&pagination[pageSize]=${pageSize}&populate=*&timestamp=${Date.now()}`;
 
     const res = await fetch(BlogEndpoint);
     const data = await res.json();

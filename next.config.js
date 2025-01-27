@@ -14,9 +14,9 @@ const nextConfig = {
                 pathname: "/hubfs/**",
             },
             {
-                protocol: "http", // For localhost during development
-                hostname: "localhost",
-                port: "1337",
+                protocol: "https", // Update to use the live Strapi hostname
+                hostname: "strapi.greycampus.com",
+                port: "",
                 pathname: "/uploads/**",
             },
             {
