@@ -106,7 +106,17 @@ const CustomComponent = ({ blog }: { blog: any }) => {
         <Box sx={{ display: "flex", flexDirection: { xs: "column", sm: "row" }, justifyContent: "space-between", gap: 2, background: "#000", px: "16px", pt: "48px" }}>
             <LeftSidebar />
             <Box sx={{ flex: 2, padding: "16px", color: "#fff" }}>
-                <Typography variant="h4" gutterBottom>{blog?.title || "Blog Title"}</Typography>
+                {/* <Typography variant="h4" gutterBottom>{blog?.post_title || "Blog Title"}</Typography> */}
+                <Box
+                    sx={{
+                        fontFamily: "Poppins, sans-serif",
+                        fontSize: "16px",
+                        lineHeight: "1.8",
+                    }}
+                    dangerouslySetInnerHTML={{
+                        __html: parseMarkdown(blog?.post_body),
+                    }}
+                />
                 {blog?.content.map(renderContent)}
             </Box>
             <Box sx={{ flex: 1, display: "flex", flexDirection: "column",}}>

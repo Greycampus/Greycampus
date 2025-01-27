@@ -36,7 +36,7 @@ const Blogs = ({ initialBlogs, totalPages }) => {
         setLoading(true);
         try {
             const res = await fetch(
-                `${process.env.NEXT_PUBLIC_API_SERVER_ENDPOINT}/api/open-campus-blogs?pagination[page]=${page}&pagination[pageSize]=${pageSize}&populate=*`,
+                `${process.env.NEXT_PUBLIC_API_SERVER_ENDPOINT}/api/open-campus-blogs?pagination[page]=${page}&pagination[pageSize]=${pageSize}&populate=*&timestamp=${Date.now()}`
             );
             const data = await res.json();
             setBlogs(data.data || []);
