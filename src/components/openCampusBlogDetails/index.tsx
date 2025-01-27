@@ -1,33 +1,15 @@
-import React, { useState, useEffect } from "react";
-import gql from "graphql-tag";
+import React from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import Accordion from "@mui/material/Accordion";
-import AccordionSummary from "@mui/material/AccordionSummary";
-import AccordionDetails from "@mui/material/AccordionDetails";
 import Button from "@mui/material/Button";
-import useMediaQuery from "@mui/material/useMediaQuery";
-import AddIcon from "@mui/icons-material/Add";
-import CloseIcon from "@mui/icons-material/Close";
 import Image from "next/image";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 
-// ✅ GraphQL Query
-const GET_RELATED_BLOGS = gql`
-    query Query($documentId: ID!) {
-        data: openCampusBlog(documentId: $documentId) {
-            opencampus_category {
-                open_campus_blogs {
-                    title
-                    documentId
-                    opencampus_sub_category {
-                        name
-                    }
-                }
-            }
-        }
-    }
-`;
+const BlogList = dynamic(() => import("@components/openCampusBlogList"), {
+    ssr: false, // Disable server-side rendering for this component
+    loading: () => <Typography>Loading...</Typography>, // Fallback during lazy loading
+});
 
 // ✅ Function to Convert Markdown to HTML
 const parseMarkdown = (markdown: string) => {
@@ -118,79 +100,7 @@ const LeftSidebar = () => {
     );
 };
 
-// ✅ Function to Render Accordions
-const renderAccordion = (
-    subCategories: string[],
-    getBlogForSubCategory: (category: string) => any[],
-    expanded: number | null,
-    setExpanded: (index: number | null) => void
-) => {
-    return subCategories.map((section: string, index: number) => (
-        <Accordion
-            key={index}
-            sx={{
-                backgroundColor: "#000",
-                border: "1px solid #34AEB5",
-                color: "#fff",
-                "&:before": { display: "none" },
-            }}
-            expanded={expanded === index}
-            onChange={() => setExpanded(expanded === index ? null : index)}
-        >
-            <AccordionSummary expandIcon={expanded === index ? <CloseIcon sx={{ color: "#34AEB5" }} /> : <AddIcon sx={{ color: "#fff" }} />} sx={{
-                fontWeight: "bold",
-                "&.Mui-expanded": { color: "#34AEB5" },
-            }}>
-                <Typography>{section}</Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-                {getBlogForSubCategory(section).map((item: any) => (
-                    <Link key={item.documentId} href={`/openCampus/${item.documentId}`} passHref>
-                        <Typography>{item.title}</Typography>
-                    </Link>
-                ))}
-            </AccordionDetails>
-        </Accordion>
-    ));
-};
-
 const CustomComponent = ({ blog }: { blog: any }) => {
-    const [expanded, setExpanded] = useState<number | null>(null);
-    const [allCategoryBlogs, setAllCategoryBlogs] = useState<any>(null);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState<string | null>(null);
-
-    useEffect(() => {
-        const fetchRelatedBlogs = async () => {
-            setLoading(true);
-            setError(null);
-            try {
-                const API_URL = `${process.env.NEXT_PUBLIC_API_SERVER_ENDPOINT}/graphql`;
-                const response = await fetch(API_URL, {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({
-                        query: GET_RELATED_BLOGS.loc?.source.body,
-                        variables: { documentId: blog?.documentId },
-                    }),
-                });
-
-                const result = await response.json();
-                if (result.errors) throw new Error("GraphQL query failed");
-
-                setAllCategoryBlogs(result.data);
-            } catch (err) {
-                console.error("GraphQL fetch error:", err);
-                setError("Failed to load related blogs.");
-            }
-            setLoading(false);
-        };
-
-        if (blog?.documentId) fetchRelatedBlogs();
-    }, [blog?.documentId]);
-
-    const subCategories =
-        allCategoryBlogs?.data.opencampus_category.open_campus_blogs.map((blog: any) => blog.opencampus_sub_category.name) ?? [];
 
     return (
         <Box sx={{ display: "flex", flexDirection: { xs: "column", sm: "row" }, justifyContent: "space-between", gap: 2, background: "#000", px: "16px", pt: "48px" }}>
@@ -199,10 +109,8 @@ const CustomComponent = ({ blog }: { blog: any }) => {
                 <Typography variant="h4" gutterBottom>{blog?.title || "Blog Title"}</Typography>
                 {blog?.content.map(renderContent)}
             </Box>
-            <Box sx={{ flex: 1, display: "flex", flexDirection: "column", gap: 2 }}>
-                {loading && <Typography>Loading...</Typography>}
-                {error && <Typography color="error">{error}</Typography>}
-                {!loading && !error && renderAccordion(subCategories, (category) => allCategoryBlogs?.data.opencampus_category.open_campus_blogs.filter((blog: any) => blog.opencampus_sub_category.name === category), expanded, setExpanded)}
+            <Box sx={{ flex: 1, display: "flex", flexDirection: "column",}}>
+                <BlogList />
             </Box>
         </Box>
     );
