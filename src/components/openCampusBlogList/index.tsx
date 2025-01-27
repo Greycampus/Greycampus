@@ -23,8 +23,8 @@ const BlogList = () => {
         setLoading(true);
         try {
             const response = await fetch(
-                `${API_URL}&pagination[page]=${page}&pagination[pageSize]=20`
-            );
+               `${API_URL}&pagination[page]=${page}&pagination[pageSize]=20&timestamp=${Date.now()}`
+            )
             const data = await response.json();
             const newBlogs: Blog[] = data.data || []; // Type the response as Blog[]
 
@@ -51,6 +51,7 @@ const BlogList = () => {
 
     return (
         <Box
+           className='custom-scrollbar'
             sx={{
                 maxHeight: "500px",
                 overflowY: "scroll",
@@ -64,7 +65,7 @@ const BlogList = () => {
             onScroll={handleScroll} // Attach the scroll event to the container
         >
             <Typography variant="h5" sx={{ mb: 2, textAlign: "center", color: "#fff" }}>
-                Blog Titles
+                Related Blogs
             </Typography>
             {blogs.map((blog, index) => (
                 <Typography
@@ -84,7 +85,7 @@ const BlogList = () => {
                     underline="none"
                     color="inherit"
                 >
-                    {blog.title || "Untitled Blog"}
+                    {blog.post_title || "Untitled Blog"}
                 </Typography>
             ))}
             {loading && (

@@ -36,8 +36,9 @@ const Blogs = ({ initialBlogs, totalPages }) => {
         setLoading(true);
         try {
             const res = await fetch(
-                `${process.env.NEXT_PUBLIC_API_SERVER_ENDPOINT}/api/blogs?pagination[page]=${page}&pagination[pageSize]=${pageSize}&nocache=true`,
+                `${process.env.NEXT_PUBLIC_API_SERVER_ENDPOINT}/api/blogs?pagination[page]=${page}&pagination[pageSize]=${pageSize}&timestamp=${Date.now()}`,
             );
+            
             const data = await res.json();
             setBlogs(data.data || []);
         } catch (error) {
@@ -113,7 +114,7 @@ const Blogs = ({ initialBlogs, totalPages }) => {
 
                             export async function getStaticProps() {
     const pageSize = 10; // Fetch the first 10 blogs at build time
-                            const BlogEndpoint = `${process.env.NEXT_PUBLIC_API_SERVER_ENDPOINT}/api/blogs?pagination[page]=1&pagination[pageSize]=${pageSize}&nocache=true`;
+    const BlogEndpoint = `${process.env.NEXT_PUBLIC_API_SERVER_ENDPOINT}/api/blogs?pagination[page]=1&pagination[pageSize]=${pageSize}&timestamp=${Date.now()}`;
 
                             const res = await fetch(BlogEndpoint);
                             const data = await res.json();
