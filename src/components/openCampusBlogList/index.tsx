@@ -1,12 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { Box, Typography, CircularProgress, Link } from "@mui/material";
 
+// Define the type for a blog
+type Blog = {
+    documentId: string; // Replace this with the actual type of your documentId
+    title: string;
+};
+
 const API_URL =
     process.env.NEXT_PUBLIC_API_SERVER_ENDPOINT +
     "/api/open-campus-blogs?populate=*";
 
 const BlogList = () => {
-    const [blogs, setBlogs] = useState([]);
+    const [blogs, setBlogs] = useState<Blog[]>([]); // Use Blog[] as the type
     const [loading, setLoading] = useState(false);
     const [page, setPage] = useState(1);
     const [hasMore, setHasMore] = useState(true);
@@ -20,7 +26,7 @@ const BlogList = () => {
                 `${API_URL}&pagination[page]=${page}&pagination[pageSize]=20`
             );
             const data = await response.json();
-            const newBlogs = data.data || [];
+            const newBlogs: Blog[] = data.data || []; // Type the response as Blog[]
 
             setBlogs((prevBlogs) => [...prevBlogs, ...newBlogs]);
             setHasMore(newBlogs.length > 0);
@@ -32,8 +38,8 @@ const BlogList = () => {
         }
     };
 
-    const handleScroll = (e) => {
-        const { scrollTop, scrollHeight, clientHeight } = e.target;
+    const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
+        const { scrollTop, scrollHeight, clientHeight } = e.currentTarget;
         if (scrollTop + clientHeight >= scrollHeight - 10) {
             fetchBlogs();
         }
@@ -89,7 +95,7 @@ const BlogList = () => {
             {!hasMore && (
                 <Typography
                     variant="body2"
-                    sx={{ textAlign: "center", mt: 2, color: 'GrayText' }}
+                    sx={{ textAlign: "center", mt: 2, color: "GrayText" }}
                 >
                     No more blogs to display.
                 </Typography>
