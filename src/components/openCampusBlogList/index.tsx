@@ -1,18 +1,29 @@
 import React, { useState, useEffect } from "react";
 import { Box, Typography, CircularProgress, Link } from "@mui/material";
 
-// Define the type for a blog
 type Blog = {
-    documentId: string; // Replace this with the actual type of your documentId
+    documentId: string;
     post_title: string;
+    category:any;
 };
 
-const API_URL =
+const API_URL = 
     process.env.NEXT_PUBLIC_API_SERVER_ENDPOINT +
     "/api/open-campus-blogs?populate=*";
 
-const BlogList = () => {
-    const [blogs, setBlogs] = useState<Blog[]>([]); // Use Blog[] as the type
+// Slugify function for URL-friendly strings
+const slugify = (text: string) => {
+    return text
+        .toLowerCase()
+        .replace(/\s+/g, '-')
+        .replace(/[^\w-]+/g, '')
+        .replace(/--+/g, '-')
+        .replace(/^-+/, '')
+        .replace(/-+$/, '');
+};
+
+const BlogList = ({ category }: { category: any }) => {
+    const [blogs, setBlogs] = useState<Blog[]>([]);
     const [loading, setLoading] = useState(false);
     const [page, setPage] = useState(1);
     const [hasMore, setHasMore] = useState(true);
@@ -20,13 +31,14 @@ const BlogList = () => {
     const fetchBlogs = async () => {
         if (!hasMore || loading) return;
 
+
         setLoading(true);
         try {
             const response = await fetch(
-               `${API_URL}&pagination[page]=${page}&pagination[pageSize]=20&timestamp=${Date.now()}`
-            )
+                `${API_URL}&pagination[page]=${page}&pagination[pageSize]=20&timestamp=${Date.now()}&filters[opencampus_category][name][$eq]=${category}`
+            );
             const data = await response.json();
-            const newBlogs: Blog[] = data.data || []; // Type the response as Blog[]
+            const newBlogs: Blog[] = data.data || [];
 
             setBlogs((prevBlogs) => [...prevBlogs, ...newBlogs]);
             setHasMore(newBlogs.length > 0);
@@ -47,11 +59,12 @@ const BlogList = () => {
 
     useEffect(() => {
         fetchBlogs();
+        
     }, []);
 
     return (
         <Box
-           className='custom-scrollbar'
+            className='custom-scrollbar'
             sx={{
                 maxHeight: "500px",
                 overflowY: "scroll",
@@ -62,7 +75,7 @@ const BlogList = () => {
                 bgcolor: "#000",
                 color: "#fff",
             }}
-            onScroll={handleScroll} // Attach the scroll event to the container
+            onScroll={handleScroll}
         >
             <Typography variant="h5" sx={{ mb: 2, textAlign: "center", color: "#fff" }}>
                 Related Blogs
@@ -81,7 +94,7 @@ const BlogList = () => {
                         },
                     }}
                     component={Link}
-                    href={`/openCampus/${blog.documentId}`} // Replace with the actual blog URL or slug
+                    href={`/openCampus/${slugify(blog.post_title)}`}
                     underline="none"
                     color="inherit"
                 >

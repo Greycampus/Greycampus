@@ -66,10 +66,23 @@ const listItems = [
 
 const OpenCampusSection: React.FC = ({posts}: any) => {
 
-    const getStringPath = (id: string) => {
-        const dynaminPath = id ? `/openCampus/${id}` : '/openCampus'
-        return dynaminPath
-    }
+
+      const getStringPath = (blog: any) => {
+        const postTitleSlug = slugify(blog.post_title);
+        return `/openCampus/${postTitleSlug}`; // Removed category
+      };
+
+    // Add slugify function
+const slugify = (text:any) => {
+    return text
+      .toString()
+      .toLowerCase()
+      .replace(/\s+/g, '-')
+      .replace(/[^\w-]+/g, '')
+      .replace(/--+/g, '-')
+      .replace(/^-+/, '')
+      .replace(/-+$/, '');
+  };
 
     return (
         <Box>
@@ -110,7 +123,9 @@ const OpenCampusSection: React.FC = ({posts}: any) => {
             <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', bgcolor: '#000', py: '48px', px: '16px', gap: 3 }}>
                 {posts.map((item: any) =>
                     <Box key={item.id} sx={{ maxWidth: '900px', width: '100%' }}>
-                        <CustomCard {...item} onReadMorePath={getStringPath(item.documentId)} isOpenCampusBlog={true}/>
+                        {/* <CustomCard {...item} onReadMorePath={getStringPath(item.documentId)} isOpenCampusBlog={true}/> */}
+                        <CustomCard {...item} onReadMorePath={getStringPath(item)} isOpenCampusBlog={true} />
+
                     </Box>
                 )}
             </Box>
