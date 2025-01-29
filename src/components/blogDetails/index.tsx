@@ -53,10 +53,12 @@ const BlogDetails = ({ blog }: { blog: any }) => {
         return <Typography>Loading...</Typography>;
     }
 
-    const { post_title, post_body, publish_date, author, category, post_seo_title, post_url, meta_description, featured_image_url } = blog[0];
+    const { post_title, post_body, publish_date, author, category, post_seo_title, post_url, meta_description, featured_image_url } = blog;
 
     useEffect(() => {
         removeParagraph()
+        console.log(blog);
+        
         
     })
     return (
