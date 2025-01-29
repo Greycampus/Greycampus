@@ -1,25 +1,10 @@
-export const modifyLinks = () => {
-    // Select all anchor tags in the page, including footer links
-    const anchorTags = document.querySelectorAll('a');
+export const modifyLinks = (htmlContent) => {
+    if (!htmlContent) return "";
 
-    // Define a list of links you don't want to modify
-    const excludedLinks = [
-        '/notFound',
-        '/blog',
-        '/about',
-        '/contact',
-        '/termsOfUse',
-        '/privacyPolicy',
-    ];
-
-    // Loop through each anchor tag
-    anchorTags.forEach((anchor) => {
-        const href = anchor.getAttribute('href');
-
-        // Check if the href is a relative URL and not in the excluded list
-        if (href && href.startsWith('/') && !excludedLinks.includes(href)) {
-            // Modify the href to prepend /openCampus
-            anchor.setAttribute('href', `/openCampus${href}`);
-        }
-    });
+    return htmlContent
+        // 🔄 Step 1: Replace "/opencampus/" with "/openCampus/"
+        .replace(/<a\s+href="\/opencampus\//g, '<a href="/openCampus/')
+        
+        // ✅ Step 2: Modify relative links EXCEPT those starting with "/blog/" or already containing "openCampus"
+        .replace(/<a\s+href="(\/(?!blog\/|openCampus\/)[^"]+)"([^>]*)>/g, '<a href="openCampus$1"$2>');
 };

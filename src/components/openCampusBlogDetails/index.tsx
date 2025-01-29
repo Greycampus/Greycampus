@@ -5,7 +5,6 @@ import Button from "@mui/material/Button";
 import Image from "next/image";
 import Link from "next/link";
 import dynamic from "next/dynamic";
-import { useEffect } from "react";
 import {modifyLinks} from '../../utilities/modifyLinks'
 const BlogList = dynamic(() => import("@components/openCampusBlogList"), {
     ssr: false, // Disable server-side rendering for this component
@@ -102,12 +101,7 @@ const LeftSidebar = () => {
 };
 
 const CustomComponent = ({ blog }: { blog: any }) => {
- 
-    useEffect(()=>{
-        modifyLinks()
-        console.log('openCampusDetails --------------------------------------------------',blog);
-        
-    },[])
+
     return (
         <Box sx={{ display: "flex", flexDirection: { xs: "column", sm: "row" }, justifyContent: "space-between", gap: 2, background: "#000", px: "16px", pt: "48px" }}>
             <LeftSidebar />
@@ -120,7 +114,7 @@ const CustomComponent = ({ blog }: { blog: any }) => {
                         lineHeight: "1.8",
                     }}
                     dangerouslySetInnerHTML={{
-                        __html: parseMarkdown(blog?.post_body),
+                        __html: modifyLinks(parseMarkdown(blog?.post_body)),
                     }}
                 />
                 {blog?.content.map(renderContent)}
