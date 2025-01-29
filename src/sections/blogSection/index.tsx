@@ -25,7 +25,9 @@ const styles = {
 
 const GreyCampusBlogSection = ({ posts }: {posts: any}) => {
 
-    const getStringPath = (id: string) => `/blog/${id || ""}`;
+    const getStringPath = (post_url: string) => {
+        return post_url.replace("https://www.greycampus.com/blog/", "/blog/");
+    };
 
     return (
         <Box sx={{ flex: 1 }}>
@@ -43,11 +45,14 @@ const GreyCampusBlogSection = ({ posts }: {posts: any}) => {
                 </Box>
             </Box>
             <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', bgcolor: '#000', py: '48px', px: '16px', gap: 3 }}>
-                {posts?.map((item: any) => (
+            {posts?.map((item: any) => {
+                const relativePath = getStringPath(item.post_url);
+                return (
                     <Box key={item.id} sx={{ maxWidth: '900px', width: '100%' }}>
-                        <CustomCard {...item} onReadMorePath={getStringPath(item.documentId)} />
+                        <CustomCard {...item} onReadMorePath={relativePath} />
                     </Box>
-                ))}
+                );
+            })}
                 {/* <Pagination
                     count={totalPages}
                     page={currentPage}

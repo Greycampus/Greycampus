@@ -12,19 +12,19 @@ export const FetchExample = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [data, setData] = useState<any []>([]);
 
-  console.log("data: ", data);
+  // console.log("data: ", data);
   // Note: the empty deps array [] means
   // this useEffect will run once
   // similar to componentDidMount()
   useEffect(() => {
     fetch(API_URL)
       .then((res) => {
-        console.log("res: ", res);
+        // console.log("res: ", res);
         return res.json();
       })
       .then(
         (result) => {
-          console.log("result: ", result);
+          // console.log("result: ", result);
           setData(result);
           setIsLoaded(true);
         },

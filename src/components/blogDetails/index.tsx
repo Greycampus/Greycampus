@@ -16,10 +16,17 @@ const parseMarkdown = (markdown: string) => {
         .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>") // Bold
         .replace(/\*(.*?)\*/g, "<em>$1</em>") // Italic
         .replace(/~~(.*?)~~/g, "<del>$1</del>") // Strikethrough
-        .replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank">$1</a>') // Links
+        .replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank"">$1</a>')
         .replace(/^- (.*)$/gm, "<li>$1</li>") // List Items
-        .replace(/\n/g, "<br/>"); // Line breaks
+        .replace(/\n/g, "<br/>") // Line breaks
+        // Remove font-size style from span inside headings (h1, h2, h3)
+        .replace(/<(h[1-3])[^>]*>(.*?)<\/\1>/g, (match, tag, content) => {
+            const updatedContent = content.replace(/<span[^>]*style="[^"]*font-size:[^;]*;?[^>]*>(.*?)<\/span>/g, '<span>$1</span>');
+            return `<${tag}>${updatedContent}</${tag}>`;
+        });
 };
+
+
 
 // ✅ Styles (Same as before)
 const styles = {
@@ -46,10 +53,11 @@ const BlogDetails = ({ blog }: { blog: any }) => {
         return <Typography>Loading...</Typography>;
     }
 
-    const { post_title, post_body, publish_date, author, category, post_seo_title, post_url, meta_description, featured_image_url } = blog;
+    const { post_title, post_body, publish_date, author, category, post_seo_title, post_url, meta_description, featured_image_url } = blog[0];
 
     useEffect(() => {
         removeParagraph()
+        
     })
     return (
         <>
@@ -93,7 +101,7 @@ const BlogDetails = ({ blog }: { blog: any }) => {
                                                         lineHeight: "1.8",
                                                     }}
                                                 >
-                                                    <Typography
+                                                    {/* <Typography
                                                         variant="h3"
                                                         sx={{
                                                             fontWeight: "bold",
@@ -103,11 +111,12 @@ const BlogDetails = ({ blog }: { blog: any }) => {
                                                         }}
                                                     >
                                                         {post_title}
-                                                    </Typography>
+                                                    </Typography> */}
 
                                                     {/* ✅ Content Section (Uses `dangerouslySetInnerHTML`) */}
                                                     <Box sx={{ maxWidth: "800px" }}>
                                                         <Box
+                                                          className='post-body-content'
                                                             sx={{
                                                                 fontFamily: "Poppins, sans-serif",
                                                                 fontSize: "16px",

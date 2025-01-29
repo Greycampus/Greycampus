@@ -27,6 +27,10 @@ p>img{
   width: 100% !important;
 }
 
+.post-body-content a{
+  color: #34aeb5 !important;
+}
+
 /* Custom scrollbar */
 
 .custom-scrollbar::-webkit-scrollbar-track {
