@@ -115,6 +115,8 @@ const CustomCard: React.FC<CustomCardProps> = ({ post_title, category, author, p
         height: { xs: 'auto',  sm:'136px'},
         borderWidth: '1px',
         borderColor: '#34AEB5',
+        position:'relative',
+        padding:"25px",
         borderStyle: "solid"
         //height: "100vh", // Full viewport height for demonstration
       }}
@@ -128,7 +130,9 @@ const CustomCard: React.FC<CustomCardProps> = ({ post_title, category, author, p
           height: '100%',
           maxWidth: '32px',
           borderTopLeftRadius: '12px',
-          borderBottomLeftRadius: '12px'
+          borderBottomLeftRadius: '12px',
+          position:"absolute",
+          left:"0"
         }} 
       />
 
