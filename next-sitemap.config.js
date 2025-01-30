@@ -1,12 +1,16 @@
 const fetchDynamicPaths = require("./scripts/fetchDynamicPaths");
 
+let cachedPaths = null;
+
 module.exports = {
-  siteUrl: "https://greycampus.vercel.app/", 
-  generateRobotsTxt: true, // ✅ This automatically generates robots.txt
-  generateIndexSitemap: false, // Ensures only one sitemap is created
-  sitemapSize: 5000, // Keeps sitemap manageable
+  siteUrl: "https://greycampus.vercel.app/",
+  generateRobotsTxt: true,
+  generateIndexSitemap: false,
+  sitemapSize: 5000,
   additionalPaths: async (config) => {
-    const paths = await fetchDynamicPaths();
-    return paths;
+    if (!cachedPaths) {
+      cachedPaths = await fetchDynamicPaths();
+    }
+    return cachedPaths;
   },
 };

@@ -8,16 +8,15 @@
     "node_modules/@emotion/react/**",
     "node_modules/@emotion/styled/**"
   ],
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "postbuild": "next-sitemap",
-    "apollo:download-schema": "apollo client:download-schema schema.graphql",
-    "apollo:generate-types": "rm -rf __generated__ && apollo client:codegen --target typescript --outputFlat",
-    "apollo:sync": "npm run apollo:download-schema && npm run apollo:generate-types",
-    "prettier": "prettier --write '**/*.{js,jsx,ts,tsx}'"
-  },
+"scripts": {
+  "dev": "next dev",
+  "build": "next build && next-sitemap",
+  "start": "next start",
+  "apollo:download-schema": "apollo client:download-schema schema.graphql",
+  "apollo:generate-types": "rm -rf __generated__ && apollo client:codegen --target typescript --outputFlat",
+  "apollo:sync": "npm run apollo:download-schema && npm run apollo:generate-types",
+  "prettier": "prettier --write '**/*.{js,jsx,ts,tsx}'"
+},
   "dependencies": {
     "@apollo/client": "^3.3.7",
     "@emotion/react": "^11.14.0",
