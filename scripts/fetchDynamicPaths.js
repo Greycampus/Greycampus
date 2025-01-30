@@ -19,9 +19,9 @@ async function fetchOpenCampusBlogs() {
         break;
       }
 
-      // ✅ Convert API data to sitemap paths
+      // ✅ Corrected Path Prefix for Open Campus Blogs
       const paths = data.data.map((item) => ({
-        loc: `/open-campus-blogs/${slugify(item.post_title)}`,
+        loc: `https://greycampus.vercel.app/openCampus/${slugify(item.post_title)}`,
         lastmod: new Date().toISOString(),
       }));
 
@@ -30,7 +30,6 @@ async function fetchOpenCampusBlogs() {
       totalPages = data?.meta?.pagination?.pageCount || 1;
       page++;
 
-      // ✅ Prevent infinite loops
       if (page > totalPages) break;
     } catch (error) {
       console.error(`Error fetching Open Campus Blogs:`, error);
@@ -50,7 +49,7 @@ async function fetchBlogs() {
 
   do {
     try {
-      const fullUrl = `${process.env.NEXT_PUBLIC_API_SERVER_ENDPOINT}/api/blogs?fields=post_title&pagination[page]=${page}&pagination[pageSize]=${pageSize}&timestamp=${Date.now()}`;
+      const fullUrl = `${process.env.NEXT_PUBLIC_API_SERVER_ENDPOINT}/api/blogs?fields=post_url&pagination[page]=${page}&pagination[pageSize]=${pageSize}&timestamp=${Date.now()}`;
       console.log(`Fetching Blogs: ${fullUrl}`);
 
       const res = await fetch(fullUrl);
@@ -61,18 +60,21 @@ async function fetchBlogs() {
         break;
       }
 
-      // ✅ Convert API data to sitemap paths
-      const paths = data.data.map((item) => ({
-        loc: `/blogs/${slugify(item.post_title)}`,
-        lastmod: new Date().toISOString(),
-      }));
+      // ✅ Extract only the slug from `post_url` (Removing Base URL)
+      const paths = data.data.map((item) => {
+        if (!item.post_url) return null; // Skip if `post_url` is missing
+        const slug = item.post_url.replace("https://www.greycampus.com/blog/", "").trim();
+        return {
+          loc: `https://greycampus.vercel.app/blog/${slug}`,
+          lastmod: new Date().toISOString(),
+        };
+      }).filter(Boolean); // ✅ Remove null values from array
 
       allPaths = [...allPaths, ...paths];
 
       totalPages = data?.meta?.pagination?.pageCount || 1;
       page++;
 
-      // ✅ Prevent infinite loops
       if (page > totalPages) break;
     } catch (error) {
       console.error(`Error fetching Blogs:`, error);
