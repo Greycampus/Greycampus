@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
@@ -102,29 +102,34 @@ const LeftSidebar = () => {
 
 const CustomComponent = ({ blog }: { blog: any }) => {
 
+    if (!blog) {
+        return <Typography>Loading blog data...</Typography>;
+    }
+
     return (
         <Box sx={{ display: "flex", flexDirection: { xs: "column", sm: "row" }, justifyContent: "space-between", gap: 2, background: "#000", px: "16px", pt: "48px" }}>
             <LeftSidebar />
             <Box sx={{ flex: 2, padding: "16px", color: "#fff" }}>
-                {/* <Typography variant="h4" gutterBottom>{blog?.post_title || "Blog Title"}</Typography> */}
+                <Typography variant="h4" gutterBottom>{blog?.post_title || "Blog Title"}</Typography>
                 <Box
-                   className='post-body-content'
+                    className='post-body-content'
                     sx={{
                         fontFamily: "Poppins, sans-serif",
                         fontSize: "16px",
                         lineHeight: "1.8",
                     }}
                     dangerouslySetInnerHTML={{
-                        __html: modifyLinks(parseMarkdown(blog?.post_body)),
+                        __html: modifyLinks(parseMarkdown(blog?.post_body || "")),
                     }}
                 />
-                {blog?.content.map(renderContent)}
+                {blog?.content?.map(renderContent)}
             </Box>
-            <Box sx={{ flex: 1, display: "flex", flexDirection: "column",}}>
-                <BlogList category={blog?.opencampus_category?.name}/>
+            <Box sx={{ flex: 1, display: "flex", flexDirection: "column" }}>
+                <BlogList category={blog?.opencampus_category?.name} />
             </Box>
         </Box>
     );
 };
+
 
 export default CustomComponent;
