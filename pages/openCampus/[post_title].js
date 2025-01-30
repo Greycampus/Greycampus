@@ -1,90 +1,124 @@
 import CustomComponent from "../../src/components/openCampusBlogDetails";
 
 const slugify = (text) => {
-  if (!text) {
-    return ''; // Return an empty string or handle the case where text is undefined/null
-  }
+  if (!text) return "";
   return text
     .toString()
     .toLowerCase()
-    .replace(/\s+/g, '-')
-    .replace(/[^\w-]+/g, '')
-    .replace(/--+/g, '-')
-    .replace(/^-+/, '')
-    .replace(/-+$/, '');
+    .replace(/\s+/g, "-")
+    .replace(/[^\w-]+/g, "")
+    .replace(/--+/g, "-")
+    .replace(/^-+/, "")
+    .replace(/-+$/, "");
 };
 
+// ✅ Fetch All Blog Paths for Static Generation
 export async function getStaticPaths() {
-  const API_URL = `${process.env.NEXT_PUBLIC_API_SERVER_ENDPOINT}/api/open-campus-blogs?populate=*&timestamp=${Date.now()}`;
-  const res = await fetch(API_URL);
-  const blogsData = await res.json();
+  try {
+    let allBlogsData = [];
+    let page = 1;
+    let totalPages = 1;
+    const pageSize = 100; // Fetch 100 per request
 
-  // Filter out blogs with missing or undefined post_title
-  const validBlogs = blogsData.data.filter((blog) => blog.post_title);
+    do {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_SERVER_ENDPOINT}/api/open-campus-blogs?fields=post_title&pagination[page]=${page}&pagination[pageSize]=${pageSize}&timestamp=${Date.now()}`
+      );
+      const blogsData = await res.json();
 
-  const paths = validBlogs.map((blog) => {
-    const postTitleSlug = slugify(blog.post_title);
-    return { params: { post_title: postTitleSlug } }; // Only post_title in params
-  });
+      if (!blogsData.data || blogsData.data.length === 0) break;
 
-  return { paths, fallback: true };
-}
+      allBlogsData = [...allBlogsData, ...blogsData.data];
+      totalPages = blogsData.meta.pagination.pageCount;
+      page++;
 
-export async function getStaticProps({ params }) {
-  const { post_title } = params;
+      // Safety limit to prevent infinite loops
+      if (page > totalPages) break;
+    } while (page <= totalPages);
 
-  let allBlogsData = [];
-  let page = 1;
-  let totalPages = 1;
-
-  do {
-    const allBlogsRes = await fetch(
-      `${process.env.NEXT_PUBLIC_API_SERVER_ENDPOINT}/api/open-campus-blogs?populate=*&pagination[page]=${page}&pagination[pageSize]=25&timestamp=${Date.now()}`
-    );
-    const responseData = await allBlogsRes.json();
-
-    if (responseData.data && responseData.data.length > 0) {
-      allBlogsData = [...allBlogsData, ...responseData.data];
+    if (!allBlogsData.length) {
+      console.error("Error: No blogs found.");
+      return { paths: [], fallback: "blocking" };
     }
 
-    totalPages = responseData.meta.pagination.pageCount;
-    page++;
-  } while (page <= totalPages);
+    // Generate paths for static generation
+    const paths = allBlogsData
+      .filter((blog) => blog.post_title)
+      .map((blog) => ({ params: { post_title: slugify(blog.post_title) } }));
 
-  // Filter out blogs with missing or undefined post_title
-  const validBlogs = allBlogsData.filter((blog) => blog.post_title);
-   
-  // console.log('validBlogs-----------', validBlogs);
-  
-
-  const foundBlog = validBlogs.find((blog) => {
-    const blogPostTitleSlug = slugify(blog.post_title);
-    return blogPostTitleSlug === post_title;
-  });
-
-  // console.log('found blog---------', foundBlog);
-  
-  if (!foundBlog) {
-    return { notFound: true };
+    return { paths, fallback: "blocking" };
+  } catch (error) {
+    console.error("Error in getStaticPaths:", error);
+    return { paths: [], fallback: "blocking" };
   }
-
-  // Fetch full blog data using documentId
-  const blogRes = await fetch(
-    `${process.env.NEXT_PUBLIC_API_SERVER_ENDPOINT}/api/open-campus-blogs/${foundBlog.documentId}?populate[content][populate]=*&populate[opencampus_category][populate]=*&timestamp=${Date.now()}`
-  );
-  const blogData = await blogRes.json();
-
-  // console.log('blog data------------', blogData);
-  
-  return {
-    props: { blog: blogData.data },
-    revalidate: 10,
-  };
 }
 
+// ✅ Fetch Full Blog Data for Each Page
+export async function getStaticProps({ params }) {
+  try {
+    const { post_title } = params;
 
+    let allBlogsData = [];
+    let page = 1;
+    let totalPages = 1;
+    const pageSize = 100; // Fetch more data per request
+
+    do {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_SERVER_ENDPOINT}/api/open-campus-blogs?fields=post_title,documentId&pagination[page]=${page}&pagination[pageSize]=${pageSize}&timestamp=${Date.now()}`
+      );
+      const blogsData = await res.json();
+
+      if (!blogsData.data || blogsData.data.length === 0) break;
+
+      allBlogsData = [...allBlogsData, ...blogsData.data];
+      totalPages = blogsData.meta.pagination.pageCount;
+      page++;
+
+      // Safety limit to prevent infinite loops
+      if (page > totalPages) break;
+    } while (page <= totalPages);
+
+    if (!allBlogsData.length) {
+      console.error("Error: No blogs found.");
+      return { notFound: true };
+    }
+
+    // Find the matching blog
+    const foundBlog = allBlogsData.find(
+      (blog) => slugify(blog.post_title) === post_title
+    );
+
+    if (!foundBlog) {
+      return { notFound: true };
+    }
+
+    // Fetch full blog details using documentId
+    const blogRes = await fetch(
+      `${process.env.NEXT_PUBLIC_API_SERVER_ENDPOINT}/api/open-campus-blogs/${foundBlog.documentId}?populate[content][populate]=*&populate[opencampus_category][populate]=*&timestamp=${Date.now()}`
+    );
+    const blogData = await blogRes.json();
+
+    if (!blogData.data) {
+      console.error("Error fetching blog details:", blogData);
+      return { notFound: true };
+    }
+
+    return {
+      props: { blog: blogData.data },
+      revalidate: 10,
+    };
+  } catch (error) {
+    console.error("Error in getStaticProps:", error);
+    return { notFound: true };
+  }
+}
+
+// ✅ Blog Page Component
 const EachBlog = ({ blog }) => {
-  // console.log("EachBlog props.blog:", blog);
+  if (!blog) {
+    return <p>Loading...</p>; // Prevent hydration errors
+  }
   return <CustomComponent blog={blog} />;
 };
 
