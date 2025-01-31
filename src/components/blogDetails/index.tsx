@@ -139,6 +139,9 @@ const BlogDetails = ({ blog }: { blog: any }) => {
                                                         flexDirection: "column",
                                                         gap: "16px",
                                                         textAlign: "center",
+                                                        position:"sticky",
+                                                        top:"16px",
+                                                        alignSelf:"start"
                                                     }}
                                                 >
                                                     <Box sx={styles.metadataBox}>

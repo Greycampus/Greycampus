@@ -27,8 +27,8 @@ type detailObj = {
 }
 
 const styles = {
-  iconLine: { 
-    display: 'flex', 
+  iconLine: {
+    display: 'flex',
     justifyContent: 'flex-start',
     alignItems: 'center',
     mb: '8px'
@@ -54,20 +54,20 @@ const styles = {
 const getIcon = (name: string) => {
   switch (name) {
     case 'tag':
-      return <LocalOfferOutlinedIcon sx={styles.iconLineIcon}/>
-    
+      return <LocalOfferOutlinedIcon sx={styles.iconLineIcon} />
+
     case 'grad':
-      return <SchoolOutlinedIcon sx={[styles.iconLineIcon, { height: '24px'}]}/>
+      return <SchoolOutlinedIcon sx={[styles.iconLineIcon, { height: '24px' }]} />
 
     case 'event':
-      return <CalendarTodayOutlinedIcon sx={styles.iconLineIcon}/>
+      return <CalendarTodayOutlinedIcon sx={styles.iconLineIcon} />
 
     default:
       return <></>;
   }
 }
 
-const getIconStringBox = (arr: any []) => {
+const getIconStringBox = (arr: any[]) => {
   return (
     <Box>
       {arr.map((item) => {
@@ -82,29 +82,30 @@ const getIconStringBox = (arr: any []) => {
   )
 }
 
-const getIconTextArr = (details: detailObj ) => {
-    return ([
-      { icon: 'tag', txt:   details.category, key: details.post_title },
-      { icon: 'grad', txt:  details.author, key: details.post_title },
-      { icon: 'event', txt: details.publish_date, key: details.post_title }
-    ])
+const getIconTextArr = (details: detailObj) => {
+  return ([
+    { icon: 'tag', txt: details.category, key: details.post_title },
+    { icon: 'grad', txt: details.author, key: details.post_title },
+    { icon: 'event', txt: details.publish_date, key: details.post_title }
+  ])
 }
 
 // Correct way to define the functional component
-const CustomCard: React.FC<CustomCardProps> = ({ post_title, category, author, publish_date, onReadMorePath, isOpenCampusBlog = false, opencampus_category, opencampus_sub_category, publishedAt }) => {
- 
-  
+const CustomCard: React.FC<CustomCardProps> = ({ post_title, category, author, publish_date, onReadMorePath, isOpenCampusBlog = false, opencampus_category, publishedAt }) => {
+
+
   const iconTxtArr = getIconTextArr({
     post_title,
     category: isOpenCampusBlog ? opencampus_category?.name || '' : category,
     author: isOpenCampusBlog ? 'Admin' : author || '',
-    publish_date: isOpenCampusBlog 
-      ? publishedAt || '' 
-      : publish_date 
-      ? new Date(publish_date).toLocaleString() 
-      : ''
+    publish_date: publish_date
+      ? new Date(publish_date).toLocaleString()
+      : publishedAt
+        ? new Date(publishedAt).toLocaleString()
+        : ''
+
   });
-  
+
   return (
     <Box
       sx={{
@@ -112,11 +113,11 @@ const CustomCard: React.FC<CustomCardProps> = ({ post_title, category, author, p
         alignItems: "center",
         borderRadius: '12px',
         minHeight: '136px',
-        height: { xs: 'auto',  sm:'136px'},
+        height: { xs: 'auto', sm: '136px' },
         borderWidth: '1px',
         borderColor: '#34AEB5',
-        position:'relative',
-        padding:"25px",
+        position: 'relative',
+        padding: "25px",
         borderStyle: "solid"
         //height: "100vh", // Full viewport height for demonstration
       }}
@@ -131,9 +132,9 @@ const CustomCard: React.FC<CustomCardProps> = ({ post_title, category, author, p
           maxWidth: '32px',
           borderTopLeftRadius: '12px',
           borderBottomLeftRadius: '12px',
-          position:"absolute",
-          left:"0"
-        }} 
+          position: "absolute",
+          left: "0"
+        }}
       />
 
       {/* Right Section (Flexible Box) */}
@@ -141,16 +142,16 @@ const CustomCard: React.FC<CustomCardProps> = ({ post_title, category, author, p
         sx={{
           flexGrow: 1, // Take up remaining space
           display: "flex",
-          width:'100%',
+          width: '100%',
           alignItems: "center",
           justifyContent: "center",
           borderTopRightRadius: '12px',
           borderBottomRightRadius: '12px',
           color: '#fff'
         }}
-      > 
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', color: '#fff', height: "calc(100% - 32px)", width:"100%", padding:"1rem" }}>
-          <Box sx={{ height: "calc(100% - 32px)", display: 'flex', flexDirection: 'column', justifyContent: 'space-between', mt: 0}}>
+      >
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', color: '#fff', height: "calc(100% - 32px)", width: "100%", padding: "1rem" }}>
+          <Box sx={{ height: "calc(100% - 32px)", display: 'flex', flexDirection: 'column', justifyContent: 'space-between', mt: 0 }}>
             <Typography sx={styles.post_title}>
               {post_title}
             </Typography>
@@ -173,7 +174,8 @@ const CustomCard: React.FC<CustomCardProps> = ({ post_title, category, author, p
           </Box>
           <Box sx={{
             display: { xs: 'none', sm: 'block' }, bgcolor: '#34AEB5', width: '4px', borderRadius: '4px', height: "calc(100% - 32px)", // Adjust height to fit content
-            mx: "16px", }}/>
+            mx: "16px",
+          }} />
           {getIconStringBox(iconTxtArr)}
         </Box>
       </Box>
