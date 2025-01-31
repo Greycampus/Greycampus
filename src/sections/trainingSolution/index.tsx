@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
@@ -7,7 +7,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import { API_URL } from "src/utilities/resources";
-
+import DownloadBrochureModal from "@components/css/modal";
 // Styles Object
 const styles = {
     container: {
@@ -86,6 +86,10 @@ const trainingPrograms = [
 ];
 
 const TrainingProgramsSection = () => {
+    const [open, setOpen] = useState(false);
+
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
     return (
         <Box sx={styles.container}>
             {/* Section Title */}
@@ -116,12 +120,15 @@ const TrainingProgramsSection = () => {
             </Grid>
 
             {/* Download Brochure Button */}
-            <Button variant="contained" sx={styles.button}>
+            <Button variant="contained" sx={styles.button} onClick={handleOpen}>
                 <Typography sx={{ fontSize: '1rem', fontFamily: 'Poppins, sans-serif', }}>
                     Download Brochure
                 </Typography>
             </Button>
-        </Box>
+
+            <DownloadBrochureModal open={open} handleClose={handleClose} />
+
+                    </Box>
     );
 };
 
