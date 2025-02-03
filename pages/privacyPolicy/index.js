@@ -29,68 +29,69 @@ const PrivacyPolicy = ({ terms }) => {
 
     return (
         <>
-        <Head>
-        <title>Privacy Policy | GreyCampus</title>
-    <meta name="description" content="We at GreyCampus respect your right to privacy. Find all the information related to our privacy policy here." />
-    <meta property="og:description" content="We at GreyCampus respect your right to privacy. Find all the information related to our privacy policy here." />
-    <meta property="og:title" content="Privacy Policy | GreyCampus" />
-    <meta name="twitter:description" content="We at GreyCampus respect your right to privacy. Find all the information related to our privacy policy here." />
-    <meta name="twitter:title" content="Privacy Policy | GreyCampus" />
-        </Head>
-        <Box
-            sx={{
-                padding: "32px",
-                backgroundColor: "#000", // Black background
-                color: "#fff", // White text color
-                margin: "0 auto", // Center horizontally
-            }}
-        >
-            {/* Header Section */}
-            <Typography
+            <Head>
+                <title>Privacy Policy | GreyCampus</title>
+                <meta name="description" content="We at GreyCampus respect your right to privacy. Find all the information related to our privacy policy here." />
+                <meta property="og:description" content="We at GreyCampus respect your right to privacy. Find all the information related to our privacy policy here." />
+                <meta property="og:title" content="Privacy Policy | GreyCampus" />
+                <meta name="twitter:description" content="We at GreyCampus respect your right to privacy. Find all the information related to our privacy policy here." />
+                <meta name="twitter:title" content="Privacy Policy | GreyCampus" />
+            </Head>
+            <Box
+                className="privacy-policy"
                 sx={{
-                    textAlign: "center",
-                    //marginBottom: "16px",
-                    fontFamily: "Poppins, sans-serif",
-                    fontSize: "48px",
+                    padding: "32px",
+                    backgroundColor: "#000", // Black background
+                    color: "#fff", // White text color
+                    margin: "0 auto", // Center horizontally
                 }}
             >
-                {title}
-            </Typography>
+                {/* Header Section */}
+                <Typography
+                    sx={{
+                        textAlign: "center",
+                        //marginBottom: "16px",
+                        fontFamily: "Poppins, sans-serif",
+                        fontSize: "48px",
+                    }}
+                >
+                    {title}
+                </Typography>
 
-            {/* Divider */}
-            <Divider
-                sx={{
-                    width: "72px", // Adjust width of the divider
-                    margin: "0 auto",
-                    height: "4px", // Divider thickness
-                    borderRadius: "4px",
-                    backgroundColor: "#34AEB5", // Teal color
-                    marginBottom: "24px",
-                }}
-            />
+                {/* Divider */}
+                <Divider
+                    sx={{
+                        width: "72px", // Adjust width of the divider
+                        margin: "0 auto",
+                        height: "4px", // Divider thickness
+                        borderRadius: "4px",
+                        backgroundColor: "#34AEB5", // Teal color
+                        marginBottom: "24px",
+                    }}
+                />
 
-            {/* Dynamic Content */}
-            <Box
-                sx={{
-                    width: "100%", // Full width by default
-                    maxWidth: { xs: "90%", sm: "75%", md: "70%" }, // Adjust width based on breakpoints
-                    textAlign: { xs: "center", sm: "justify" }, // Center-align for small screens, justify for larger
-                    margin: "0 auto", // Center horizontally
-                    fontFamily: "Poppins, sans-serif", // Apply globally to all text
-                    "& p": {
-                        fontSize: "16px", // Set paragraph font size
-                        marginBottom: "8px", // Optional: Add spacing between paragraphs
-                    },
-                    "& h3": {
-                        fontSize: "24px", // Set H3 font size
-                        fontWeight: "bold", // Optional: Make H3 bold
-                    },
-                }}
-                dangerouslySetInnerHTML={{
-                    __html: parseMarkdown(content),
-                }}
-            />
-        </Box>
+                {/* Dynamic Content */}
+                <Box
+                    sx={{
+                        width: "100%", // Full width by default
+                        maxWidth: { xs: "90%", sm: "75%", md: "70%" }, // Adjust width based on breakpoints
+                        textAlign: { xs: "center", sm: "justify" }, // Center-align for small screens, justify for larger
+                        margin: "0 auto", // Center horizontally
+                        fontFamily: "Poppins, sans-serif", // Apply globally to all text
+                        "& p": {
+                            fontSize: "16px", // Set paragraph font size
+                            marginBottom: "8px", // Optional: Add spacing between paragraphs
+                        },
+                        "& h3": {
+                            fontSize: "24px", // Set H3 font size
+                            fontWeight: "bold", // Optional: Make H3 bold
+                        },
+                    }}
+                    dangerouslySetInnerHTML={{
+                        __html: parseMarkdown(content),
+                    }}
+                />
+            </Box>
         </>
     );
 };
@@ -98,7 +99,7 @@ const PrivacyPolicy = ({ terms }) => {
 export async function getStaticProps() {
     // Replace `API_URL` with your Strapi endpoint
     const TermsEndPoint =
-    process.env.NEXT_PUBLIC_API_SERVER_ENDPOINT + `/api/privacy-policy?timestamp=${Date.now()}`;
+        process.env.NEXT_PUBLIC_API_SERVER_ENDPOINT + `/api/privacy-policy?timestamp=${Date.now()}`;
 
     const res = await fetch(TermsEndPoint);
     const data = await res.json();

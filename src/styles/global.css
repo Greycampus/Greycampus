@@ -8,26 +8,37 @@ body {
 }
 
 
-p+br, h2+br, h1+br, h3+br,h4+br, li+br, ul+br, ul>br,  li>br, div>br, section>br, ol+br{
+/* ✅ Apply styles only on Blog & About pages */
+.post-body-content p+br,
+.post-body-content h2+br,
+.post-body-content h1+br,
+.post-body-content h3+br,
+.post-body-content h4+br,
+.post-body-content li+br,
+.post-body-content ul+br,
+.post-body-content ul > br,
+.post-body-content li > br,
+.post-body-content div > br,
+.post-body-content section > br,
+.post-body-content ol+br {
   display: none !important;
 }
 
-p:empty {
-  display: none  !important;
+.post-body-content p:empty {
+  display: none !important;
 }
 
-
-
-p:matches(:empty, :not(:empty):not(:only-child)) {
+.post-body-content p:matches(:empty, :not(:empty):not(:only-child)) {
   display: none;
 }
 
-
-p>img{
+.post-body-content p > img {
   width: 100% !important;
 }
 
-.post-body-content a{
+
+.post-body-content, 
+.privacy-policy a {
   color: #34aeb5 !important;
 }
 
