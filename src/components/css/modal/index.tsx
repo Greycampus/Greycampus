@@ -8,12 +8,19 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 400,
-  height:400,
+  width: {
+    xs:'80%',
+    sm:'80%',
+    md:'400px'
+  },
+  height:350,
   bgcolor: "background.paper",
-  border: "2px solid #000",
   boxShadow: 24,
-  p: 4,
+  p: {
+    xs:2,
+    sm:2,
+    md:4
+  },
 };
 
 // ✅ Pass `open` prop to trigger form load

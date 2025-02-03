@@ -23,7 +23,10 @@ body {
 .post-body-content ol+br {
   display: none !important;
 }
-
+.post-body-content img{
+  width: 100% !important;
+  height: 100% !important;
+}
 .post-body-content p:empty {
   display: none !important;
 }
@@ -37,11 +40,12 @@ body {
 }
 
 
-.post-body-content, 
-.privacy-policy a {
+.post-body-content a {
   color: #34aeb5 !important;
 }
-
+.privacy-policy a{
+  color: #34aeb5 !important;
+}
 /* Custom scrollbar */
 
 .custom-scrollbar::-webkit-scrollbar-track {

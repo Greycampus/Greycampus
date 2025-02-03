@@ -107,7 +107,7 @@ const CustomComponent = ({ blog }: { blog: any }) => {
     }
 
     return (
-        <Box sx={{ display: "flex", flexDirection: { xs: "column", sm: "row" }, justifyContent: "space-between", gap: 2, background: "#000", px: "16px", pt: "48px" }}>
+        <Box sx={{ display: "flex", flexDirection: {xs:'column', sm: "column", md: "row" }, justifyContent: "space-between", gap: 2, background: "#000", px: "16px", pt: "48px" }}>
             <LeftSidebar />
             <Box sx={{ flex: 2, padding: "16px", color: "#fff" }}>
                 <Typography variant="h4" gutterBottom>{blog?.post_title || "Blog Title"}</Typography>
