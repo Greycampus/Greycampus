@@ -11,41 +11,41 @@ import Head from "next/head";
 const TopAbout = () => {
     return (
         <>
-        <Head>
-        <title>GreyCampus | About Us</title>
-        <meta name="description" content="About uss Upskilling Professionals to Enable Growth, Productivity and Efficiency  About us At GreyCampus, we believe that every organisation should be able to skill up their workforce effectively in a professional&amp;nbsp; effective, and affordable manner. With that in mind, we have set out to create the world&amp;#8217;s best-value platform where learners can access high-quality online courses, [&amp;hellip;]" />
-        <meta property="og:description" content="About us Upskilling Professionals to Enable Growth, Productivity and Efficiency  About us At GreyCampus, we believe that every organisation should be able to skill up their workforce effectively in a professional&amp;nbsp; effective, and affordable manner. With that in mind, we have set out to create the world&amp;#8217;s best-value platform where learners can access high-quality online courses, [&amp;hellip;]" />
-    <meta property="og:title" content="GreyCampus | About Us" />
-    <meta name="twitter:description" content="About us Upskilling Professionals to Enable Growth, Productivity and Efficiency  About us At GreyCampus, we believe that every organisation should be able to skill up their workforce effectively in a professional&amp;nbsp; effective, and affordable manner. With that in mind, we have set out to create the world&amp;#8217;s best-value platform where learners can access high-quality online courses, [&amp;hellip;]" />
-    <meta name="twitter:title" content="GreyCampus | About Us" />
-        </Head>
-        
-        <Box
-            sx={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                minHeight: '400px',  // Adjust the height as needed
-                backgroundImage: `url(${API_URL}/uploads/about_us_bg_1ffec84c94.jpg)`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                color: '#fff',
-                mb: '20px'
-            }}
-        >   
+            <Head>
+                <title>GreyCampus | About Us</title>
+                <meta name="description" content="About uss Upskilling Professionals to Enable Growth, Productivity and Efficiency  About us At GreyCampus, we believe that every organisation should be able to skill up their workforce effectively in a professional&amp;nbsp; effective, and affordable manner. With that in mind, we have set out to create the world&amp;#8217;s best-value platform where learners can access high-quality online courses, [&amp;hellip;]" />
+                <meta property="og:description" content="About us Upskilling Professionals to Enable Growth, Productivity and Efficiency  About us At GreyCampus, we believe that every organisation should be able to skill up their workforce effectively in a professional&amp;nbsp; effective, and affordable manner. With that in mind, we have set out to create the world&amp;#8217;s best-value platform where learners can access high-quality online courses, [&amp;hellip;]" />
+                <meta property="og:title" content="GreyCampus | About Us" />
+                <meta name="twitter:description" content="About us Upskilling Professionals to Enable Growth, Productivity and Efficiency  About us At GreyCampus, we believe that every organisation should be able to skill up their workforce effectively in a professional&amp;nbsp; effective, and affordable manner. With that in mind, we have set out to create the world&amp;#8217;s best-value platform where learners can access high-quality online courses, [&amp;hellip;]" />
+                <meta name="twitter:title" content="GreyCampus | About Us" />
+            </Head>
 
-            <Box sx={{ maxWidth: '1280px', flex: 1, width: '100%', px: '16px'}}>
-                <Box sx={{ width: { xs: '100%', md: '50%' } }}>
-                    <Typography sx={{ fontSize: '16px',}}>
-                        About us
-                    </Typography>
-                    <Divider sx={{ bgcolor: '#0C868D', height: '6px', borderRadius: '4px', width: '160px', mb: '20px' }} />
-                    <Typography variant="h3" sx={{ fontWeight: 800 }}>
-                        Skilling Up Professionals to Enable Growth, Productivity and Efficiency
-                    </Typography>
+            <Box
+                sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    minHeight: '400px',  // Adjust the height as needed
+                    backgroundImage: `url(${API_URL}/uploads/about_us_bg_1ffec84c94.jpg)`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    color: '#fff',
+                    mb: '20px'
+                }}
+            >
+
+                <Box sx={{ maxWidth: '1280px', flex: 1, width: '100%', px: '16px' }}>
+                    <Box sx={{ width: { xs: '100%', md: '50%' } }}>
+                        <Typography sx={{ fontSize: '16px', }}>
+                            About us
+                        </Typography>
+                        <Divider sx={{ bgcolor: '#0C868D', height: '6px', borderRadius: '4px', width: '160px', mb: '20px' }} />
+                        <Typography variant="h3" sx={{ fontWeight: 800 }}>
+                            Skilling Up Professionals to Enable Growth, Productivity and Efficiency
+                        </Typography>
+                    </Box>
                 </Box>
             </Box>
-        </Box>
         </>
     )
 }
@@ -53,32 +53,42 @@ const TopAbout = () => {
 const Body = () => {
 
     return (
-        <Box sx={{ display: 'flex', width: '100%', overflow: 'hidden', bgcolor: '#000', py: '16px'  }}>
-                <Box
-                    component="img"
-                    src={`${API_URL}/uploads/Group_3330_03055eabdb.jpg`}
-                    alt="Learning Environment"
-                    sx={{
-                        maxWidth: '50%',
-                        width: 'auto',
-                        height: 'auto',
-                        borderTopRightRadius: '16px',
-                        borderBottomRightRadius: '16px',
-                        display: {
-                            xs: 'none',
-                            sm: 'block'
-                        },
-                        mt: '-16px'
-                    }}
-                />
+        <Box
+            sx={{
+                display: 'flex',
+                justifyContent: {
+                    xs: 'start',
+                    sm: "start",
+                    md: 'end'
+
+                },
+                width: '100%',
+                overflow: 'hidden',
+                py: '16px',
+                backgroundImage: {
+                    xs: "none", // ❌ Hide on extra small (`xs`)
+                    sm: "none", // ❌ Hide on small (`sm`)
+                    md: `url(${API_URL}/uploads/Group_3330_03055eabdb.jpg)`, // ✅ Show only on large (`lg`) and above
+                },
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+            }}
+        >
+
             <Box
                 sx={{
                     padding: 4,
-                    flexGrow: 1,// Set the appropriate background color
+                    flexGrow: 1,
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'center',
-                    color: '#fff'
+                    color: '#fff',
+                    maxWidth: {
+                        xs: '100%',
+                        sm: "100%",
+                        md: "58%",
+                    }
                 }}
             >
                 <Typography variant="h4" sx={{ mb: 2 }}>
@@ -108,7 +118,7 @@ const Body = () => {
     )
 }
 
-const TeamMember = ({ name, role, imgUrl }: {name: string, role: string, imgUrl: string}) => {
+const TeamMember = ({ name, role, imgUrl }: { name: string, role: string, imgUrl: string }) => {
     return (
         <Grid item xs={12} sm={4} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <Avatar
@@ -136,7 +146,7 @@ const MeetTheTeam = () => {
 
     return (
         <Box sx={{ backgroundColor: '#212529', py: '64px', color: '#fff', textAlign: 'center' }}>
-            <Typography sx={{ fontSize: '32px', mb: '40px'}}>Meet The Team</Typography>
+            <Typography sx={{ fontSize: '32px', mb: '40px' }}>Meet The Team</Typography>
             <Grid container justifyContent="center" spacing={2}>
                 {teamMembers.map(member => (
                     <TeamMember key={member.name} name={member.name} role={member.role} imgUrl={member.imgUrl} />
