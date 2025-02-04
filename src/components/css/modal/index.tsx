@@ -25,6 +25,7 @@ const style = {
 
 // ✅ Pass `open` prop to trigger form load
 export default function DownloadBrochureModal({ open, handleClose }:{ open:any, handleClose:any }) {
+
   return (
     <Modal open={open} onClose={handleClose}>
       <Box sx={style}>

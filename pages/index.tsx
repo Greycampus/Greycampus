@@ -5,14 +5,15 @@ import TopSection from "src/sections/topSection";
 import ImpactSection from "src/sections/impactSection";
 import lazyLoadHydrate from "next-lazy-hydrate";
 import Head from "next/head";
-
+import TrainingProgramsSection from "src/sections/trainingSolution";
+import GetInTouch from "src/sections/getInTouch";
 // 📦 Dynamically import the rest of the sections
-const TrainingProgramsSection = lazyLoadHydrate(() => import("src/sections/trainingSolution"));
+// const TrainingProgramsSection = lazyLoadHydrate(() => import("src/sections/trainingSolution"));
 const HowWeWork = lazyLoadHydrate(() => import("src/sections/howWeWork"));
 const ProgramHighlights = lazyLoadHydrate(() => import("src/sections/highlights"));
 const AreasOfExpertise = lazyLoadHydrate(() => import("src/sections/areaOfExpertise"));
 const EnterpriseClients = lazyLoadHydrate(() => import("src/sections/clients"));
-const GetInTouch = lazyLoadHydrate(() => import("src/sections/getInTouch"));
+// const GetInTouch = lazyLoadHydrate(() => import("src/sections/getInTouch"));
 
 export const getStaticProps = async () => {
   return {

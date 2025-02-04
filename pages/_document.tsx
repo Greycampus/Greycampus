@@ -38,12 +38,10 @@ class CustomDocument extends Document {
             rel="preload"
             href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
           />
-          <link rel="preconnect" href="https://www.odinschool.com" crossOrigin="anonymous" />
           <link rel="preconnect" href="https://www.greycampus.com" crossOrigin="anonymous" />
           <link rel="preconnect" href={`${API_URL}`} crossOrigin="anonymous" />
 
           {/* DNS Prefetch as Fallback */}
-          <link rel="dns-prefetch" href="https://www.odinschool.com" />
           <link rel="dns-prefetch" href="https://www.greycampus.com" />
           <link rel="dns-prefetch" href={`${API_URL}`} />
 

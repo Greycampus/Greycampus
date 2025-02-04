@@ -57,7 +57,6 @@ const BlogDetails = ({ blog }: { blog: any }) => {
 
     useEffect(() => {
         removeParagraph()
-        console.log(blog);
         
         
     })

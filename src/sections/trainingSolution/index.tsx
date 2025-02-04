@@ -88,8 +88,10 @@ const trainingPrograms = [
 const TrainingProgramsSection = () => {
     const [open, setOpen] = useState(false);
 
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+    const handleOpen = () => {
+        setOpen(true);
+    };
+      const handleClose = () => setOpen(false);
     return (
         <Box sx={styles.container}>
             {/* Section Title */}

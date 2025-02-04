@@ -105,19 +105,13 @@ const LeftSidebar = () => {
 
 const CustomComponent = ({ blog }: { blog: any }) => {
 
-    useEffect(()=>{
-       if(blog){
-        console.log(blog);
-        
-       }
-    },[blog])
 
     const router = useRouter();
     const currentUrl = `https://greycampus.vercel.app${router.asPath}`;
 
 
     if (!blog) {
-        return <Typography>Loading blog data...</Typography>;
+        return <Loader/>;
     }
 
     return (
