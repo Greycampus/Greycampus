@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { removeParagraph } from '../../utilities/removeParagraph'
 import Head from "next/head";
-
+import Loader from "@components/commonComponents/Loader";
 // ✅ Function to Convert Markdown to HTML (No `react-markdown`)
 const parseMarkdown = (markdown: string) => {
     if (!markdown) return "";
@@ -50,7 +50,7 @@ const BlogDetails = ({ blog }: { blog: any }) => {
 
     // Fallback loading state
     if (router.isFallback) {
-        return <Typography>Loading...</Typography>;
+        return <Loader/>;
     }
 
     const { post_title, post_body, publish_date, author, category, post_seo_title, post_url, meta_description, featured_image_url } = blog;

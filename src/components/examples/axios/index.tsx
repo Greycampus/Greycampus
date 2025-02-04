@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-
+import Loader from "@components/commonComponents/Loader";
 /**
  * This component is generated as an example for axios
  *
@@ -50,7 +50,7 @@ export const AxiosExample = () => {
   }
 
   if (!isLoaded) {
-    return <div>Loading...</div>;
+    return <Loader/>;
   }
 
   return (

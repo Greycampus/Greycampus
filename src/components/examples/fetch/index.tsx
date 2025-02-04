@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+import Loader from "@components/commonComponents/Loader";
 /**
  * This component is generated as an example for fetch
  */
@@ -41,7 +41,7 @@ export const FetchExample = () => {
   if (error) {
     return <div>Error: {error}</div>;
   } else if (!isLoaded) {
-    return <div>Loading...</div>;
+    return <Loader/>;
   } else {
     return (
       <div>

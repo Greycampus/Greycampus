@@ -6,9 +6,12 @@ import Image from "next/image";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import {modifyLinks} from '../../utilities/modifyLinks'
+import Head from "next/head";
+import { useRouter } from "next/router";
+import Loader from "@components/commonComponents/Loader";
 const BlogList = dynamic(() => import("@components/openCampusBlogList"), {
     ssr: false, // Disable server-side rendering for this component
-    loading: () => <Typography>Loading...</Typography>, // Fallback during lazy loading
+    loading: () => <Loader/>, // Fallback during lazy loading
 });
 
 // ✅ Function to Convert Markdown to HTML
@@ -102,11 +105,42 @@ const LeftSidebar = () => {
 
 const CustomComponent = ({ blog }: { blog: any }) => {
 
+    useEffect(()=>{
+       if(blog){
+        console.log(blog);
+        
+       }
+    },[blog])
+
+    const router = useRouter();
+    const currentUrl = `https://greycampus.vercel.app${router.asPath}`;
+
+
     if (!blog) {
         return <Typography>Loading blog data...</Typography>;
     }
 
     return (
+        <>
+          <Head>
+                <title>{blog?.post_seo_title}</title>
+                <meta name="description" content={blog?.meta_description} />
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
+                <meta property="og:description" content={blog?.meta_description} />
+                <meta property="og:title" content={blog?.post_seo_title} />
+                <meta name="twitter:description" content={blog?.meta_description} />
+                <meta name="twitter:title" content={blog?.post_seo_title}></meta>
+                <meta property="og:image" content={blog?.featured_image_url}/>
+                <meta property="og:image:width" content="998"/>
+                <meta property="og:image:height" content="523"/>
+                <meta name="twitter:image" content={blog?.featured_image_url}/>
+                <meta property="og:url" content={currentUrl&&currentUrl}/>
+                <meta name="twitter:card" content="summary_large_image"/>
+                <link rel="canonical" href={currentUrl&&currentUrl}/>
+                <meta property="og:type" content="article"/>
+                <meta http-equiv="content-language" content="en-us"/>
+                </Head>
+        
         <Box sx={{ display: "flex", flexDirection: {xs:'column', sm: "column", md: "row" }, justifyContent: "space-between", gap: 2, background: "#000", px: "16px", pt: "48px" }}>
             <LeftSidebar />
             <Box sx={{ flex: 2, padding: "16px", color: "#fff" }}>
@@ -128,6 +162,7 @@ const CustomComponent = ({ blog }: { blog: any }) => {
                 <BlogList category={blog?.opencampus_category?.name} />
             </Box>
         </Box>
+        </>
     );
 };
 

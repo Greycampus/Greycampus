@@ -1,5 +1,5 @@
 import CustomComponent from "../../src/components/openCampusBlogDetails";
-
+import Loader from '../../src/components/commonComponents/Loader/index'
 const slugify = (text) => {
   if (!text) return "";
   return text
@@ -117,7 +117,7 @@ export async function getStaticProps({ params }) {
 // ✅ Blog Page Component
 const EachBlog = ({ blog }) => {
   if (!blog) {
-    return <p>Loading...</p>; // Prevent hydration errors
+    return <Loader/>; // Prevent hydration errors
   }
   return <CustomComponent blog={blog} />;
 };
