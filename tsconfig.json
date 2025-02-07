@@ -56,7 +56,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "pages/blog/index.js", "pages/openCampus/index.js"  ],
+, "pages/blog/index.js", "pages/opencampus/index.js"  ],
   "exclude": [
     "node_modules",
     "__generated__/globalTypes.ts"

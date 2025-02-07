@@ -67,10 +67,10 @@ const listItems = [
 const OpenCampusSection: React.FC = ({posts}: any) => {
 
 
-      const getStringPath = (blog: any) => {
-        const postTitleSlug = slugify(blog.post_title);
-        return `/openCampus/${postTitleSlug}`; // Removed category
-      };
+    const getStringPath = (post_url: string) => {
+        return post_url.replace("https://www.greycampus.com/opencampus/", "/opencampus/");
+    };
+
 
     // Add slugify function
 const slugify = (text:any) => {
@@ -121,12 +121,17 @@ const slugify = (text:any) => {
             
             </Box>
             <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', bgcolor: '#000', py: '48px', px: '16px', gap: 3 }}>
-                {posts.map((item: any) =>
-                    <Box key={item.id} sx={{ maxWidth: '900px', width: '100%' }}>
+                {posts?.map((item: any) =>{
+                 const relativePath = getStringPath(item.post_url);
+
+                  return (  <Box key={item.id} sx={{ maxWidth: '900px', width: '100%' }}>
+                         
                         {/* <CustomCard {...item} onReadMorePath={getStringPath(item.documentId)} isOpenCampusBlog={true}/> */}
-                        <CustomCard {...item} onReadMorePath={getStringPath(item)} isOpenCampusBlog={true} />
+                        <CustomCard {...item} onReadMorePath={relativePath} isOpenCampusBlog={true} />
 
                     </Box>
+                  )
+                }
                 )}
             </Box>
         </Box>
