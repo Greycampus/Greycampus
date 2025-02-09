@@ -5,7 +5,6 @@ import Button from "@mui/material/Button";
 import Image from "next/image";
 import Link from "next/link";
 import dynamic from "next/dynamic";
-import {modifyLinks} from '../../utilities/modifyLinks'
 import Head from "next/head";
 import { useRouter } from "next/router";
 import Loader from "@components/commonComponents/Loader";
