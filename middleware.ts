@@ -1,18 +1,21 @@
 import { NextRequest, NextResponse } from "next/server";
-
-// Import redirect mappings from JSON
 import redirects from "./src/data/gc-link-redirect.json";
 
-// Function to escape special regex characters
+// Function to normalize URLs (removes domain if present)
+const normalizeUrl = (url: string) => {
+  return url.replace(/^https?:\/\/(www\.)?greycampus\.com/, ""); // Remove base domain
+};
+
+// Function to escape special regex characters except for `*`
 const escapeRegExp = (text: string) => text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
 // Function to find a matching redirect
 const findRedirect = (pathname: string): string | null => {
   for (const entry of redirects) {
-    let source = entry["Original URL"];
+    let source = normalizeUrl(entry["Original URL"]); // Normalize before comparison
     let destination = entry["Redirect to"];
 
-    // Escape special characters in source URL except for wildcard `*`
+    // Handle wildcard `*`
     let regexPattern = "^" + escapeRegExp(source).replace("\\*", "(.*)") + "$";
     let match = pathname.match(new RegExp(regexPattern));
 
@@ -43,7 +46,5 @@ export function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: redirects.map((entry) => 
-    entry["Original URL"].replace("*", "(.*)") // Convert wildcards to regex patterns
-  ),
+  matcher: redirects.map((entry) => normalizeUrl(entry["Original URL"]).replace("*", "(.*)")),
 };
