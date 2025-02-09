@@ -64,7 +64,7 @@ const Blogs = ({ initialBlogs, totalPages }) => {
                 <meta property="og:description" content="GreyCampus Blog" />
                 <meta property="og:title" content="Blog" />
                 <meta name="twitter:description" content="GreyCampus Blog" />
-                <meta http-equiv="content-language" content="en-us"/>
+                <meta httpEquiv="content-language" content="en-us"/>
 
                 {/* <meta name="twitter:title" content="Blog"></meta>
                 <link rel="next" href="https://www.greycampus.com/blog/page/2" />

@@ -72,7 +72,7 @@ const renderContent = (block: any) => {
 const LeftSidebar = () => {
     const resourceLinks = [
         { label: "Training Courses", path: "/notFound" },
-        { label: "Open Campus", path: "/openCampus" },
+        { label: "Open Campus", path: "/opencampus" },
         { label: "Blog", path: "/blog" },
         { label: "Mock Exams", path: "/notFound" },
         { label: "Downloadables", path: "/notFound" }
@@ -132,7 +132,7 @@ const CustomComponent = ({ blog }: { blog: any }) => {
                 <meta name="twitter:card" content="summary_large_image"/>
                 <link rel="canonical" href={currentUrl&&currentUrl}/>
                 <meta property="og:type" content="article"/>
-                <meta http-equiv="content-language" content="en-us"/>
+                <meta httpEquiv="content-language" content="en-us"/>
                 </Head>
         
         <Box sx={{ display: "flex", flexDirection: {xs:'column', sm: "column", md: "row" }, justifyContent: "space-between", gap: 2, background: "#000", px: "16px", pt: "48px" }}>
@@ -147,7 +147,7 @@ const CustomComponent = ({ blog }: { blog: any }) => {
                         lineHeight: "1.8",
                     }}
                     dangerouslySetInnerHTML={{
-                        __html: modifyLinks(parseMarkdown(blog?.post_body || "")),
+                        __html: parseMarkdown(blog?.post_body || ""),
                     }}
                 />
                 {blog?.content?.map(renderContent)}

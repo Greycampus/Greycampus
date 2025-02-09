@@ -78,7 +78,7 @@ const BlogDetails = ({ blog }: { blog: any }) => {
                 <meta name="twitter:card" content="summary_large_image"/>
                 <link rel="canonical" href={currentUrl && currentUrl}/>
                 <meta property="og:type" content="article"/>
-                <meta http-equiv="content-language" content="en-us"/>
+                <meta httpEquiv="content-language" content="en-us"/>
 
 
                 </Head>

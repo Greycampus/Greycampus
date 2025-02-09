@@ -5,6 +5,7 @@ type Blog = {
     documentId: string;
     post_title: string;
     category:any;
+    post_url:string;
 };
 
 const API_URL = 
@@ -94,7 +95,7 @@ const BlogList = ({ category }: { category: any }) => {
                         },
                     }}
                     component={Link}
-                    href={`/openCampus/${slugify(blog.post_title)}`}
+                    href={`/opencampus/${blog.post_url.replace('https://www.greycampus.com/opencampus/', '')}`}
                     underline="none"
                     color="inherit"
                 >

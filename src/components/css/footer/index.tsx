@@ -21,7 +21,7 @@ const Footer = () => {
     ],
     resources: [
       { name: "Blog", link: "/blog" },
-      { name: "OpenCampus", link: "/openCampus" },
+      { name: "OpenCampus", link: "/opencampus" },
     ],
     bootcamps: [
       { name: "Data Science Course", link: "https://www.odinschool.com/data-science-course" },
