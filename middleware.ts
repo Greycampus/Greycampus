@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 // Import redirect mappings from JSON
-import redirects from "./public/gc-link-redirect.json";
+import redirects from "./src/data/gc-link-redirect.json";
 
 // Function to escape special regex characters
 const escapeRegExp = (text: string) => text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
