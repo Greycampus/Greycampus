@@ -25,47 +25,50 @@ const TopSection = () => {
 
     return (
         <Box
+        sx={{
+            position: "relative",
+            width: "100%",
+            overflow: "hidden",
+            backgroundImage: `url(${backgroundImage})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            display: "flex", // Ensures content aligns correctly
+            justifyContent: "center", // Centers the inner content
+        }}
+    >
+        <Box
             sx={{
                 position: "relative",
+                zIndex: 1,
+                py: "80px",
+                px: "20px",
                 width: "100%",
-                overflow: "hidden",
-                //height: "100vh", // ✅ Ensure it covers the full viewport height
-                backgroundImage: `url(${backgroundImage})`, // ✅ Use background in CSS
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                backgroundRepeat: "no-repeat",
+                display: { md: "flex" },
+                justifyContent: "space-between", // ✅ Proper spacing between columns
+                alignItems: "center",
+                gap: "40px", // Optional: Adds spacing between items
             }}
         >
-            <Box
-                sx={{
-                    position: "relative",
-                    zIndex: 1,
-                    py: "80px",
-                    display: { md: "flex" },
-                    justifyContent: "space-between",
-                    px: "20px",
-                    maxWidth: "1280px",
-                    flex: 1,
-                }}
-            >
-                <Box sx={{ flex: 1, mr: { sm: "0px", md: "40px" }, mb: "16px" }}>
-                    <VideoSection />
-                </Box>
-                <Box sx={{ flex: 1, mb: '24px' }}>
+            <Box sx={{ flex: 1 }}>
+                <VideoSection />
+            </Box>
+            <Box sx={{ flex: 1, display: "flex", justifyContent: "center" }}>
                 <Box
-      sx={{
-        backgroundColor: "white", // Set background to white
-        padding: "20px", // Add padding
-        borderRadius: "8px", // Optional: Add rounded corners
-        boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)", // Optional: Add shadow
-        maxWidth: "600px", // Limit the width
-      }}
-    >
-      <HubspotForm formId="hubspotForm2" />
-    </Box>
+                    sx={{
+                        backgroundColor: "white",
+                        padding: "20px",
+                        borderRadius: "8px",
+                        boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+                        width: "100%", // Ensures responsiveness
+                    }}
+                >
+                    <HubspotForm formId="hubspotForm2" />
                 </Box>
             </Box>
         </Box>
+    </Box>
+    
     );
 };
 

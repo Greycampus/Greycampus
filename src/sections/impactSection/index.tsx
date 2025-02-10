@@ -2,6 +2,7 @@ import React from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
+import { API_URL } from "src/utilities/resources";
 
 // Styles Object
 const styles = {
@@ -55,17 +56,17 @@ const styles = {
 const stats = [
     {
         id: 1,
-        imageUrl: "https://www.greycampus.com/hubfs/GreyCampus/icons/glance-1.svg",
+        imageUrl: `${API_URL}/uploads/glance_1_b899abb549.svg`,
         title: "Learners from 40+ countries",
     },
     {
         id: 2,
-        imageUrl: "https://www.greycampus.com/hubfs/GreyCampus/icons/glance-2.svg",
+        imageUrl: `${API_URL}/uploads/glance_2_485f2fc403.svg`,
         title: "Across 1000+ Organizations",
     },
     {
         id: 3,
-        imageUrl: "https://www.greycampus.com/hubfs/GreyCampus/icons/glance-3.svg",
+        imageUrl: `${API_URL}/uploads/glance_3_2398a17a36.svg`,
         title: "Spending 1M+ hours on our platform and courses",
     },
 ];

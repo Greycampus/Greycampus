@@ -7,9 +7,9 @@ import lazyLoadHydrate from "next-lazy-hydrate";
 import Head from "next/head";
 import TrainingProgramsSection from "src/sections/trainingSolution";
 import GetInTouch from "src/sections/getInTouch";
+import HowWeWork from "src/sections/howWeWork";
 // 📦 Dynamically import the rest of the sections
 // const TrainingProgramsSection = lazyLoadHydrate(() => import("src/sections/trainingSolution"));
-const HowWeWork = lazyLoadHydrate(() => import("src/sections/howWeWork"));
 const ProgramHighlights = lazyLoadHydrate(() => import("src/sections/highlights"));
 const AreasOfExpertise = lazyLoadHydrate(() => import("src/sections/areaOfExpertise"));
 const EnterpriseClients = lazyLoadHydrate(() => import("src/sections/clients"));

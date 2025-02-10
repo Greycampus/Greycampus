@@ -42,7 +42,7 @@ const Header = () => {
 
   // Menu items
   const navItems = [
-    { name: "About", link: "/about" },
+    { name: "About", link: "/about-us" },
     { name: "Contact", link: "/contact" },
   ];
 

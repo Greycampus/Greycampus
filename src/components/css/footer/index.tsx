@@ -14,7 +14,7 @@ const Footer = () => {
   // Define links for each section
   const footerLinks = {
     company: [
-      { name: "About", link: "/about" },
+      { name: "About", link: "/about-us" },
       { name: "Contact", link: "/contact" },
       { name: "Terms of Use", link: "/termsOfUse" },
       { name: "Privacy Policy", link: "/privacyPolicy" },
