@@ -106,7 +106,7 @@ const CustomComponent = ({ blog }: { blog: any }) => {
 
 
     const router = useRouter();
-    const currentUrl = `https://greycampus.vercel.app${router.asPath}`;
+    const currentUrl = `https://www.greycampus.com${router.asPath}`;
 
 
     if (!blog) {

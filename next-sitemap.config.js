@@ -3,7 +3,7 @@ const fetchDynamicPaths = require("./scripts/fetchDynamicPaths");
 let cachedPaths = null;
 
 module.exports = {
-  siteUrl: "https://greycampus.vercel.app/",
+  siteUrl: "https://www.greycampus.com/",
   generateRobotsTxt: true,
   generateIndexSitemap: false,
   sitemapSize: 5000,
@@ -14,3 +14,5 @@ module.exports = {
     return cachedPaths;
   },
 };
+
+// "https://www.greycampus.com/"

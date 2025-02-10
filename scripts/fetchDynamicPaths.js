@@ -24,7 +24,7 @@ async function fetchBlogs() {
         if (!item.post_url) return null; // Skip if `post_url` is missing
         const slug = item.post_url.replace("https://www.greycampus.com/blog/", "").trim();
         return {
-          loc: `https://greycampus.vercel.app/blog/${slug}`,
+          loc: `https://www.greycampus.com/blog/${slug}`,
           lastmod: new Date().toISOString(),
         };
       }).filter(Boolean); // ✅ Remove null values from array
