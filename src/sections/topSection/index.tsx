@@ -16,28 +16,27 @@ const TopSection = () => {
                 justifyContent: "center",
             }}
         >
-            {/* ✅ Keeping <picture> for Future Scalability */}
-            <picture>
-                <source
-                    media="(max-width: 699px)"
-                    srcSet={`${API_URL}/uploads/gc_bg_1_min_3700ac9eb5_3a45950ddb.webp`}
-                    type="image/webp"
-                />
-                <source
-                    media="(max-width: 640px)"
-                    srcSet={`${API_URL}/uploads/gc_bg_1_min_3700ac9eb5_3a45950ddb.webp`}
-                    type="image/webp"
-                />
+            {/* ✅ Optimized Background Image */}
+            <Box
+                sx={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    height: "100%",
+                    zIndex: 0,
+                }}
+            >
                 <Image
                     src={`${API_URL}/uploads/gc_bg_1_min_3700ac9eb5_3a45950ddb.webp`}
                     alt="Background"
-                    layout="fill"
+                    width={1920} // ✅ Explicit width to prevent CLS
+                    height={800} // ✅ Explicit height to improve LCP
                     objectFit="cover"
                     quality={75}
-                    priority
-                    loading="eager"
+                    priority // ✅ Ensures early loading for LCP optimization
                 />
-            </picture>
+            </Box>
 
             <Box
                 sx={{
@@ -56,6 +55,7 @@ const TopSection = () => {
                     <VideoSection />
                 </Box>
                 <Box sx={{ flex: 1, display: "flex", justifyContent: "center" }}>
+                    {/* ✅ HubSpot Form (Commented Out for Now) */}
                     {/* <Box
                         sx={{
                             backgroundColor: "white",
