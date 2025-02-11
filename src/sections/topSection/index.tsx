@@ -35,8 +35,8 @@ const TopSection = () => {
             <Box sx={{ flex: 1 }}>
                 <VideoSection />
             </Box>
-           <Box sx={{ flex: 1, display: "flex", justifyContent: "center" }}>
-            {/*      <Box
+            <Box sx={{ flex: 1, display: "flex", justifyContent: "center" }}>
+                <Box
                     sx={{
                         backgroundColor: "white",
                         padding: "20px",
@@ -48,8 +48,7 @@ const TopSection = () => {
                 >
                     <HubspotForm formId="hubspotForm2" />
                 </Box>
-                */}
-            </Box> 
+            </Box>
         </Box>
     </Box>
     
