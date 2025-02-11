@@ -60,7 +60,8 @@ const TopSection = () => {
                         padding: "20px",
                         borderRadius: "8px",
                         boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-                        width: "100%", // Ensures responsiveness
+                        width: "100%", // Ensures responsiveness,
+                        minHeight:"365px",
                     }}
                 >
                     <HubspotForm formId="hubspotForm2" />
