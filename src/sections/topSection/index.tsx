@@ -29,7 +29,7 @@ const TopSection = () => {
             position: "relative",
             width: "100%",
             overflow: "hidden",
-            backgroundImage: `url(${backgroundImage})`,
+            backgroundImage: `url(${API_URL}/uploads/gc_bg_1_min_3700ac9eb5_3a45950ddb.webp)`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
