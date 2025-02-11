@@ -1,8 +1,9 @@
+import Image from "next/image";
 import Box from "@mui/material/Box";
 import VideoSection from "./videoComponent";
-import { API_URL } from "src/utilities/resources";
 import HubspotForm from "../../components/hubspot-form/index";
-import Image from 'next/image';
+
+const API_URL = process.env.NEXT_PUBLIC_API_SERVER_ENDPOINT;
 
 const TopSection = () => {
     return (
@@ -15,14 +16,29 @@ const TopSection = () => {
                 justifyContent: "center",
             }}
         >
-            <Image
-                src={`${API_URL}/uploads/gc_bg_1_min_3700ac9eb5_3a45950ddb.webp`}
-                alt="Background"
-                layout="fill"
-                objectFit="cover"
-                quality={75}
-                priority
-            />
+            {/* ✅ Keeping <picture> for Future Scalability */}
+            <picture>
+                <source
+                    media="(max-width: 699px)"
+                    srcSet={`${API_URL}/uploads/gc_bg_1_min_3700ac9eb5_3a45950ddb.webp`}
+                    type="image/webp"
+                />
+                <source
+                    media="(max-width: 640px)"
+                    srcSet={`${API_URL}/uploads/gc_bg_1_min_3700ac9eb5_3a45950ddb.webp`}
+                    type="image/webp"
+                />
+                <Image
+                    src={`${API_URL}/uploads/gc_bg_1_min_3700ac9eb5_3a45950ddb.webp`}
+                    alt="Background"
+                    layout="fill"
+                    objectFit="cover"
+                    quality={75}
+                    priority
+                    loading="eager"
+                />
+            </picture>
+
             <Box
                 sx={{
                     position: "relative",
