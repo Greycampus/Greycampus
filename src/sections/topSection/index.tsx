@@ -11,6 +11,7 @@ const TopSection = () => {
             position: "relative",
             width: "100%",
             overflow: "hidden",
+            backgroundImage: `url(${API_URL}/uploads/gc_bg_1_min_3700ac9eb5_3a45950ddb.webp)`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
@@ -34,8 +35,8 @@ const TopSection = () => {
             <Box sx={{ flex: 1 }}>
                 <VideoSection />
             </Box>
-            <Box sx={{ flex: 1, display: "flex", justifyContent: "center" }}>
-                <Box
+           <Box sx={{ flex: 1, display: "flex", justifyContent: "center" }}>
+            {/*      <Box
                     sx={{
                         backgroundColor: "white",
                         padding: "20px",
@@ -47,7 +48,8 @@ const TopSection = () => {
                 >
                     <HubspotForm formId="hubspotForm2" />
                 </Box>
-            </Box>
+                */}
+            </Box> 
         </Box>
     </Box>
     
