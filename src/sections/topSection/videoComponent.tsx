@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from "react";
+import Image from "next/image"; // ✅ Use Next.js Image for optimization
 import Box from "@mui/material/Box";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 
@@ -24,14 +25,14 @@ const VideoSection = () => {
         return () => observer.disconnect();
     }, []);
 
-    // ✅ Function to play video when clicking the Play button
+    // ✅ Play Video when clicking play button
     const handlePlayVideo = () => {
-        setIsVisible(true); // Show the video
+        setIsVisible(true);
         setTimeout(() => {
             if (videoRef.current) {
-                videoRef.current.play(); // ✅ Auto-play video when play button is clicked
+                videoRef.current.play();
             }
-        }, 200); // Small delay to ensure video is rendered before playing
+        }, 200);
     };
 
     return (
@@ -62,19 +63,20 @@ const VideoSection = () => {
                 />
             ) : (
                 <Box sx={{ position: "relative", width: "100%", height: "auto" }}>
-                    {/* ✅ Video Thumbnail */}
-                    <img
+                    {/* ✅ Use Next.js Image for optimization */}
+                    <Image
                         src={`${API_URL}/uploads/GC_20_20_Enterprise_20_Intro_65f395cc1d.webp`}
                         alt="Video Thumbnail"
-                        width="100%"
-                        height="auto"
+                        width={800} // Set fixed dimensions for better LCP
+                        height={450}
+                        priority // ✅ Ensures faster loading for LCP optimization
                         style={{
                             borderRadius: "16px",
                             display: "block",
                         }}
                     />
 
-                    {/* ✅ Play Button Overlay (Only Clicking This Will Play Video) */}
+                    {/* ✅ Play Button Overlay */}
                     <Box
                         sx={{
                             position: "absolute",
@@ -91,7 +93,7 @@ const VideoSection = () => {
                             transition: "0.3s ease-in-out",
                             cursor: "pointer",
                         }}
-                        onClick={handlePlayVideo} // ✅ Only clicking this plays the video
+                        onClick={handlePlayVideo} // ✅ Clicking this plays the video
                     >
                         <PlayArrowIcon sx={{ color: "white", fontSize: "40px" }} />
                     </Box>
