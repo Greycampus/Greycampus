@@ -6,7 +6,7 @@ const API_URL = process.env.NEXT_PUBLIC_API_SERVER_ENDPOINT;
 
 const VideoSection = () => {
     const [isVisible, setIsVisible] = useState(false);
-    const videoRef = useRef(null);
+    const videoRef = useRef<HTMLVideoElement | null>(null);
 
     useEffect(() => {
         const observer = new IntersectionObserver(
