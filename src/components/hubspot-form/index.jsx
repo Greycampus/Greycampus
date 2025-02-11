@@ -1,13 +1,20 @@
 import { useEffect } from "react";
+import { useRouter } from "next/router"; // Import Next.js router
 
 const HubspotForm = ({ formId }) => {
+  const router = useRouter(); // Initialize Next.js router
+
   useEffect(() => {
     const loadHubspotForm = () => {
       if (window.hbspt) {
         window.hbspt.forms.create({
           portalId: "20029733",
           formId: "c887108b-6f59-4c6f-a1e2-9d2acd3561a4",
-          target: `#${formId}`, // Use the unique ID passed as a prop
+          target: `#${formId}`,
+          onFormSubmit: () => {
+            console.log("Form submitted!");
+            router.push("/thank-you"); // Redirect to custom thank-you page
+          },
         });
       }
     };
@@ -19,12 +26,12 @@ const HubspotForm = ({ formId }) => {
     document.body.appendChild(script);
 
     return () => {
-      // Cleanup if the component unmounts
+      // Cleanup script on unmount
       document.body.removeChild(script);
     };
-  }, [formId]); // Re-run effect if formId changes
+  }, [formId, router]); // Add router to dependencies
 
-  return <div id={formId}></div>; // Set unique ID for each instance
+  return <div id={formId}></div>;
 };
 
 export default HubspotForm;
