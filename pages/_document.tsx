@@ -53,16 +53,15 @@ class CustomDocument extends Document {
             }
           `}</style>
 
-          {/* <link
+          <link
             rel="preload"
+            href={`${API_URL}/uploads/gc_bg_1_min_3700ac9eb5_3a45950ddb.webp`}
             as="image"
-            href={`https://www.greycampus.com/hubfs/GC%28B2B%29/gc-bg.webp`}
-            type="image/webp"
-          /> */}
+          />
         </Head>
         <body>
           <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W9W9X4QJ"
-            height="0" width="0" style={{display:"none", visibility: "hidden"}}></iframe></noscript>
+            height="0" width="0" style={{ display: "none", visibility: "hidden" }}></iframe></noscript>
           <Main />
           <NextScript />
         </body>
