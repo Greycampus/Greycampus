@@ -8,6 +8,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import { API_URL } from "src/utilities/resources";
 import DownloadBrochureModal from "@components/css/modal";
+import Image from "next/image";
 // Styles Object
 const styles = {
     container: {
@@ -91,7 +92,7 @@ const TrainingProgramsSection = () => {
     const handleOpen = () => {
         setOpen(true);
     };
-      const handleClose = () => setOpen(false);
+    const handleClose = () => setOpen(false);
     return (
         <Box sx={styles.container}>
             {/* Section Title */}
@@ -104,17 +105,21 @@ const TrainingProgramsSection = () => {
                 {trainingPrograms.map((program) => (
                     <Grid item xs={12} sm={6} md={3} key={program.id}>
                         <Card sx={styles.card}>
-                            <CardMedia
-                                component="img"
-                                image={program.imageUrl}
+                            <Image
+                                src={program.imageUrl}
                                 alt={program.title}
-                                sx={styles.media}
+                                layout="responsive" // Ensures proper scaling
+                                width={300}  // Adjust based on design
+                                height={200} // Adjust based on aspect ratio
+                                quality={80} // Optional: Reduces file size without losing quality
                             />
                             <CardContent sx={styles.cardContent}>
                                 <Typography variant="h6" gutterBottom sx={{ fontFamily: 'Poppins, sans-serif', fontSize: '24px' }}>
                                     {program.title}
                                 </Typography>
-                                <Typography variant="body2" sx={{ fontFamily: 'Poppins, sans-serif', fontSize: '16px' }}>{program.description}</Typography>
+                                <Typography variant="body2" sx={{ fontFamily: 'Poppins, sans-serif', fontSize: '16px' }}>
+                                    {program.description}
+                                </Typography>
                             </CardContent>
                         </Card>
                     </Grid>
@@ -130,7 +135,7 @@ const TrainingProgramsSection = () => {
 
             <DownloadBrochureModal open={open} handleClose={handleClose} />
 
-                    </Box>
+        </Box>
     );
 };
 
