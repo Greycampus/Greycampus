@@ -2,6 +2,7 @@ import React from 'react';
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Button from '@mui/material/Button';
+import { API_URL } from 'src/utilities/resources';
 
 const NotFoundPage = () => {
 
@@ -10,7 +11,7 @@ const NotFoundPage = () => {
             sx={{
                 height: '100vh',
                 width: '100%',
-                background: `url(https://www.greycampus.com/hubfs/404.webp) no-repeat center center`,
+                background: `url(${API_URL}/uploads/gc_bg_1_min_3700ac9eb5_3a45950ddb.webp) no-repeat center center`,
                 backgroundSize: 'cover',
                 display: 'flex',
                 flexDirection: 'column',

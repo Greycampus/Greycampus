@@ -37,29 +37,33 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
     const API_URL = process.env.NEXT_PUBLIC_API_SERVER_ENDPOINT;
-    const BASE_URL = "https://www.greycampus.com/blog"; // Ensure this matches your Strapi data
+    const BASE_URL = "https://www.greycampus.com/blog";
 
     // Construct full post_url from slug array
-    const post_url = `${BASE_URL}/${params.slug.join('/')}`;
+    const post_url = `${BASE_URL}/${params.slug.join("/")}`;
 
-    // Fetch data for the specific blog using the full post_url
+    // Fetch blog data
     const res = await fetch(
         `${API_URL}/api/blogs?populate=*&filters[post_url][$eq]=${encodeURIComponent(post_url)}&timestamp=${Date.now()}`
     );
-    
-    const url=  `${API_URL}/api/blogs?populate=*&filters[post_url][$eq]=${encodeURIComponent(post_url)}&timestamp=${Date.now()}`
-    console.log('url------------', url);
-    
 
     const data = await res.json();
-    console.log('data--------------', data)
+    console.log("Fetched Blog Data:", data);
+
+    // ✅ Redirect to 404 page if no blog found
+    if (!data || !data.data || data.data.length === 0) {
+        return {
+            notFound: true, // ✅ Triggers automatic 404 page
+        };
+    }
 
     return {
         props: {
-            blog: data.data.length > 0 ? data.data[0] : null, // Pass first blog entry if found
+            blog: data.data[0], // ✅ Always return a valid blog object
         },
-        revalidate: 10, // Revalidate every 10 seconds
+        revalidate: 10, // ✅ Revalidate every 10 seconds
     };
 }
+
 
 export default EachBlog;
