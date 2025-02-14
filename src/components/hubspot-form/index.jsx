@@ -45,7 +45,7 @@ const HubspotForm = ({ formId }) => {
     >
       {!isLoaded ? (
         // Skeleton Loader UI
-        <Grid container spacing={2}>
+        <Grid container spacing={2} height={'385px'} overflow={'hidden'}>
           <Grid item xs={6}>
             <Skeleton variant="rectangular" width="100%" height={50} />
           </Grid>
@@ -68,7 +68,7 @@ const HubspotForm = ({ formId }) => {
             <Skeleton variant="rectangular" width="100%" height={50} />
           </Grid>
           <Grid item xs={12}>
-            <Skeleton variant="rectangular" width="100%" height={100} />
+            <Skeleton variant="rectangular" width="100%" height={80} />
           </Grid>
           <Grid item xs={12}>
             <Skeleton variant="rectangular" width={150} height={50} />
