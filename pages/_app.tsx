@@ -1,6 +1,7 @@
 import { QueryClient, QueryClientProvider } from "react-query";
 import { Hydrate } from "react-query/hydration";
 import { AppProps } from "next/app";
+import Script from "next/script"; // ✅ Import Next.js Script
 import "@styles/global.css";
 import Layout from "./layout";
 
@@ -16,6 +17,26 @@ function MyApp({ Component, pageProps }: CustomAppProps): JSX.Element {
   return (
     <QueryClientProvider client={queryClient}>
       <Hydrate state={pageProps?.dehydratedState}>
+        {/* ✅ Google Tag Manager - Fixed Syntax Error */}
+        <Script
+          id="gtm"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(w,d,s,l,i){
+                w[l]=w[l]||[]; 
+                w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'}); 
+                var f=d.getElementsByTagName(s)[0], 
+                j=d.createElement(s), 
+                dl=l!='dataLayer' ? '&l='+l : ''; 
+                j.async=true; 
+                j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl; 
+                f.parentNode.insertBefore(j,f);
+              })(window,document,'script','dataLayer','GTM-W9W9X4QJ');
+            `,
+          }}
+        />
+
         <Layout>
           <Component {...pageProps} />
         </Layout>

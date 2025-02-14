@@ -13,55 +13,47 @@ class CustomDocument extends Document {
   static async getInitialProps(
     ctx: DocumentContext
   ): Promise<DocumentInitialProps> {
-    const initialProps = await Document.getInitialProps(ctx);
-    return initialProps;
+    return await Document.getInitialProps(ctx);
   }
 
   render() {
     return (
       <Html lang="en">
-        <Head >
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `
-              (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-              'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-              })(window,document,'script','dataLayer','GTM-W9W9X4QJ');
-            `,
-            }}
-          />
+        <Head>
+          {/* ✅ Preconnect to improve first request performance */}
+          <link rel="preconnect" href="https://www.greycampus.com" />
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
 
-          {/* Link to Poppins font from Google Fonts */}
+          {/* ✅ Load Google Fonts efficiently */}
           <link
-            rel="preload"
+            rel="stylesheet"
             href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
           />
-          <link rel="preconnect" href="https://www.greycampus.com" crossOrigin="anonymous" />
-          <link rel="preconnect" href={`${API_URL}`} crossOrigin="anonymous" />
 
-          {/* DNS Prefetch as Fallback */}
+          {/* ✅ Prefetch DNS for API */}
           <link rel="dns-prefetch" href="https://www.greycampus.com" />
           <link rel="dns-prefetch" href={`${API_URL}`} />
 
-          {/* ✅ Move global styles here */}
+          {/* ✅ Global styles */}
           <style>{`
             html, body {
               margin: 0;
               padding: 0;
             }
           `}</style>
-
-          <link
-            rel="preload"
-            href={`${API_URL}/uploads/gc_bg_1_min_3700ac9eb5_3a45950ddb.webp`}
-            as="image"
-          />
         </Head>
         <body>
-          <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W9W9X4QJ"
-            height="0" width="0" style={{ display: "none", visibility: "hidden" }}></iframe></noscript>
+          {/* ✅ GTM Fallback for NoScript Users */}
+          <noscript>
+            <iframe
+              src="https://www.googletagmanager.com/ns.html?id=GTM-W9W9X4QJ"
+              height="0"
+              width="0"
+              style={{display:'none', visibility:'hidden'}}
+            ></iframe>
+          </noscript>
+
           <Main />
           <NextScript />
         </body>
