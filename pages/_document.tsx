@@ -20,20 +20,17 @@ class CustomDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          {/* ✅ Preconnect to improve first request performance */}
-          <link rel="preconnect" href="https://www.greycampus.com" />
-          <link rel="preconnect" href="https://fonts.googleapis.com" />
-          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+          {/* ✅ Preconnect where necessary */}
+          <link rel="dns-prefetch" href="https://www.greycampus.com" />
+          <link rel="dns-prefetch" href={`${API_URL}`} />
+          <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+          <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
 
-          {/* ✅ Load Google Fonts efficiently */}
+          {/* ✅ Optimized Google Fonts with display=swap */}
           <link
             rel="stylesheet"
             href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
           />
-
-          {/* ✅ Prefetch DNS for API */}
-          <link rel="dns-prefetch" href="https://www.greycampus.com" />
-          <link rel="dns-prefetch" href={`${API_URL}`} />
 
           {/* ✅ Global styles */}
           <style>{`
@@ -50,7 +47,7 @@ class CustomDocument extends Document {
               src="https://www.googletagmanager.com/ns.html?id=GTM-W9W9X4QJ"
               height="0"
               width="0"
-              style={{display:'none', visibility:'hidden'}}
+              style={{ display: "none", visibility: "hidden" }}
             ></iframe>
           </noscript>
 
