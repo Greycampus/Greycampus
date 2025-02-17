@@ -1,15 +1,16 @@
 import Loader from '../../../src/components/commonComponents/Loader/index'
 import CustomComponent from '../../../src/components/openCampusBlogDetails'
+
 // ✅ Blog Page Component
 const EachBlog = ({ blog }) => {
     if (!blog) {
       return <Loader/>; // Prevent hydration errors
     }
     return <CustomComponent blog={blog} />;
-  };
-  
-  export default EachBlog;
-  
+};
+
+export default EachBlog;
+
 export async function getStaticPaths() {
     const API_URL = process.env.NEXT_PUBLIC_API_SERVER_ENDPOINT + `/api/open-campus-blogs?timestamp=${Date.now()}`;
 
@@ -52,19 +53,24 @@ export async function getStaticProps({ params }) {
     const res = await fetch(
         `${API_URL}/api/open-campus-blogs?populate=*&filters[post_url][$eq]=${encodeURIComponent(post_url)}&timestamp=${Date.now()}`
     );
-    
-    const url=  `${API_URL}/api/open-campus-blogs?populate=*&filters[post_url][$eq]=${encodeURIComponent(post_url)}&timestamp=${Date.now()}`
-    console.log('url------------', url);
-    
 
     const data = await res.json();
-    console.log('data--------------', data)
+    console.log('Fetched Blog Data:', data);
+
+    // ✅ Redirect to home page if no blog found
+    if (!data || !data.data || data.data.length === 0) {
+        return {
+            redirect: {
+                destination: '/opencampus', // Redirect to homepage
+                permanent: false, // Use 307 (temporary) redirect
+            },
+        };
+    }
 
     return {
         props: {
-            blog: data.data.length > 0 ? data.data[0] : null, // Pass first blog entry if found
+            blog: data.data[0], // ✅ Always return a valid blog object
         },
-        revalidate: 10, // Revalidate every 10 seconds
+        revalidate: 10, // ✅ Revalidate every 10 seconds
     };
 }
-

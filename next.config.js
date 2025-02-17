@@ -4,6 +4,7 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
 });
 const BrotliPlugin = require("brotli-webpack-plugin");
 
+
 const nextConfig = {
     images: {
         remotePatterns: [
@@ -91,6 +92,386 @@ const nextConfig = {
 
         return config;
     },
+
+    async redirects() {
+        return [
+          {
+            source: "/elearning/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/career/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/cyber-security/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/e-learning/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/agile-and-scrum-training-instructor-led/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/scholarships/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/lean-six-sigma-green-and-black-belt-training-combo/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/six-sigma-green-belt-training-instructor-led/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/fullstack-development-foundation-program/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/apply/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/data-science", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/jeremy-barclay/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/chat/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/lean-six-sigma-black-belt-training-instructor-led/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/data-science-certifications", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/vineet-choudhary/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/capm-training-instructor-led/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/parveen-kumar/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/pmp-training-instructor-led/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/fundamentals-of-php-training-course/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/set-location/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/six-sigma-yellow-belt-certification-training-course/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/devops-ci-cd-with-jenkins-pipelines-maven-gradle-training-course/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/adam-keddy/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/professional-graphic-designer-training-course/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/certificate/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/ahmad-sulaiman/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/lean-six-sigma-green-belt-training-instructor-led/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/nikhat/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/deep-learning-for-nlp-using-tensorflow/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/divanshu-paliwal/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/prince2-practitioner-training-instructor-led/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/pmi-acp-certification-training/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/prince2-foundation-and-practitioner-training-combo/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/victoria-clarke/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/adam-sales/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/aishwarya-srivastava/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/adolfo-o-calderon-c/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/kevin-hoppe/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/csm-training-instructor-led/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/build-modern-web-apps-with-mean-training-course/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/emerson/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/paritala-bala-gopi-raju/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/apurva-shah/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/hiren-joshi/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/machine-learning-for-app-training-course/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/full-stack-development-masters-program/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/david-ovitt-jr/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/kathryn-battle/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/introduction-to-data-science/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/programming/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/ruby-fundamentals-online-self-learning/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/xml-training-instructor-led/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/project-management/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/intro-to-the-nem-blockchain-for-developers-training-course/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/big-data-hadoop-developer-training-instructor-led/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/microsoft-70-462-administering-sql-server-2012-databases-training-course/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/python-object-oriented-programming-fundamentals-training-course/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/elearning-bundle/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/pmpGreyCampus/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/sql-training-instructor-led/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/build-a-website-from-scratch-using-html-css-javascript/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/prince2-foundation-training-instructor-led/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/sap-netweaver-process-integration-training-instructor-led/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/sap-business-planning-and-consolidation-administration-and-planning-configuration-training-instructor-led/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/itil-foundation-training-instructor-led/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/mohamed-elmasry/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/sap-workflow-management-training-instructor-led/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/codelabs/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/rohit-sharma/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/cloud-computing-certifications/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/leadership-skills-vs-management-training-course/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/sap-training/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/sap-plant-maintenance-training-instructor-led/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+          {
+            source: "/sap-plant-maintenance-training-instructor-led/:path*", // Match all paths under /elearning/*
+            destination: "/", // Redirect to /elearning homepage
+            permanent: true, // 301 redirect (Recommended for SEO)
+          },
+        ];
+      },
 };
 
-module.exports = withPlugins([withBundleAnalyzer], nextConfig);
+module.exports = withPlugins([withBundleAnalyzer], nextConfig,);
