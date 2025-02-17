@@ -57,7 +57,7 @@ const BlogDetails = ({ blog }: { blog: any }) => {
     // ✅ Prevent Client-Side Crashes (Redirect to 404 if blog is missing)
     if (!blog) {
         if (typeof window !== "undefined") {
-            router.replace("/404");
+            router.replace("/");
         }
         return <h1>Redirecting...</h1>;
     }

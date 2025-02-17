@@ -5,7 +5,7 @@ const EachBlog = ({ blog }) => {
 };
 
 export async function getStaticPaths() {
-    const API_URL = process.env.NEXT_PUBLIC_API_SERVER_ENDPOINT + `/api/blogs?timestamp=${Date.now()}`;
+    const API_URL = `${process.env.NEXT_PUBLIC_API_SERVER_ENDPOINT}/api/blogs?timestamp=${Date.now()}`;
 
     const res = await fetch(API_URL);
     const blogs = await res.json();
@@ -14,24 +14,21 @@ export async function getStaticPaths() {
         .map((blog) => {
             let postUrl = blog.post_url;
 
-            // Remove the base URL if it exists (ensure we only get the path)
+            // Remove base URL if it exists
             postUrl = postUrl.replace(/^https?:\/\/www\.greycampus\.com\/blog\//, '');
 
-            // Ensure postUrl is correctly formatted (no leading or trailing slashes)
-            postUrl = postUrl.replace(/^\/|\/$/g, '');
-
-            // Split postUrl into slug array
-            const slugParts = postUrl.split('/');
+            // Remove leading/trailing slashes & split into array
+            const slugParts = postUrl.replace(/^\/|\/$/g, '').split('/');
 
             return {
                 params: { slug: slugParts },
             };
         })
-        .filter((path) => path.params.slug.length > 0); // Ensure we don't add empty slugs
+        .filter((path) => path.params.slug.length > 0); // Remove empty slugs
 
     return {
         paths,
-        fallback: true, // Enable fallback for new paths
+        fallback: true, // Enable fallback for new blog posts
     };
 }
 
@@ -50,10 +47,13 @@ export async function getStaticProps({ params }) {
     const data = await res.json();
     console.log("Fetched Blog Data:", data);
 
-    // ✅ Redirect to 404 page if no blog found
+    // ✅ Redirect to home page if no blog is found
     if (!data || !data.data || data.data.length === 0) {
         return {
-            notFound: true, // ✅ Triggers automatic 404 page
+            redirect: {
+                destination: "/", // Redirect to home page
+                permanent: false, // Set to true if blog is permanently deleted
+            },
         };
     }
 
@@ -64,6 +64,5 @@ export async function getStaticProps({ params }) {
         revalidate: 10, // ✅ Revalidate every 10 seconds
     };
 }
-
 
 export default EachBlog;
