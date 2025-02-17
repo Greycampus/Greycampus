@@ -47,7 +47,7 @@ const styles = {
 
 const BlogDetails = ({ blog }: { blog: any }) => {
     const router = useRouter();
-    const currentUrl = `https://www.greycampus.com${router.pathname}`;
+    const currentUrl = `https://www.greycampus.com${router.asPath}`;
 
     // ✅ Handle Fallback State
     if (router.isFallback) {
