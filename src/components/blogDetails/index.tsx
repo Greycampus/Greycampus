@@ -47,7 +47,7 @@ const styles = {
 
 const BlogDetails = ({ blog }: { blog: any }) => {
     const router = useRouter();
-    const currentUrl = `https://www.greycampus.com${router.asPath}`;
+    const currentUrl = `https://www.greycampus.com${router.pathname}`;
 
     // ✅ Handle Fallback State
     if (router.isFallback) {
@@ -57,7 +57,7 @@ const BlogDetails = ({ blog }: { blog: any }) => {
     // ✅ Prevent Client-Side Crashes (Redirect to 404 if blog is missing)
     if (!blog) {
         if (typeof window !== "undefined") {
-            router.replace("/");
+            router.replace("/blog");
         }
         return <h1>Redirecting...</h1>;
     }

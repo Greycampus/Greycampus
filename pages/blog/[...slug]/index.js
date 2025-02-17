@@ -51,7 +51,7 @@ export async function getStaticProps({ params }) {
     if (!data || !data.data || data.data.length === 0) {
         return {
             redirect: {
-                destination: "/", // Redirect to home page
+                destination: "/blog", // Redirect to home page
                 permanent: false, // Set to true if blog is permanently deleted
             },
         };
