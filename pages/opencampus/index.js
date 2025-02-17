@@ -3,7 +3,7 @@ import OpenCampusSection from "src/sections/openCampusSection";
 import Box from "@mui/material/Box";
 import Pagination from "@mui/material/Pagination";
 import CircularProgress from "@mui/material/CircularProgress";
-
+import Head from "next/head";
 const styles = {
     pagination: {
         display: "flex",
@@ -54,6 +54,25 @@ const Blogs = ({ initialBlogs, totalPages }) => {
     }, [currentPage]);
 
     return (
+        <>
+             <Head>
+
+<title>OpenCampus blog</title>
+<meta name="description" content="OpenCampus Blog" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:description" content="OpenCampus Blog" />
+<meta property="og:title" content="OpenCampus Blog" />
+<meta name="twitter:description" content="OpenCampus Blog" />
+<meta httpEquiv="content-language" content="en-us"/>
+<link rel="canonical" href='https://www.greycampus.com/opencampus' />
+<meta name="twitter:title" content="OpenCampus"></meta>
+<link rel="next" href="https://www.greycampus.com/opencampus" />
+<meta property="og:url" content="https://www.greycampus.com/opencampus"/>
+<meta property="og:type" content="OpenCampus" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:domain" content="www.greycampus.com"></meta>
+                </Head>
+       
         <Box>
             {loading ? (
                 <Box sx={{ display: "flex", justifyContent: "center", mt: 5 }}>
@@ -85,6 +104,7 @@ const Blogs = ({ initialBlogs, totalPages }) => {
                 />
             </Box>
         </Box>
+        </>
     );
 };
 

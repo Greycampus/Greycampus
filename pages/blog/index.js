@@ -65,14 +65,15 @@ const Blogs = ({ initialBlogs, totalPages }) => {
                 <meta property="og:title" content="Blog" />
                 <meta name="twitter:description" content="GreyCampus Blog" />
                 <meta httpEquiv="content-language" content="en-us"/>
+                <link rel="canonical" href='https://www.greycampus.com/blog' />
 
-                {/* <meta name="twitter:title" content="Blog"></meta>
-                <link rel="next" href="https://www.greycampus.com/blog/page/2" />
+
+                <meta name="twitter:title" content="Blog"></meta>
+                <link rel="next" href="https://www.greycampus.com/blog" />
                 <meta property="og:url" content="https://www.greycampus.com/blog"/>
                 <meta property="og:type" content="blog" />
                 <meta name="twitter:card" content="summary" />
-                <link rel="alternate" type="application/rss+xml" href="https://www.greycampus.com/blog/rss.xml" />
-                <meta name="twitter:domain" content="www.greycampus.com"></meta> */}
+                <meta name="twitter:domain" content="www.greycampus.com"></meta>
                                 </Head>
                                 <Box>
                                     {loading ? (

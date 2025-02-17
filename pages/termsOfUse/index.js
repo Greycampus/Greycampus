@@ -37,6 +37,8 @@ const TermsOfUse = ({ terms }) => {
     <meta property="og:title" content="Terms of Use | GreyCampus" />
     <meta name="twitter:description" content="Find all the information related to our terms of use here, including the website usage, content, links, cancellation policy, and more." />
     <meta name="twitter:title" content="Terms of Use | GreyCampus" />
+    <link rel="canonical" href='https://www.greycampus.com/termsOfUse' />
+
 
         </Head>
         <Box

@@ -36,6 +36,8 @@ const PrivacyPolicy = ({ terms }) => {
                 <meta property="og:title" content="Privacy Policy | GreyCampus" />
                 <meta name="twitter:description" content="We at GreyCampus respect your right to privacy. Find all the information related to our privacy policy here." />
                 <meta name="twitter:title" content="Privacy Policy | GreyCampus" />
+                <link rel="canonical" href='https://www.greycampus.com/privacyPolicy' />
+
             </Head>
             <Box
                 className="privacy-policy"

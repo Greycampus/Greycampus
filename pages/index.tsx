@@ -33,6 +33,8 @@ const Home: React.FC = () => {
     <meta name="twitter:description" content="Upskill professionals with outcome-driven training solutions. Customized programs in new hire training, executive upskilling, leadership training, and more. Winner of Deloitte Fastest 50 Awards." />
     <meta name="twitter:title" content="Upskilling Professionals with Outcome-Driven Training Solutions | Boost Efficiency and Performance | BrandName" />
     <link rel="preload" as="image" href={`${API_URL}/uploads/gc_bg_1_min_3700ac9eb5_3a45950ddb.webp`} />
+    <link rel="canonical" href='https://www.greycampus.com' />
+
 
     </Head>
     

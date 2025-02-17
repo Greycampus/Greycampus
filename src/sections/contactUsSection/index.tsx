@@ -26,6 +26,8 @@ const ContactUsSection: React.FC = () => {
     <meta property="og:title" content="Contact Us | GreyCampus" />
     <meta name="twitter:description" content="Got a Query!! Worry not. You can drop an e-mail or call us anytime. Our 24*7 support service will get query answered and solved." />
     <meta name="twitter:title" content="Contact Us | GreyCampus" />
+    <link rel="canonical" href='https://www.greycampus.com/contact' />
+
 
         </Head>
        
