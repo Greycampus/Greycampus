@@ -139,7 +139,7 @@ const CustomComponent = ({ blog }: { blog: any }) => {
             <Box sx={{ flex: 2, padding: "16px", color: "#fff" }}>
                 <Typography variant="h4" gutterBottom>{blog?.post_title || "Blog Title"}</Typography>
                 <Box
-                    className='post-body-content'
+                    className='post-body-content opencampus_post_body_content'
                     sx={{
                         fontFamily: "Poppins, sans-serif",
                         fontSize: "16px",

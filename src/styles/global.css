@@ -39,6 +39,13 @@ body {
   width: 100% !important;
 }
 
+/*  hide body_link for opencampus details page */
+.opencampus_post_body_content > .flex.mb-30 ,
+.opencampus_post_body_content .course_link
+{
+  display: none !important;
+}
+
 
 .post-body-content a {
   color: #34aeb5 !important;
@@ -46,6 +53,12 @@ body {
 .privacy-policy a{
   color: #34aeb5 !important;
 }
+
+
+
+
+
+
 /* Custom scrollbar */
 
 .custom-scrollbar::-webkit-scrollbar-track {
