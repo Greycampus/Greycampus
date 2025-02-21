@@ -40,11 +40,11 @@ body {
 }
 
 /*  hide body_link for opencampus details page */
-.opencampus_post_body_content > .flex.mb-30 ,
+/* .opencampus_post_body_content > .flex.mb-30 ,
 .opencampus_post_body_content .course_link
 {
   display: none !important;
-}
+} */
 
 
 .post-body-content a {
