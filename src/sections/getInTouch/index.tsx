@@ -5,12 +5,13 @@ import HubspotForm from "../../components/hubspot-form/index";
 
 const styles = {
     container: {
-        padding: "80px 16px", // Adjust padding for responsiveness
+        padding: "80px 30px", // Adjust padding for responsiveness
         backgroundImage: `url(${ API_URL }/uploads/blog_post_bg_3725fb4e57.jpg)`,
         backgroundPosition: "center center",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         width: "100%", // Ensure it doesn't exceed the parent width
+        overflow:'hidden',
         maxWidth: "100vw", // Prevent overflow
         display: "flex",
         flexDirection: "column", // Fixed typo
