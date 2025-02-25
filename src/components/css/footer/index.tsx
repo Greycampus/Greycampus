@@ -59,7 +59,7 @@ const Footer = () => {
                 underline="none"
                 color="inherit"
                 display="block"
-                sx={{ mb: 1, "&:hover": { textDecoration: "underline", fontFamily: "Poppins, sans-serif", } }}
+                sx={{ mb: 1, width:'fit-content', "&:hover": { textDecoration: "underline" } }}
               >
                 {item.name}
               </Link>
@@ -78,7 +78,7 @@ const Footer = () => {
                 underline="none"
                 color="inherit"
                 display="block"
-                sx={{ mb: 1, "&:hover": { textDecoration: "underline", fontFamily: "Poppins, sans-serif", } }}
+                sx={{ mb: 1, width:'fit-content', "&:hover": { textDecoration: "underline", } }}
               >
                 {item.name}
               </Link>
@@ -97,7 +97,7 @@ const Footer = () => {
                 underline="none"
                 color="inherit"
                 display="block"
-                sx={{ mb: 1, "&:hover": { textDecoration: "underline", fontFamily: "Poppins, sans-serif", } }}
+                sx={{ mb: 1,  width:'fit-content', "&:hover": { textDecoration: "underline" } }}
               >
                 {item.name}
               </Link>

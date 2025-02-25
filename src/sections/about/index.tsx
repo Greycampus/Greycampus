@@ -38,11 +38,11 @@ const TopAbout = () => {
 
                 <Box sx={{ maxWidth: '1280px', flex: 1, width: '100%', px: '16px' }}>
                     <Box sx={{ width: { xs: '100%', md: '50%' } }}>
-                        <Typography sx={{ fontSize: '16px', }}>
+                        <Typography sx={{ fontSize: '3rem', fontWeight:'600' }}>
                             About us
                         </Typography>
-                        <Divider sx={{ bgcolor: '#0C868D', height: '6px', borderRadius: '4px', width: '160px', mb: '20px' }} />
-                        <Typography variant="h3" sx={{ fontWeight: 800 }}>
+                        <Divider sx={{ bgcolor: '#0C868D', height: '6px', borderRadius: '4px', width: '210px', mb: '20px' }} />
+                        <Typography variant="h4" sx={{ fontWeight: 800 }}>
                             Skilling Up Professionals to Enable Growth, Productivity and Efficiency
                         </Typography>
                     </Box>
