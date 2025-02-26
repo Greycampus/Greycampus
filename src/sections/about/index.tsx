@@ -7,7 +7,6 @@ import React from "react";
 import { API_URL } from "src/utilities/resources";
 import Head from "next/head";
 
-
 const TopAbout = () => {
     return (
         <>
@@ -19,7 +18,6 @@ const TopAbout = () => {
                 <meta name="twitter:description" content="About us Upskilling Professionals to Enable Growth, Productivity and Efficiency  About us At GreyCampus, we believe that every organisation should be able to skill up their workforce effectively in a professional&amp;nbsp; effective, and affordable manner. With that in mind, we have set out to create the world&amp;#8217;s best-value platform where learners can access high-quality online courses, [&amp;hellip;]" />
                 <meta name="twitter:title" content="GreyCampus | About Us" />
                 <link rel="canonical" href='https://www.greycampus.com/about-us' />
-
             </Head>
 
             <Box
@@ -93,9 +91,6 @@ const Body = () => {
                     }
                 }}
             >
-                <Typography variant="h4" sx={{ mb: 2 }}>
-                    About us
-                </Typography>
                 <Typography variant="body1" sx={{ mb: 2 }}>
                     At GreyCampus, we believe that every organisation should be able to skill up
                     their workforce effectively in a professional, effective, and affordable manner.
