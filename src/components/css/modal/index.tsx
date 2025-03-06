@@ -9,18 +9,16 @@ const style = {
   left: "50%",
   transform: "translate(-50%, -50%)",
   width: { xs: "80%", sm: "80%", md: "400px" },
-  height: 350,
   bgcolor: "background.paper",
   boxShadow: 24,
-  p: { xs: 2, sm: 2, md: 4 },
+  p: { xs: '16px', sm: '46px' },
 };
 
-// ✅ Pass `open` prop to only load when needed
-export default function DownloadBrochureModal({ open, handleClose } : { open:any, handleClose:any }) {
+export default function DownloadBrochureModal({ open, handleClose }: { open: boolean; handleClose: () => void }) {
   return (
     <Modal open={open} onClose={handleClose}>
       <Box sx={style}>
-        {open && <HubspotBrochureForm formId="brochureForm10" open={open} />}
+        {open && <HubspotBrochureForm handleClose={handleClose} />} {/* ✅ Pass handleClose */}
       </Box>
     </Modal>
   );

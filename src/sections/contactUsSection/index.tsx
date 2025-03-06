@@ -8,6 +8,7 @@ import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
 import Head from "next/head";
 
 import HubspotForm from "../../components/hubspot-form/index";
+import ContactUsForm from "@components/ContactUsForm";
 
 const styles = {
     iconStyle: {
@@ -76,7 +77,7 @@ const ContactUsSection: React.FC = () => {
         margin: "20px auto", // Center the box
       }}
     >
-      <HubspotForm formId="hubspotForm1" />
+        <ContactUsForm/>
     </Box>
               
             </Box>

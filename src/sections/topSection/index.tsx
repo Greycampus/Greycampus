@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import VideoSection from "./videoComponent";
 import HubspotForm from "../../components/hubspot-form/index";
-
+import ContactUsForm from "@components/ContactUsForm";
 const API_URL = process.env.NEXT_PUBLIC_API_SERVER_ENDPOINT;
 
 const TopSection = () => {
@@ -55,10 +55,11 @@ const TopSection = () => {
               borderRadius: "8px",
               boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
               width: "100%",
-              minHeight: "365px",
             }}
           >
-            <HubspotForm formId="hubspotForm2" />
+            {/* <HubspotForm formId="hubspotForm2" /> */}
+            <ContactUsForm/>
+
           </Box>
         </Box>
       </Box>

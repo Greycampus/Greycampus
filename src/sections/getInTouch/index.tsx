@@ -2,6 +2,7 @@ import React from "react";
 import Box from "@mui/material/Box";
 import { API_URL } from "src/utilities/resources";
 import HubspotForm from "../../components/hubspot-form/index";
+import ContactUsForm from "@components/ContactUsForm";
 
 const styles = {
     container: {
@@ -21,7 +22,7 @@ const styles = {
         fontFamily: 'Poppins, sans-serif',
     },
     formContainer: {
-        maxWidth: "480px", // Restrict the form width
+        maxWidth: "580px", // Restrict the form width
         width: "100%",
         backgroundColor: "#fff",
         borderRadius: "8px",
@@ -34,7 +35,7 @@ const GetInTouch = () => {
     return (
         <Box sx={styles.container}>
             <Box sx={styles.formContainer}>
-      <HubspotForm formId="hubspotForm3" />
+          <ContactUsForm/>
             </Box>
         </Box>
     );
