@@ -5,6 +5,9 @@ import Script from "next/script";
 import "@styles/global.css";
 import Layout from "./layout";
 
+// ✅ Import GTM script
+import { gtmScript } from "src/lib/gtm";
+
 const queryClient = new QueryClient();
 
 interface CustomAppProps extends AppProps {
@@ -17,25 +20,8 @@ function MyApp({ Component, pageProps }: CustomAppProps): JSX.Element {
   return (
     <QueryClientProvider client={queryClient}>
       <Hydrate state={pageProps?.dehydratedState}>
-        {/* ✅ Fixed GTM Syntax */}
-        <Script
-          id="gtm"
-          strategy="lazyOnload"
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function(w,d,s,l,i){
-                w[l]=w[l]||[]; 
-                w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'}); 
-                var f=d.getElementsByTagName(s)[0], 
-                j=d.createElement(s), 
-                dl=l!='dataLayer' ? '&l='+l : ''; 
-                j.async=true;
-                j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl; // ✅ Removed extra quote
-                f.parentNode.insertBefore(j,f);
-              })(window,document,'script','dataLayer','GTM-W9W9X4QJ');
-            `,
-          }}
-        />
+        {/* ✅ Inject GTM script from lib */}
+        <Script id="gtm" strategy="lazyOnload" dangerouslySetInnerHTML={{ __html: gtmScript }} />
 
         <Layout>
           <Component {...pageProps} />
