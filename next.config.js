@@ -472,6 +472,30 @@ const nextConfig = {
           },
         ];
       },
+
+      // ✅ ADDED: Headers to improve cache policy for static assets
+      async headers() {
+        return [
+            {
+                source: "/_next/static/(.*)",
+                headers: [
+                    {
+                        key: "Cache-Control",
+                        value: "public, max-age=31536000, immutable",
+                    },
+                ],
+            },
+            {
+                source: "/uploads/:all*",
+                headers: [
+                    {
+                        key: "Cache-Control",
+                        value: "public, max-age=31536000, immutable",
+                    },
+                ],
+            },
+        ];
+    },
 };
 
 module.exports = withPlugins([withBundleAnalyzer], nextConfig,);
