@@ -6,8 +6,6 @@ import FmdGoodOutlinedIcon from '@mui/icons-material/FmdGoodOutlined';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
 import Head from "next/head";
-
-import HubspotForm from "../../components/hubspot-form/index";
 import ContactUsForm from "@components/ContactUsForm";
 
 const styles = {
