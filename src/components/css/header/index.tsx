@@ -1,4 +1,4 @@
-"use client"; // If you're using Next.js app directory
+"use client";
 
 import React, { useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -17,30 +17,34 @@ import Link from "next/link";
 import { LOGO_URl } from "src/utilities/resources";
 
 type MenuLinkProps = {
-  href: string; // Ensure href is a string
-  text: string; // Ensure text is a string
+  href: string;
+  text: string;
 };
 
 const MenuLink: React.FC<MenuLinkProps> = ({ href, text }) => {
   return (
     <Link href={href} passHref>
       <MenuItem component="a">
-        <ListItemText primary={text} sx={{ color: '#fff', fontSize: '18px', fontFamily: "Poppins, sans-serif", }}/>
+        <ListItemText
+          primary={text}
+          sx={{
+            color: "#fff",
+            fontSize: "18px",
+            fontFamily: "Poppins, sans-serif",
+          }}
+        />
       </MenuItem>
     </Link>
   );
 };
 
-
 const Header = () => {
-  // State to manage drawer open/close
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const toggleDrawer = (open: boolean) => () => {
     setDrawerOpen(open);
   };
 
-  // Menu items
   const navItems = [
     { name: "About", link: "/about-us" },
     { name: "Contact", link: "/contact" },
@@ -48,28 +52,54 @@ const Header = () => {
 
   return (
     <>
-      <Box sx={{ bgcolor: '#000', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-        {/* Top Header */}
-        <AppBar position="static" sx={{ backgroundColor: "black", maxWidth: '1280px' }}>
+      <Box
+        sx={{
+          bgcolor: "#000",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <AppBar
+          position="static"
+          sx={{ backgroundColor: "black", maxWidth: "1280px" }}
+        >
           <Toolbar>
-            {/* Logo */}
+            {/* Logo Fix */}
             <Box sx={{ flexGrow: 1 }}>
               <Link href="/" passHref>
-                <Image src={LOGO_URl} alt="GreyCampus Logo" width={150} height={40} priority />
+                <a>
+                  <Image
+                    src={LOGO_URl}
+                    alt="GreyCampus Logo"
+                    width={150}
+                    height={40}
+                    priority
+                  />
+                </a>
               </Link>
             </Box>
 
             {/* Desktop Navigation */}
-            <Box sx={{ display: { xs: "none", sm: "flex" }, gap: '24px' }}>
-              {!drawerOpen && navItems.map((item) => (
-                <Link key={item.name} href={item.link} passHref>
-                  <Typography
-                    sx={{ marginRight: 3, color: "white", textDecoration: "none", cursor: "pointer", fontFamily: "Poppins, sans-serif", fontSize: '18px' }}
-                  >
-                    {item.name}
-                  </Typography>
-                </Link>
-              ))}
+            <Box sx={{ display: { xs: "none", sm: "flex" }, gap: "24px" }}>
+              {!drawerOpen &&
+                navItems.map((item) => (
+                  <Link key={item.name} href={item.link} passHref>
+                    <Typography
+                      component="a"
+                      sx={{
+                        marginRight: 3,
+                        color: "white",
+                        textDecoration: "none",
+                        cursor: "pointer",
+                        fontFamily: "Poppins, sans-serif",
+                        fontSize: "18px",
+                      }}
+                    >
+                      {item.name}
+                    </Typography>
+                  </Link>
+                ))}
             </Box>
 
             {/* Mobile Menu Icon */}
@@ -77,7 +107,13 @@ const Header = () => {
               edge="end"
               color="inherit"
               aria-label="menu"
-              sx={{ display: { sm: "none" }, bgcolor: '#0C868D', height: '40px', width: '40px', borderRadius: '2px' }}
+              sx={{
+                display: { sm: "none" },
+                bgcolor: "#0C868D",
+                height: "40px",
+                width: "40px",
+                borderRadius: "2px",
+              }}
               onClick={toggleDrawer(true)}
             >
               <MenuIcon />
@@ -86,10 +122,20 @@ const Header = () => {
         </AppBar>
 
         {/* Side Drawer for Mobile */}
-        <Drawer anchor="right" open={drawerOpen} onClose={toggleDrawer(false)} PaperProps={{
-          sx: { backgroundColor: "#000", color: "#fff" }, // Black background, white text
-        }}>
-          <Box sx={{ width: 250, }} role="presentation" onClick={toggleDrawer(false)} onKeyDown={toggleDrawer(false)}>
+        <Drawer
+          anchor="right"
+          open={drawerOpen}
+          onClose={toggleDrawer(false)}
+          PaperProps={{
+            sx: { backgroundColor: "#000", color: "#fff" },
+          }}
+        >
+          <Box
+            sx={{ width: 250 }}
+            role="presentation"
+            onClick={toggleDrawer(false)}
+            onKeyDown={toggleDrawer(false)}
+          >
             <List>
               {navItems.map((item) => (
                 <MenuLink key={item.name} href={item.link} text={item.name} />
@@ -97,9 +143,8 @@ const Header = () => {
             </List>
           </Box>
         </Drawer>
-
       </Box>
-      <Divider sx={{ bgcolor: '#0C868D'}}/>
+      <Divider sx={{ bgcolor: "#0C868D" }} />
     </>
   );
 };
