@@ -1639,7 +1639,7 @@ const DataScienceCoursePage: React.FC = () => {
 
 // Opt-out of global Layout (no header/footer)
 // This is picked up by pages/_app.tsx
-(DataScienceCoursePage as any).disableLayout = true;
+(DataScienceCoursePage as any).disableLayout = false;
 
 export default DataScienceCoursePage;
 
