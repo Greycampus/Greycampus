@@ -5082,11 +5082,11 @@ const nextConfig = {
         destination: "/masterclass/analyzing-loan-application-data-using-python",
         permanent: true
       },
-      {
-        source: "/data-science-course",
-        destination: "http://www.odinschool.com/data-science-course",
-        permanent: true
-      },
+      // {
+      //   source: "/data-science-course",
+      //   destination: "http://www.odinschool.com/data-science-course",
+      //   permanent: true
+      // },
       {
         source: "/careers",
         destination: "http://www.odinschool.com/careers",

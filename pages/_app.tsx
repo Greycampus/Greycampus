@@ -17,15 +17,28 @@ interface CustomAppProps extends AppProps {
 }
 
 function MyApp({ Component, pageProps }: CustomAppProps): JSX.Element {
+  // Support per-page layout opt-out via either a static getLayout or a disableLayout flag
+  const AnyComponent = Component as typeof Component & {
+    getLayout?: (page: JSX.Element) => JSX.Element;
+    disableLayout?: boolean;
+  };
+
+  const renderWithLayout = AnyComponent.getLayout
+    ? AnyComponent.getLayout(<Component {...pageProps} />)
+    : AnyComponent.disableLayout
+    ? (<Component {...pageProps} />)
+    : (
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      );
+
   return (
     <QueryClientProvider client={queryClient}>
       <Hydrate state={pageProps?.dehydratedState}>
         {/* ✅ Inject GTM script from lib */}
         <Script id="gtm" strategy="lazyOnload" dangerouslySetInnerHTML={{ __html: gtmScript }} />
-
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        {renderWithLayout}
       </Hydrate>
     </QueryClientProvider>
   );
