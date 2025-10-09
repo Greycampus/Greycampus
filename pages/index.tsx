@@ -4,11 +4,16 @@ import React from "react";
 import ImpactSection from "src/sections/impactSection";
 import lazyLoadHydrate from "next-lazy-hydrate";
 import Head from "next/head";
+import HeroSection from "src/sections/heroSection/HeroSection";
+import DiverseLearningPrograms from "src/sections/featureJobs/DiverseLearningPrograms";
+import CareerNextLevelSection from "src/sections/CareerNext/CareerNextLevelSection";
+
 import TrainingProgramsSection from "src/sections/trainingSolution";
 import GetInTouch from "src/sections/getInTouch";
 import HowWeWork from "src/sections/howWeWork";
 import TopSection from "src/sections/topSection";
 import { API_URL } from "src/utilities/resources";
+
 // 📦 Dynamically import the rest of the sections
 // const TrainingProgramsSection = lazyLoadHydrate(() => import("src/sections/trainingSolution"));
 const ProgramHighlights = lazyLoadHydrate(() => import("src/sections/highlights"));
@@ -40,17 +45,18 @@ const Home: React.FC = () => {
     
       {/* 🚀 Eagerly Load First Two Sections for Improved LCP */}
 
-      <TopSection />
+      <HeroSection />
+      <section>
+        <img   style={{
+                  width: "100%",
+                  height: "auto",
+                }} src="https://strapi.odinschool.com/uploads/Screenshot_from_2025_10_09_12_00_19_b68ce06d7d.png" alt="logos"  />
+      </section>
 
-      <ImpactSection />
+      <DiverseLearningPrograms />
+      <CareerNextLevelSection />
 
-      {/* 📦 Lazy Load Remaining Sections to Improve Performance */}
-      <TrainingProgramsSection />
-      <HowWeWork />
-      <ProgramHighlights />
-      <AreasOfExpertise />
-      <EnterpriseClients />
-      <GetInTouch />
+
     </>
   );
 };

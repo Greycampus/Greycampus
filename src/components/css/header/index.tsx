@@ -46,6 +46,7 @@ const Header = () => {
   };
 
   const navItems = [
+    { name: "Corporate", link: "/corporate" },
     { name: "About", link: "/about-us" },
     { name: "Contact", link: "/contact" },
   ];
