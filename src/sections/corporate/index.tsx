@@ -4,7 +4,7 @@ import React from "react";
 import ImpactSection from "src/sections/impactSection";
 import lazyLoadHydrate from "next-lazy-hydrate";
 import Head from "next/head";
-import HeroSection from "src/sections/heroSection/HeroSection";
+
 import TrainingProgramsSection from "src/sections/trainingSolution";
 import GetInTouch from "src/sections/getInTouch";
 import HowWeWork from "src/sections/howWeWork";
@@ -41,7 +41,6 @@ const Corporate: React.FC = () => {
     
       {/* 🚀 Eagerly Load First Two Sections for Improved LCP */}
 
-      <HeroSection />
       <TopSection />
 
       <ImpactSection />
