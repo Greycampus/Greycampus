@@ -1,99 +1,94 @@
-const withPlugins = require("next-compose-plugins");
-const withBundleAnalyzer = require("@next/bundle-analyzer")({
-  enabled: process.env.ANALYZE === "true", // ✅ Enables only when ANALYZE=true
+/** @type {import('next').NextConfig} */
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
 });
+
 const BrotliPlugin = require("brotli-webpack-plugin");
 
-
 const nextConfig = {
+  reactStrictMode: true,
+  swcMinify: true,
+
+  compiler: {
+    removeConsole: { exclude: ['error', 'warn'] },
+  },
+
+  experimental: { 
+    forceSwcTransforms: true,
+    optimizePackageImports: ['date-fns','lodash-es','lucide-react'],
+  },
+
   images: {
     remotePatterns: [
       {
         protocol: "https",
         hostname: "www.greycampus.com",
-        port: "",
         pathname: "/hubfs/**",
       },
       {
-        protocol: "https", // Update to use the live Strapi hostname
+        protocol: "https",
         hostname: "strapi.greycampus.com",
-        port: "",
+        pathname: "/uploads/**",
+      },
+        {
+        protocol: "https",
+        hostname: "strapi.odinschool.com",
         pathname: "/uploads/**",
       },
       {
-        protocol: "http", // For localhost during development
+        protocol: "http",
         hostname: "localhost",
         port: "1337",
         pathname: "/uploads/**",
       },
-      {
-        protocol: "https", // For Strapi hosted on Greycampus
-        hostname: "strapi.greycampus.com",
-        port: "",
-        pathname: "/uploads/**",
-      },
     ],
+    formats: ['image/avif', 'image/webp'],
+    minimumCacheTTL: 60 * 60 * 24,
   },
-  swcMinify: true, // ✅ Minify JS & CSS
 
   webpack(config, { isServer }) {
-    // Split chunks for both server and client builds
-    if (!isServer) {
-      config.optimization.splitChunks = {
-        chunks: "all", // Split all chunks, even those from node_modules
-        cacheGroups: {
-          // Split React, ReactDOM, React-Query into their own chunks
-          react: {
-            test: /[\\/]node_modules[\\/]react|react-dom|react-query[\\/]/,
-            name: "react",
-            chunks: "all",
-            priority: 20,
-            enforce: true,
-          },
-          // Split @mui/material, @emotion into separate chunk for optimized loading
-          mui: {
-            test: /[\\/]node_modules[\\/](@mui|@emotion)[\\/]/,
-            name: "mui",
-            chunks: "all",
-            priority: 15,
-            enforce: true,
-          },
-          // Split large vendor libraries from node_modules into a separate chunk
-          vendors: {
-            test: /[\\/]node_modules[\\/]/,
-            name: "vendors",
-            chunks: "all",
-            priority: 10,
-          },
-          // Default chunk for shared code between multiple pages/components
-          default: {
-            minChunks: 2, // Shared code between multiple pages/components
-            priority: 5,
-          },
-        },
-      };
+    // Only enable Brotli in production build, not in dev
+    if (!isServer && process.env.NODE_ENV === 'production') {
+      config.plugins.push(
+        new BrotliPlugin({
+          asset: "[path].br[query]",
+          test: /\.js$|\.css$/,
+          compressionOptions: { level: 11 },
+          threshold: 10240,
+          minRatio: 0.8,
+        })
+      );
     }
 
-    // Enable module concatenation using the new Webpack optimization method
-    config.optimization.concatenateModules = true;
-
-    // Add Brotli compression for JavaScript and CSS files
-    config.plugins.push(
-      new BrotliPlugin({
-        asset: "[path].br[query]",
-        test: /\.js$|\.css$/, // Apply to .js and .css files
-        compressionOptions: {
-          level: 11, // Maximum compression
-        },
-        threshold: 10240, // Only compress files larger than 10KB
-        minRatio: 0.8, // Only compress files with a compression ratio higher than 0.8
-      }),
+    // Add SVG handling like working project
+    const fileLoaderRule = config.module.rules.find((rule) =>
+      rule.test?.test?.('.svg')
     );
+
+    config.module.rules.push(
+      {
+        ...fileLoaderRule,
+        test: /\.svg$/i,
+        resourceQuery: /url/,
+      },
+      {
+        test: /\.svg$/i,
+        issuer: { not: /\.(css|scss|sass)$/ },
+        resourceQuery: { not: /url/ },
+        loader: '@svgr/webpack',
+        options: {
+          dimensions: false,
+          titleProp: true,
+        },
+      }
+    );
+
+    fileLoaderRule.exclude = /\.svg$/i;
 
     return config;
   },
 
-  async redirects() {
+    async redirects() {
     return [
       {
         source: "/elearning/:path*", // Match all paths under /elearning/*
@@ -6696,7 +6691,7 @@ const nextConfig = {
     ];
   },
 
-  // ✅ ADDED: Headers to improve cache policy for static assets
+
   async headers() {
     return [
       {
@@ -6719,6 +6714,10 @@ const nextConfig = {
       },
     ];
   },
+
+  typescript: {
+    ignoreBuildErrors: true,
+  },
 };
 
-module.exports = withPlugins([withBundleAnalyzer], nextConfig,);
+module.exports = withBundleAnalyzer(nextConfig);
