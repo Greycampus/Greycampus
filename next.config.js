@@ -4568,11 +4568,6 @@ const nextConfig = {
         permanent: true
       },
       {
-        source: "/corporate",
-        destination: "http://www.odinschool.com/corporate",
-        permanent: true
-      },
-      {
         source: "/corporate/blogs/how-to-conduct-a-skills-gap-analysis-a-step-by-step-guide",
         destination: "/corporate/blogs/for-corporate/how-to-conduct-a-skills-gap-analysis-a-step-by-step-guide",
         permanent: true
