@@ -2,6 +2,7 @@ import React from "react";
 
 // 🚀 Load the first two components eagerly for improved LCP
 import ImpactSection from "src/sections/impactSection";
+import ProgramsSection from "src/sections/programs/ProgramsSection";
 import lazyLoadHydrate from "next-lazy-hydrate";
 import Head from "next/head";
 import TrainingProgramsSection from "src/sections/trainingSolution";
@@ -41,7 +42,7 @@ const Home: React.FC = () => {
       {/* 🚀 Eagerly Load First Two Sections for Improved LCP */}
 
       <TopSection />
-
+      <ProgramsSection />
       <ImpactSection />
 
       {/* 📦 Lazy Load Remaining Sections to Improve Performance */}
