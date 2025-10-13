@@ -19,7 +19,7 @@ const programs = [
     id: "data-science",
     title: "Data Science Bootcamp",
     price: "₹5,000 + GST",
-    duration: "3-Month Live Online classes",
+    duration: "3-Month Live Online classes | Internship certificate",
     description:
       "Master Python, SQL, ML, and Power BI. Build data pipelines and predictive models for business impact.",
     highlights: [
@@ -37,7 +37,7 @@ const programs = [
     id: "data-analyst",
     title: "Data Analyst Bootcamp",
     price: "₹5,000 + GST",
-    duration: "3-Month Live Online classes",
+    duration: "3-Month Live Online classes | Internship certificate",
     description:
       "Transform data into insights. Learn SQL, Excel, Power BI, and Tableau for data-driven decision making.",
     highlights: [
@@ -55,7 +55,7 @@ const programs = [
     id: "aiml",
     title: "AI/ML Bootcamp",
     price: "₹5,000 + GST",
-    duration: "3-Month Live Online classes",
+    duration: "3-Month Live Online classes | Internship certificate",
     description:
       "Build production AI systems. Deep learning, LLMs, RAG systems, and autonomous agents.",
     highlights: [
