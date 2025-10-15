@@ -155,7 +155,7 @@ const ContactUsSection: React.FC = () => {
                     }}
                 >   
                     <LocalPhoneOutlinedIcon sx={styles.iconStyle}/>
-                    <Typography sx={{ fontFamily: "Poppins, sans-serif", }}>enterprise@greycampus.com</Typography>
+                    <Typography sx={{ fontFamily: "Poppins, sans-serif", }}>contact@greycampus.com</Typography>
                 </Paper>
 
                 {/* Map */}
